@@ -23,6 +23,37 @@ Kaggle / Santander Product Recommendation
   - filename
     - shape : (row / col)
     - colname : description [type / unique]
+  - train.csv
+    - shape : (13,647,309 / 48)
+    - fecha_dato : [object / ]
+    - ncodepers : [float / ]
+    - ind_empledado : [object / ]
+    - pais_residencia : [object / ]
+    - sexo : [object / ]
+    - age : [float / ]
+    - fecha_alta : [object / ]
+    - ind_nuevo : [float / ]
+    - antiguedad : [float / ]
+    - indrel : [float / ]
+    - ult_fec_cli_lt : [object / ]
+    - indrel_lmes : [object / ]
+    - tiprel_lmes : [object / ]
+    - indresi : [object / ]
+    - conyuemp : [object / ]
+    - canal_entrada : [object / ]
+    - indfall : [object / ]
+    - tipodom : [float / ]
+    - cod_prov : [float / ]
+    - nomprov : [object / ]
+    - ind_actividad_cliente : [float / ]
+    - renta : [float / ]
+    - segmento : [object / ]
+    - ind_ahor_fin_ult1 : [int / ]
+    - ind_aval_fin_ult1 : [int / ]
+    - ind_cco_fin_utl1 : [int / ]
+    - ind_cder_fin_utl1 : [int / ]
+    - ind_cno_fin_ult1: [int / ]
+    - ind_
 - [02] Local CV Strategy
 - [03] Feature Engineering
   - [01] Basic Feature
