@@ -99,8 +99,52 @@ Kaggle / Santander Product Recommendation
     - ind_actividad_cliente : activity index (1, active customer; 0, inactive customer) [int / 2]
     - renta : gross income of the household [float / 749,181]
     - segmento : segmentation: 01-VIP, 02-Individual, 03-College graduated[string / 4]
-    
 - [02] Local CV Strategy
+  - Intersection Analysis
+    - fecha dato : fechat dato is fixed to future 2016-06-28
+      - trn : 0.94
+      - tst : 0.06
+      - int : 0.00
+    - ncodpers
+      - trn : 0.03
+      - tst : 0.00
+      - int : 0.97
+    - ind_empleado
+      - trn : 0.17
+      - tst : 0.00
+      - int : 0.83
+    - pais_residencia
+      - trn : 0.01
+      - tst : 0.00
+      - int : 0.99
+    - sexo
+      - trn : 0.00
+      - tst : 0.00
+      - int : 1.00
+    - age
+      - trn : 0.03
+      - tst : 0.01
+      - int : 0.96
+    - fecha_alta
+      - trn : 0.00
+      - tst : 0.00
+      - int : 0.99
+    - ind_nuevo
+      - trn : 0.00
+      - tst : 0.00
+      - int : 1.00
+    - antiguedad
+      - trn : 0.00
+      - tst : 0.00
+      - int : 1.00
+    - indrel
+      - trn : 0.33
+      - tst : 0.00
+      - int : 0.67
+    - ult_fec_cli_lt
+      - trn : 0.91
+      - tst : 0.09
+      - int : 0.00
 - [03] Feature Engineering
   - [01] Basic Feature
   - [02] Advanced Feature Generation
@@ -122,6 +166,8 @@ Kaggle / Santander Product Recommendation
   - DONE
 - [DO] Split CV
   - convert some train into test datatype(float to int)
+    - cols: age, ind_nuevo, antiguedad, tipodom, ind_actividad_cliente
+    - fillna(0) > Series.astype(np.int)
   - According to train/test relationship
 - [DO] Initial Benchmark
 - [DO] Simple Feature Aggregated submission
