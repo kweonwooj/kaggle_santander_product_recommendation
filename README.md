@@ -73,6 +73,33 @@ Kaggle / Santander Product Recommendation
     - ind_nomina_ult1 : payroll [float / 16,065]
     - ind_nom_pens_ult1 : pensions [float / 16,065]
     - ind_recibo_ult1 : direct debit [int / 2]
+  - test.csv
+    - shape : (934,445 / 24)
+    - fecha_dato : single day on 2016-06-28 [date / 1]
+    - ncodepers : customer code [float / 934,445]
+    - ind_empledado : emplyee index: A active ,B ex employed, F filial, N not employeed, P passive [string / 5]
+    - pais_residencia : customer's country residence [string / 118]
+    - sexo : H, V, [string / 3]
+    - age : [int / 118]
+    - fecha_alta : date the customer became first holder of a contract [date / 6,780]
+    - ind_nuevo : new customer index (1 if customer is registered in last 6 months) [int / 2]
+    - antiguedad : customer seniority [int / 259]
+    - indrel : 1 (First/Primary), 99(Primary customer during the month but not at the end of the month) [int / 2]
+    - ult_fec_cli_lt : last date as primary customer [date / 22]
+    - indrel_lmes : customer type at the beginning of the month, 1 (First/Primary customer), 2 (co-owner), P (Potential), 3 (Former primary), 4 (former co-owner) [object / 122]
+    - tiprel_lmes : customer relation type at the beginning of the month. A (active), I (inactive), P (former customer), R (Potential) [string / 6]
+    - indresi : Residence index (S(yes) or N(no) if customer's residence country is same than bank country) [string / 2]
+    - indext : Foreinger index (S(yes) or N(no) if customer's birth country is different than bank country [string / 2]
+    - conyuemp : spouse index. 1 if customer is spouse of an employee [object / 803,417]
+    - canal_entrada : channel used by the customer to join [string / 163]
+    - indfall : deceased index N/S [string / 2]
+    - tipodom : address type. 1, primary address [int / 1]
+    - cod_prov : province code (customer's address) [float / 4,049]
+    - nomprov : province name [string / 53]
+    - ind_actividad_cliente : activity index (1, active customer; 0, inactive customer) [int / 2]
+    - renta : gross income of the household [float / 749,181]
+    - segmento : segmentation: 01-VIP, 02-Individual, 03-College graduated[string / 4]
+    
 - [02] Local CV Strategy
 - [03] Feature Engineering
   - [01] Basic Feature
@@ -94,6 +121,7 @@ Kaggle / Santander Product Recommendation
 - [DO] Data Exploration on train.csv
   - DONE
 - [DO] Split CV
+  - convert some train into test datatype(float to int)
   - According to train/test relationship
 - [DO] Initial Benchmark
 - [DO] Simple Feature Aggregated submission
