@@ -26,28 +26,28 @@ Kaggle / Santander Product Recommendation
   - train.csv
     - shape : (13,647,309 / 48)
     - fecha_dato : date from 2015-01-28 ~ [date / 17]
-    - ncodepers : customer code [float / 956,645]
-    - ind_empledado : emplyee index: A active ,B ex employed, F filial, N not employeed, P passive [string / 6]
+    - ncodpers : customer code [int / 956,645]
+    - ind_empleado : emplyee index: A active ,B ex employed, F filial, N not employeed, P passive [string / 6]
     - pais_residencia : customer's country residence [string / 119]
-    - sexo : H, V, [string / 3]
-    - age : [float / 27,854]
+    - sexo : H, V, NaN [string / 3]
+    - age : [int / 121]
     - fecha_alta : date the customer became first holder of a contract [date / 6,757]
-    - ind_nuevo : new customer index (1 if customer is registered in last 6 months) [float / 27,736]
-    - antiguedad : customer seniority [float / 27,992]
-    - indrel : 1 (First/Primary), 99(Primary customer during the month but not at the end of the month) [float / 27,736]
+    - ind_nuevo : new customer index (1 if customer is registered in last 6 months) [int / 3]
+    - antiguedad : customer seniority in integer [int / 259]
+    - indrel : 1 (First/Primary), 99(Primary customer during the month but not at the end of the month) [int / 3]
     - ult_fec_cli_lt : last date as primary customer [date / 224]
-    - indrel_lmes : customer type at the beginning of the month, 1 (First/Primary customer), 2 (co-owner), P (Potential), 3 (Former primary), 4 (former co-owner) [int + NaN / 55,654]
-    - tiprel_lmes : customer relation type at the beginning of the month. A (active), I (inactive), P (former customer), R (Potential) [string / 6]
+    - indrel_lmes : customer type at the beginning of the month, 1 (First/Primary customer), 2 (co-owner), P=5 (Potential), 3 (Former primary), 4 (former co-owner) [int / 6]
+    - tiprel_lmes : customer relation type at the beginning of the month. A (active), I (inactive), P (former customer), R (Potential), N [string / 6]
     - indresi : Residence index (S(yes) or N(no) if customer's residence country is same than bank country) [string / 3]
     - indext : Foreinger index (S(yes) or N(no) if customer's birth country is different than bank country [string / 3]
-    - conyuemp : spouse index. 1 if customer is spouse of an employee [object / 12,451,864]
+    - conyuemp : spouse index. 1 if customer is spouse of an employee N,S,X [string / 3]
     - canal_entrada : channel used by the customer to join [string / 163]
     - indfall : deceased index N/S [string / 3]
-    - tipodom : address type. 1, primary address [float / 27,736]
-    - cod_prov : province code (customer's address) [float / 93,643]
+    - tipodom : address type. 1, primary address [int / 2]
+    - cod_prov : province code (customer's address) [int / 53]
     - nomprov : province name [string / 53]
-    - ind_actividad_cliente : activity index (1, active customer; 0, inactive customer) [float / 27,736]
-    - renta : gross income of the household [float / 3,315,369]
+    - ind_actividad_cliente : activity index (1, active customer; 0, inactive customer) [int / 3]
+    - renta : gross income of the household [int / 213,757]
     - segmento : segmentation: 01-VIP, 02-Individual, 03-College graduated[string / 4]
     - ind_ahor_fin_ult1 : saving account [int / 2]
     - ind_aval_fin_ult1 : guarantees [int / 2]
@@ -76,75 +76,35 @@ Kaggle / Santander Product Recommendation
   - test.csv
     - shape : (934,445 / 24)
     - fecha_dato : single day on 2016-06-28 [date / 1]
-    - ncodepers : customer code [float / 934,445]
-    - ind_empledado : emplyee index: A active ,B ex employed, F filial, N not employeed, P passive [string / 5]
+    - ncodpers : customer code [int / 934,445]
+    - ind_empleado : emplyee index: A active ,B ex employed, F filial, N not employeed, P passive [string / 5]
     - pais_residencia : customer's country residence [string / 118]
-    - sexo : H, V, [string / 3]
+    - sexo : H, V, NaN[string / 3]
     - age : [int / 118]
     - fecha_alta : date the customer became first holder of a contract [date / 6,780]
     - ind_nuevo : new customer index (1 if customer is registered in last 6 months) [int / 2]
     - antiguedad : customer seniority [int / 259]
-    - indrel : 1 (First/Primary), 99(Primary customer during the month but not at the end of the month) [int / 2]
+    - indrel : 1 (First/Primary), 99 (Primary customer during the month but not at the end of the month) [int / 2]
     - ult_fec_cli_lt : last date as primary customer [date / 22]
-    - indrel_lmes : customer type at the beginning of the month, 1 (First/Primary customer), 2 (co-owner), P (Potential), 3 (Former primary), 4 (former co-owner) [object / 122]
-    - tiprel_lmes : customer relation type at the beginning of the month. A (active), I (inactive), P (former customer), R (Potential) [string / 6]
+    - indrel_lmes : customer type at the beginning of the month, 1 (First/Primary customer), 2 (co-owner), P=5 (Potential), 3 (Former primary), 4 (former co-owner) [int / 6]
+    - tiprel_lmes : customer relation type at the beginning of the month. A (active), I (inactive), P (former customer), R (Potential), N [string / 6]
     - indresi : Residence index (S(yes) or N(no) if customer's residence country is same than bank country) [string / 2]
     - indext : Foreinger index (S(yes) or N(no) if customer's birth country is different than bank country [string / 2]
-    - conyuemp : spouse index. 1 if customer is spouse of an employee [object / 803,417]
+    - conyuemp : spouse index. 1 if customer is spouse of an employee N,S,X [string / 3]
     - canal_entrada : channel used by the customer to join [string / 163]
     - indfall : deceased index N/S [string / 2]
     - tipodom : address type. 1, primary address [int / 1]
-    - cod_prov : province code (customer's address) [float / 4,049]
+    - cod_prov : province code (customer's address) [int / 53]
     - nomprov : province name [string / 53]
     - ind_actividad_cliente : activity index (1, active customer; 0, inactive customer) [int / 2]
-    - renta : gross income of the household [float / 749,181]
+    - renta : gross income of the household [int / 212,964]
     - segmento : segmentation: 01-VIP, 02-Individual, 03-College graduated[string / 4]
 - [02] Local CV Strategy
-  - Intersection Analysis
-    - fecha dato : fechat dato is fixed to future 2016-06-28
-      - trn : 0.94
-      - tst : 0.06
-      - int : 0.00
-    - ncodpers
+  - Intersection Analysis 
+    - ncodpers [trn : tst]
       - trn : 0.03
       - tst : 0.00
       - int : 0.97
-    - ind_empleado
-      - trn : 0.17
-      - tst : 0.00
-      - int : 0.83
-    - pais_residencia
-      - trn : 0.01
-      - tst : 0.00
-      - int : 0.99
-    - sexo
-      - trn : 0.00
-      - tst : 0.00
-      - int : 1.00
-    - age
-      - trn : 0.03
-      - tst : 0.01
-      - int : 0.96
-    - fecha_alta
-      - trn : 0.00
-      - tst : 0.00
-      - int : 0.99
-    - ind_nuevo
-      - trn : 0.00
-      - tst : 0.00
-      - int : 1.00
-    - antiguedad
-      - trn : 0.00
-      - tst : 0.00
-      - int : 1.00
-    - indrel
-      - trn : 0.33
-      - tst : 0.00
-      - int : 0.67
-    - ult_fec_cli_lt
-      - trn : 0.91
-      - tst : 0.09
-      - int : 0.00
 - [03] Feature Engineering
   - [01] Basic Feature
   - [02] Advanced Feature Generation
@@ -165,11 +125,13 @@ Kaggle / Santander Product Recommendation
 - [DO] Data Exploration on train.csv
   - DONE
 - [DO] Split CV
-  - convert some train into test datatype(float to int)
-    - cols: age, ind_nuevo, antiguedad, tipodom, ind_actividad_cliente
-    - fillna(0) > Series.astype(np.int)
-  - According to train/test relationship
+  - [a] begin with pure random shufflesplit
+  - According to train/test relationship > no outstanding relationship
+  - [b] use 2016-05-28 as vld
 - [DO] Initial Benchmark
+  - RandomForest, XGBoost, Ridge, Logistic etc (base models)
+    - try on split_a and split_b
+  - Memory Issue!!
 - [DO] Simple Feature Aggregated submission
 - [DO] Feature Engineered v1
 
