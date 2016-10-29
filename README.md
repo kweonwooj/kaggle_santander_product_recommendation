@@ -5,6 +5,7 @@ Kaggle / Santander Product Recommendation
 - Bronze Medal
 - Modular Framework
 - Efficient Decision Making via Visualization/Bias_Variance Analysis
+- Replicate and Learn from the Best [ZFTurbo]
 
 ## Evaluation
 - [Mean Average Precision @ 7](https://www.kaggle.com/c/santander-product-recommendation/details/evaluation)
@@ -122,17 +123,26 @@ Kaggle / Santander Product Recommendation
 ## How to run
 
 ## What to do
-- [DO] Data Exploration on train.csv
-  - DONE
-- [DO] Split CV
-  - [a] begin with pure random shufflesplit
-  - According to train/test relationship > no outstanding relationship
-  - [b] use 2016-05-28 as vld
-- [DO] Initial Benchmark
-  - RandomForest, XGBoost, Ridge, Logistic etc (base models)
-    - try on split_a and split_b
-  - Memory Issue!!
-- [DO] Simple Feature Aggregated submission
-- [DO] Feature Engineered v1
+- KJ method
+  - [DONE] Data Exploration on train.csv
+  - [DONE] Split CV
+    - [a] begin with pure random shufflesplit
+    - According to train/test relationship > no outstanding relationship
+    - [b] use 2016-05-28 as vld
+  - [DO] Initial Benchmark
+    - RandomForest, XGBoost, Ridge, Logistic etc (base models)
+      - try on split_a and split_b
+    - Memory Issue!!
+  - [DO] Simple Feature Aggregated submission
+  - [DO] Feature Engineered v1
+- [ZFTurbo](https://www.kaggle.com/zfturbo/santander-product-recommendation/santander-battle/code)
+  - zfturbo.py
+  - Local CV: 0.02167
+  - Public LB: 0.02395
+  - Method
+    - use hash function
+    - Replicate and learn
 
 ## What I did
+  - Tried KJ style.. Hold
+  - Begin Replicating ZFTurbo
