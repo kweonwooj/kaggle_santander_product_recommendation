@@ -136,14 +136,21 @@ Kaggle / Santander Product Recommendation
   - [DO] Simple Feature Aggregated submission
   - [DO] Feature Engineered v1
 - [ZFTurbo](https://www.kaggle.com/zfturbo/santander-product-recommendation/santander-battle/code)
-  - zfturbo.py
-  - Local CV: 0.02167
-  - Public LB: 0.02395
   - Method
     - Collaborative Filtering: uses feature set to group user into demographics, and recommend most popular item within demographics purchased product that a user does not have. Extends to overall demographics if new user or 7 recommendation is not filled.
     - defining feature set to group users can be key
     - Very memory efficient and fast method!
-
+  - [01] As-is
+    - no preprocessing on raw data
+    - Grouping Condition
+      - pais_residencia, sexo, age, ind_nuevo, segmento, ind_empleado, ind_actividad_cliente, indresi
+    - Local CV: 0.022101
+    - Public LB: 0.0241798
+  - [02] v2
+    - Preprocessing
+      - Age : bin
+      - others
+  
 ## What I did
   - Tried KJ style.. Hold
   - Begin Replicating ZFTurbo
