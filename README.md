@@ -71,8 +71,8 @@ Kaggle / Santander Product Recommendation
     - ind_tjcr_fin_ult1 : credit card [int / 2]
     - ind_valo_fin_ult1 : securities [int / 2]
     - ind_viv_fin_ult1 : home account [int / 2]
-    - ind_nomina_ult1 : payroll [float / 16,065]
-    - ind_nom_pens_ult1 : pensions [float / 16,065]
+    - ind_nomina_ult1 : payroll [int / 2]
+    - ind_nom_pens_ult1 : pensions [int / 2]
     - ind_recibo_ult1 : direct debit [int / 2]
   - test.csv
     - shape : (934,445 / 24)
