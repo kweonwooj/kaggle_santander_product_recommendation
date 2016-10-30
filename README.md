@@ -140,8 +140,9 @@ Kaggle / Santander Product Recommendation
   - Local CV: 0.02167
   - Public LB: 0.02395
   - Method
-    - use hash function
-    - Replicate and learn
+    - Collaborative Filtering: uses feature set to group user into demographics, and recommend most popular item within demographics purchased product that a user does not have. Extends to overall demographics if new user or 7 recommendation is not filled.
+    - defining feature set to group users can be key
+    - Very memory efficient and fast method!
 
 ## What I did
   - Tried KJ style.. Hold
