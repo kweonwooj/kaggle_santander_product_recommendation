@@ -142,10 +142,13 @@ Kaggle / Santander Product Recommendation
     - Very memory efficient and fast method!
   - [01] As-is
     - no preprocessing on raw data
-    - Grouping Condition
+    - Grouping Condition (4670 groups)
       - pais_residencia, sexo, age, ind_nuevo, segmento, ind_empleado, ind_actividad_cliente, indresi
     - Local CV: 0.022101
     - Public LB: 0.0241798
+  - [01-a] Other variants
+    - Group
+      - pais
   - [02] v2
     - Preprocessing
       - Age : bin
