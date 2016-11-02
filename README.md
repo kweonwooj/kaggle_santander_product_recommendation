@@ -163,3 +163,50 @@ Kaggle / Santander Product Recommendation
 ## What I did
   - Tried KJ style.. Hold
   - Begin Replicating ZFTurbo
+
+## Related Works from past Kaggle Competitions
+  - [Coupon Purchase Prediction](https://www.kaggle.com/c/coupon-purchase-prediction)
+    - tmain
+      - Cosine Similarity + [Hybrid Matrix Factorization](https://github.com/lyst/lightfm) + Regression
+      - Blended via weighted arithmetic mean
+      - [Winning Script](https://github.com/tdeboissiere/Kaggle/tree/master/Ponpare)
+    - nagadomi [5th place]
+      - 3 layer neural network
+      - [Winning Script](https://github.com/nagadomi/kaggle-coupon-purchase-prediction)
+    - Aakansh 
+      - XGBoost + BPRMF approach
+      - [Blogpost](http://datascience.blog.uhuru.co.jp/machine-learning/predicting-coupon-purchases-on-ponpare/)
+      - [Winning Script](https://github.com/aakansh9/kaggle-coupon-purchase-prediction)
+    - threecourse [3rd place]
+      - 1. For each weeks, find all coupons with DISPFROM starting in that week.
+      - 2. For each (user, coupon) pair in that week, construct features using data, where information in that week is excluded.
+      - 3. Code the target as 1 if a purchase occurred in that week, 0 if no purchase occurred.
+      - 4. Throw out all the 0's, since otherwise the dataset would be huge.
+      - 5. Feed into XGBoost and Vowpal Wabbit (XGBoost was much better...)
+      - 6. Validate by predicting and calculating MAP@10. Test set was every 5 weeks.
+      - Total run time on an AWS r3.x2large instance(64GB RAM) : about 5-6 hours. My trick was giving up predicting genres which have little relation to places. In other words, excluded Gift, Delivery, Lesson and Other genres from training and prediction.
+      - [Winning Script](https://github.com/threecourse/kaggle-coupon-purchase-prediction)
+    - Herra [1st place]
+      - Probabilistic Modelling
+        - P(purchase) = P(user online) x P(visit|online) x P(purchase|visit)
+        - P(user online) is simple beta-bernoulli
+        - other two were heirarchical logistic regression, inferenced by step wise doubly stochastic variational Bayes
+          - first learn the population parameters/distributions
+          - find out user specific params
+        - Related papers
+          - Mean VB + analytically optimized vairance hyperparamters, [section 3.2](http://jmlr.csail.mit.edu/proceedings/papers/v32/titsias14.pdf)
+          - 
+    - Halla [2nd place]
+      - 1. For each week from 2012-01-08 through 2012-06-17, find all coupons with DISPFROM starting in that week.
+      - 2. For each (user, coupon) pair in that week, construct features using data known as of that date.
+      - 3. Code the target as 1 if a purchase occurred in that week, 0 if no purchase occurred.
+      - 4. Throw out most of the 0's, since otherwise the dataset would be huge.
+      - 5. Feed into XGBoost (a single, non-ensembled model).
+      - 6. Validate using log-likelihood and a confusion matrix, and the last week (2012-06-17) only.
+    - Gert
+      - 1. Data Prep: complete pref of the user when missing, by filling in the most popular pref of the coupons that the user purchased
+      - 2. Target Definition: count the number of times each coupon is purchased by all users together- separately for users in the SAME PREF as the coupon, and users in a DIFFERENT PREF
+      - 3. Modeling: run two random forest regressors (SAME PREF and DIFFERENT PREF) with only the raw coupon attributes as features
+      - 4. Submission: for each user, take at most the top 7 (if any) of coupons from the users own pref from the SAME PREF model, and fill it up to 10 coupons by taking coupons from other prefs according to the DIFFERENT PREF model
+      
+      
