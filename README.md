@@ -195,7 +195,6 @@ Kaggle / Santander Product Recommendation
           - find out user specific params
         - Related papers
           - Mean VB + analytically optimized vairance hyperparamters, [section 3.2](http://jmlr.csail.mit.edu/proceedings/papers/v32/titsias14.pdf)
-          - 
     - Halla [2nd place]
       - 1. For each week from 2012-01-08 through 2012-06-17, find all coupons with DISPFROM starting in that week.
       - 2. For each (user, coupon) pair in that week, construct features using data known as of that date.
