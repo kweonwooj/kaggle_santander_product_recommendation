@@ -147,8 +147,14 @@ Kaggle / Santander Product Recommendation
     - Local CV: 0.022101
     - Public LB: 0.0241798
   - [01-a] Other variants
-    - Group
-      - pais
+    - Preprocessing
+      - clipped age to 0 ~ 80 and divided by 10
+    - 2 hashes
+    - Grouping condition (9573 groups)
+      - Hash1 : pais_residencia, sexo, age, ind_nuevo, ind_empleado, segmento, ind_actividad_cliente, indresi, nomprov
+      - Hash2 : pais_residencia, sexo, age, ind_nuevo, ind_empleado, segmento, ind_actividad_cliente, indresi
+    - Local CV : 0.22037
+    - Public LB : 0.0240845
   - [02] v2
     - Preprocessing
       - Age : bin
