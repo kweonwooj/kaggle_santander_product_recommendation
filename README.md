@@ -165,7 +165,11 @@ Kaggle / Santander Product Recommendation
   - Begin Replicating ZFTurbo
 
 ## Related Works from past Kaggle Competitions
-  - [Coupon Purchase Prediction](https://www.kaggle.com/c/coupon-purchase-prediction)
+  - 1. [Coupon Purchase Prediction](https://www.kaggle.com/c/coupon-purchase-prediction)
+    - General: 
+      - Problem: Predict which coupons a customer will purchase
+      - Evaluation metric: MAP@10
+      - Submission format: user, coupons
     - tmain
       - Cosine Similarity + [Hybrid Matrix Factorization](https://github.com/lyst/lightfm) + Regression
       - Blended via weighted arithmetic mean
@@ -207,5 +211,49 @@ Kaggle / Santander Product Recommendation
       - 2. Target Definition: count the number of times each coupon is purchased by all users together- separately for users in the SAME PREF as the coupon, and users in a DIFFERENT PREF
       - 3. Modeling: run two random forest regressors (SAME PREF and DIFFERENT PREF) with only the raw coupon attributes as features
       - 4. Submission: for each user, take at most the top 7 (if any) of coupons from the users own pref from the SAME PREF model, and fill it up to 10 coupons by taking coupons from other prefs according to the DIFFERENT PREF model
-      
+  - 2. [Allstate Purchase Prediction](https://www.kaggle.com/c/allstate-purchase-prediction-challenge)
+    - General:
+      - Problem: predict which quote a customer will purchase
+      - Evaluation metric: all or none
+      - Submission format: customer, plan
+  - 3. [Expedia Hotel Recommendation](https://www.kaggle.com/c/expedia-hotel-recommendations)
+    - General:
+      - Problem: predict which hotels a customer will purchase
+      - Evaluation metric: MAP@5
+      - Submission format: id, hotel_clusters
+  - 4. [Airbnb New User Bookings](https://www.kaggle.com/c/airbnb-recruiting-new-user-bookings)
+    - General:
+      - Problem: predict which product a user will purchase first
+      - Evaluation metric: NDCG
+      - Submission format: id, country
+  - 5. [GigaOM WordPress Challenge](https://www.kaggle.com/c/predict-wordpress-likes)
+    - General:
+      - Problem: predict which people will like which blogposts
+      - Evaluation metric: MAP@100
+      - Submission format: > 4 years
+  - 6. [Job Recommendation Challenge](https://www.kaggle.com/c/job-recommendation)
+    - General:
+      - Problem: predict which jobs a user will apply
+      - Evaluation metric: MAP@150
+      - Submission format: > 4 years
+  - 7. [Acquire Valued Shopper Challenge](https://www.kaggle.com/c/acquire-valued-shoppers-challenge)
+    - General:
+      - Problem: predict which new users will become loyal users
+      - Evaluation metric: ROC
+      - Submission format: id, prob
+  - 8. [Homesite Quote Conversion](https://www.kaggle.com/c/homesite-quote-conversion)
+    - General:
+      - Problem: predict which customer will puchase a given quote
+      - Evaluation metric: ROC
+      - Submission format: quote, prob
+  - 9. [Display Advertising Challenge](https://www.kaggle.com/c/criteo-display-ad-challenge)
+    - General:
+      - Problem: predict probability that a user will click an ad (CTR)
+      - Evaluation metric: logloss
+      - Submission format: id, prob
+  - 10. [Click-Through Rate Prediction](https://www.kaggle.com/c/avazu-ctr-prediction)
+    - General:
+      - Problem: predict probability that a user will click an ad (CTR)
+      - Evaluation metric: logloss
+      - Submission format: id, prob
       
