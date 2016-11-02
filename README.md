@@ -3,9 +3,8 @@ Kaggle / Santander Product Recommendation
 
 ## Objective
 - Bronze Medal
-- Modular Framework
+- Replicate past competition winning scripts
 - Efficient Decision Making via Visualization/Bias_Variance Analysis
-- Replicate and Learn from the Best [ZFTurbo]
 
 ## Evaluation
 - [Mean Average Precision @ 7](https://www.kaggle.com/c/santander-product-recommendation/details/evaluation)
