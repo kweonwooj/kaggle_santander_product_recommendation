@@ -210,16 +210,30 @@ Kaggle / Santander Product Recommendation
       - Cosine Similarity + [Hybrid Matrix Factorization](https://github.com/lyst/lightfm) + Regression
       - Blended via weighted arithmetic mean
       - [Winning Script](https://github.com/tdeboissiere/Kaggle/tree/master/Ponpare)
-  - 2. [Allstate Purchase Prediction](https://www.kaggle.com/c/allstate-purchase-prediction-challenge)
-    - General:
-      - Problem: predict which quote a customer will purchase
-      - Evaluation metric: all or none
-      - Submission format: customer, plan
-  - 3. [Expedia Hotel Recommendation](https://www.kaggle.com/c/expedia-hotel-recommendations)
+  - 2. [Expedia Hotel Recommendation](https://www.kaggle.com/c/expedia-hotel-recommendations)
     - General:
       - Problem: predict which hotels a customer will purchase
       - Evaluation metric: MAP@5
       - Submission format: id, hotel_clusters
+    - idle_speculation [1st place]
+      - 1. map user cities and clusters to latitude and longitude using gradient descent
+      - 2. build a factorization machine model for each cluster
+      - 3. calculate historical click and book rates by a variety of factors
+      - 4. build a modified "rank:pairwise" xgboost model on 1-3
+      - [Winning Solution Explained in Forum](https://www.kaggle.com/c/expedia-hotel-recommendations/forums/t/21607/1st-place-solution-summary)
+    - beluga [2nd place]
+      - 1. Map city to globe and calculate lat-long
+      - 2. create seasonality proxy for destinations
+      - 3. Hotel cluster frequencies based on factors
+      - 4. user preferences
+      - Split data based on leakage hotel matches 1:2 Trained binary xgb models separately for each hotel clusters. I used 8-20% of the negative samples in each binary classifiers to speed up training. separate feature selection and paropt helped.
+    - Chenxia Ma [35th place]
+      - [Winnnig Solution in Git](https://github.com/shawnhero/ICDM2013-Expedia-Recommendation-System)
+  - 3. [Allstate Purchase Prediction](https://www.kaggle.com/c/allstate-purchase-prediction-challenge)
+    - General:
+      - Problem: predict which quote a customer will purchase
+      - Evaluation metric: all or none
+      - Submission format: customer, plan
   - 4. [Airbnb New User Bookings](https://www.kaggle.com/c/airbnb-recruiting-new-user-bookings)
     - General:
       - Problem: predict which product a user will purchase first
