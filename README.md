@@ -28,27 +28,50 @@ Kaggle / Santander Product Recommendation
     - fecha_dato : date from 2015-01-28 ~ [date / 17]
     - ncodpers : customer code [int / 956,645]
     - ind_empleado : emplyee index: A active ,B ex employed, F filial, N not employeed, P passive [string / 6]
+      - static categorical variable
     - pais_residencia : customer's country residence [string / 119]
+      - static categorical variable
     - sexo : H, V, NaN [string / 3]
+      - static categorical variable
     - age : [int / 121]
+      - 3 unique values range(1~3) per user(25:35:40 = 1:2:3)
     - fecha_alta : date the customer became first holder of a contract [date / 6,757]
+      - static categorical variable
+      - 3 unique values range(0~2) per user(99% == 1)
     - ind_nuevo : new customer index (1 if customer is registered in last 6 months) [int / 3]
+      - 3 unique values range(0~2) per user(1:90:9 = 0:1:2)
     - antiguedad : customer seniority in integer [int / 259]
+      - 12 unique values range(1~12) per user(mostly on 10~12)
     - indrel : 1 (First/Primary), 99(Primary customer during the month but not at the end of the month) [int / 3]
+      - 3 unique values range(0~2) per user(mostly on 1)
     - ult_fec_cli_lt : last date as primary customer [date / 224]
+      - 6 unique values range(0~5) per user(mostly on 0 == NaN)
     - indrel_lmes : customer type at the beginning of the month, 1 (First/Primary customer), 2 (co-owner), P=5 (Potential), 3 (Former primary), 4 (former co-owner) [int / 6]
+      - 7 unique values range(0~6) per user(mostly on 2)
     - tiprel_lmes : customer relation type at the beginning of the month. A (active), I (inactive), P (former customer), R (Potential), N [string / 6]
+      - 5 unique values range(0~4) per user(mostly on 1)
     - indresi : Residence index (S(yes) or N(no) if customer's residence country is same than bank country) [string / 3]
+      - 3 unique values range(0~2) per user(mostly on 1)
     - indext : Foreinger index (S(yes) or N(no) if customer's birth country is different than bank country [string / 3]
+      - 3 unique values range(0~2) per user(mostly on 1)
     - conyuemp : spouse index. 1 if customer is spouse of an employee N,S,X [string / 3]
+      - 2 unique values range(0~1) per user(mostly on 0)
     - canal_entrada : channel used by the customer to join [string / 163]
+      - 4 unique values range(0~3) per user(mostly on 1)
     - indfall : deceased index N/S [string / 3]
+      - 3 unique values range(0~2) per user(mostly on 1)
     - tipodom : address type. 1, primary address [int / 2]
+      - 2 unique values range(0~1) per user(mostly on 1)
     - cod_prov : province code (customer's address) [int / 53]
+      - 4 unique values range(0~3) per user(mostly on 1)
     - nomprov : province name [string / 53]
+      - 4 unique values range(0~3) per user(mostly on 1)
     - ind_actividad_cliente : activity index (1, active customer; 0, inactive customer) [int / 3]
+      - 3 unique values range(0~2) per user(mostly on 1)
     - renta : gross income of the household [int / 213,757]
+      - 2 unique values range(0~1) per user(0:1 = 25:75)
     - segmento : segmentation: 01-VIP, 02-Individual, 03-College graduated[string / 4]
+      - 4 unique values range(0~3) per user(mostly on 1)
     - ind_ahor_fin_ult1 : saving account [int / 2]
     - ind_aval_fin_ult1 : guarantees [int / 2]
     - ind_cco_fin_utl1 : current account [int / 2]
@@ -126,6 +149,9 @@ Kaggle / Santander Product Recommendation
   - Check whether description matches. Find new patterns for..
     - fecha_alta, ind_nuevo, antiguedad, indrel, ult_fec_cli_1t, indrel_1mes, tiprel_1mes, conyuemp, tipodom, cod_prov, nomprov, ind_actividad_cliente
   - Feature Engineering via import all
+    - [Try to capture change in status, employment, role which triggers purchase]
+    - move of address = hikkoshi
+    - change of segmento 
   - Feed into XGBoost
     - (user, taret) pair -> label
     - replication of threecourse's approach
@@ -142,7 +168,13 @@ Kaggle / Santander Product Recommendation
     - Public LB: 0.0241798
   - [02] Modularize Hash methods
     - Preprocessing
-      - Age: clipped age to 0 ~ 80 and divided by 10
+      - age: clipped age to 0 ~ 80 and divided by 10
+      - indlfall: deceased bucketed to (ncodpers, indfall)
+        - 80% of deceased has static purchase record, other 20% has updates in their purchase
+      - renta: bin into four (0, 25, 50, 75, 100)
+      - existing purchase count
+      - date between ult_fec_cli_1t and fecha_dato in month
+      - divide categorical by renta/age (not implemented)
     - 2 hash model
     - Modularizaton
       - randomly select grouping conditions
