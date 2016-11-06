@@ -122,18 +122,13 @@ Kaggle / Santander Product Recommendation
 ## How to run
 
 ## What to do
-- KJ method
-  - [DONE] Data Exploration on train.csv
-  - [DONE] Split CV
-    - [a] begin with pure random shufflesplit
-    - According to train/test relationship > no outstanding relationship
-    - [b] use 2016-05-28 as vld
-  - [DO] Initial Benchmark
-    - RandomForest, XGBoost, Ridge, Logistic etc (base models)
-      - try on split_a and split_b
-    - Memory Issue!!
-  - [DO] Simple Feature Aggregated submission
-  - [DO] Feature Engineered v1
+- Exploratory Data Analysis
+  - Check whether description matches. Find new patterns for..
+    - fecha_alta, ind_nuevo, antiguedad, indrel, ult_fec_cli_1t, indrel_1mes, tiprel_1mes, conyuemp, tipodom, cod_prov, nomprov, ind_actividad_cliente
+  - Feature Engineering via import all
+  - Feed into XGBoost
+    - (user, taret) pair -> label
+    - replication of threecourse's approach
 - [ZFTurbo](https://www.kaggle.com/zfturbo/santander-product-recommendation/santander-battle/code)
   - Method
     - Collaborative Filtering: uses feature set to group user into demographics, and recommend most popular item within demographics purchased product that a user does not have. Extends to overall demographics if new user or 7 recommendation is not filled.
@@ -145,23 +140,18 @@ Kaggle / Santander Product Recommendation
       - pais_residencia, sexo, age, ind_nuevo, segmento, ind_empleado, ind_actividad_cliente, indresi
     - Local CV: 0.022101
     - Public LB: 0.0241798
-  - [01-a] Other variants
+  - [02] Modularize Hash methods
     - Preprocessing
-      - clipped age to 0 ~ 80 and divided by 10
-    - 2 hashes
-    - Grouping condition (9573 groups)
-      - Hash1 : pais_residencia, sexo, age, ind_nuevo, ind_empleado, segmento, ind_actividad_cliente, indresi, nomprov
-      - Hash2 : pais_residencia, sexo, age, ind_nuevo, ind_empleado, segmento, ind_actividad_cliente, indresi
-    - Local CV : 0.22037
-    - Public LB : 0.0240845
-  - [02] v2
-    - Preprocessing
-      - Age : bin
-      - others
+      - Age: clipped age to 0 ~ 80 and divided by 10
+    - 2 hash model
+    - Modularizaton
+      - randomly select grouping conditions
+      - [DO] Evaluate on (Grouping number, Local CV, Public LB)
   
 ## What I did
-  - Tried KJ style.. Hold
-  - Begin Replicating ZFTurbo
+  - Replicated ZFTurbo
+    - [DOING] Modularize Hash function based on ZFTurbo
+  - Replicate Coupon Purchase Prediction (threecourse) approach
 
 ## Related Works from past Kaggle Competitions
   - 1. [Coupon Purchase Prediction](https://www.kaggle.com/c/coupon-purchase-prediction)
