@@ -178,12 +178,15 @@ Kaggle / Santander Product Recommendation
     - 2 hash model
     - Modularizaton
       - randomly select grouping conditions
-      - [DO] Evaluate on (Grouping number, Local CV, Public LB)
+      - Evaluate on (Grouping number, Local CV, Public LB)
   
 ## What I did
   - Replicated ZFTurbo
-    - [DOING] Modularize Hash function based on ZFTurbo
+    - [DONE] Modularize Hash function based on ZFTurbo
   - Replicate Coupon Purchase Prediction (threecourse) approach
+    - [DOING] (user, target) pair in supervised learning method
+      - Memory issue
+      - Feed into minibatch Neural Network instead
 
 ## Related Works from past Kaggle Competitions
   - 1. [Coupon Purchase Prediction](https://www.kaggle.com/c/coupon-purchase-prediction)
