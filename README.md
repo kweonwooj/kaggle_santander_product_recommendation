@@ -183,6 +183,11 @@ Kaggle / Santander Product Recommendation
 ## What I did
   - Replicated ZFTurbo
     - [DONE] Modularize Hash function based on ZFTurbo
+    - MAP@7: 0.250923 | ARR: [2,23,10,17,16,22]      | BOOLS: ult_fec, renta            | seed: 123
+    - MAP@7: 0.261260 | ARR: [1]                     | BOOLS: renta, p_count            | seed: 14
+    - MAP@7: 0.261322 | ARR: [1,18,21,15,7,16,3]     | BOOLS: indfall                   | seed: 2016
+    - MAP@7: 0.262139 | ARR: [20,11,10,1,19]         | BOOLS: ult_fec, indfall, p_count | seed: 777
+    - MAP@7: 0.260855 | ARR: [11,14,13,1,2,15,21,23] | BOOLS: ult_fec, age, indfall     | seed: 123
   - Replicate Coupon Purchase Prediction (threecourse) approach
     - [DOING] (user, target) pair in supervised learning method
       - Memory issue
