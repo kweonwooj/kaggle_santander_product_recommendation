@@ -6,6 +6,12 @@ Kaggle / Santander Product Recommendation
 - Replicate past competition winning scripts
 - Efficient Decision Making via Visualization/Bias_Variance Analysis
 
+## Related works
+- Current state-of-the-art recommendation systems follow two main streams
+  - Factorization-based approache
+  - Topic models
+  - [Integrating Topic Models and Latent Factors for Recommendation](https://arxiv.org/abs/1610.09077)
+  
 ## Evaluation
 - [Mean Average Precision @ 7](https://www.kaggle.com/c/santander-product-recommendation/details/evaluation)
   - Top Score : 
