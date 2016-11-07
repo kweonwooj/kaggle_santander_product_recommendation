@@ -44,7 +44,7 @@ CLCK_TRN = "%s/Raw/train.csv"%DATA_DIR
 CLCK_TST = "%s/Raw/test.csv"%DATA_DIR
 
 # ----- Columns -----
-FEATURES = ['fecha_dato','ind_empleado','pais_residencia','sexo','age','fecha_alta', \
+FEATURES = ['fecha_dato','ncodpers','ind_empleado','pais_residencia','sexo','age','fecha_alta', \
             'ind_nuevo','antiguedad','indrel','ult_fec_cli_1t','indrel_1mes', \
             'tiprel_1mes','indresi','indext','conyuemp','canal_entrada','indfall', \
             'tipodom','cod_prov','nomprov','ind_actividad_cliente','renta','segmento']
