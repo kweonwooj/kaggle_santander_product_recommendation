@@ -42,6 +42,7 @@ def main():
 
     LOG.info('-'*50)
     count += 1
+    if count < 27: continue
     LOG.info('iteration : {}'.format(count))
     LOG.info('arr: {}'.format([config.FEATURES[i] for i in arr]))
     for k,v in bools.items():
@@ -62,7 +63,7 @@ def main():
     elapsed_secs = end - start
     elapsed_mins = elapsed_secs / 60.
     elapsed_hours = elapsed_mins / 60.
-    if elapsed_hours > 8:
+    if elapsed_hours > 24:
       break
 
   LOG.info('='*50)
