@@ -183,6 +183,7 @@ Kaggle / Santander Product Recommendation
 ## What I did
   - Replicated ZFTurbo
     - [DONE] Modularize Hash function based on ZFTurbo
+      - Given the best score being 0.03, I am still underfitting! Bigger model + Train longer
     - PLB: 0.0257818 | CV: 0.0261322 | ARR: [1,18,21,15,7,16,3]     | BOOLS: indfall                   | seed: 2016
     - PLB: 0.0257672 | CV: 0.0260855 | ARR: [11,14,13,1,2,15,21,23] | BOOLS: ult_fec, age, indfall     | seed: 7
     - PLB: 0.0256543 | CV: 0.0262139 | ARR: [20,11,10,1,19]         | BOOLS: ult_fec, indfall, p_count | seed: 777
