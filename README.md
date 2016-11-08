@@ -197,11 +197,11 @@ Kaggle / Santander Product Recommendation
     - PLB: 0.0256031 | CV: 0.0261260 | ARR: [1]                     | BOOLS: renta, p_count            | seed: 14
     - PLB: 0.0250847 | CV: 0.0250923 | ARR: [2,23,10,17,16,22]      | BOOLS: ult_fec, renta            | seed: 123
     - 2nd Iteration(up to 100 = 24hr)
-    - PLB:  | CV: 0.0262332 | ARR: [13,4,16,1,18]                   | BOOLS: indfall, renta, p_count        | seed: 2016
-    - PLB:  | CV: 0.0261497 | ARR: [19,17,12,1,4]                   | BOOLS: ult_fec, age, p_count          | seed: 7
-    - PLB:  | CV: 0.0262318 | ARR: [1,16,20,9]                      | BOOLS: indfall, p_count               | seed: 777
-    - PLB:  | CV: 0.0261701 | ARR: [2,12,1,4,18]                    | BOOLS: renta, p_count                 | seed: 14
-    - PLB:  | CV: 0.0261475 | ARR: [1,22,9,20,19,12,15,3,4,2,10,11] | BOOLS: ult_fec, age, indfall, p_count | seed: 123
+    - PLB: 0.0257856 | CV: 0.0261497 | ARR: [19,17,12,1,4]                   | BOOLS: ult_fec, age, p_count          | seed: 7
+    - PLB: 0.0257669 | CV: 0.0261701 | ARR: [2,12,1,4,18]                    | BOOLS: renta, p_count                 | seed: 14
+    - PLB: 0.0256802 | CV: 0.0262318 | ARR: [1,16,20,9]                      | BOOLS: indfall, p_count               | seed: 777
+    - PLB: 0.0256671 | CV: 0.0262332 | ARR: [13,4,16,1,18]                   | BOOLS: indfall, renta, p_count        | seed: 2016
+    - PLB: 0.0253159 | CV: 0.0261475 | ARR: [1,22,9,20,19,12,15,3,4,2,10,11] | BOOLS: ult_fec, age, indfall, p_count | seed: 123
     
   - Replicate Coupon Purchase Prediction (threecourse) approach
     - [DOING] (user, target) pair in supervised learning method
