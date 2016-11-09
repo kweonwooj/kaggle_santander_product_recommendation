@@ -205,9 +205,11 @@ Kaggle / Santander Product Recommendation
     
   - Replicate Coupon Purchase Prediction (threecourse) approach
     - [DOING] (user, target) pair in supervised learning method
-      - Memory issue
-      - Feed into minibatch Neural Network instead
-
+      - Generate (data, label)
+      - Train with random forest with (data, label) where label = length==24 list >> Memory issue!
+        - I can train and predict (data, label) for each labels 24 times and get top 7 predictions
+        - I can use keras online learning to avoid memory issue
+        - 
 ## Related Works from past Kaggle Competitions
   - 1. [Coupon Purchase Prediction](https://www.kaggle.com/c/coupon-purchase-prediction)
     - General: 
