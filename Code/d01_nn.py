@@ -34,7 +34,7 @@ FEAT_COUNT += len(numerical_cols)
 # 'sample', 'validate', 'submission'
 TRAIN_PHASE = 'sample'
 TARGET_COLS = len(target_cols)
-BATCH_SIZE = 100 # 1024
+BATCH_SIZE = 1024
 NB_EPOCH = 3
 
 if TRAIN_PHASE == 'sample':
@@ -73,7 +73,7 @@ def keras_model():
   model.add(Dense(128, input_dim=FEAT_COUNT, init='he_uniform'))
   model.add(Activation('relu'))
   model.add(Dense(128, activation='relu'))
-  model.add(Dense(TARGET_COLS, activation='softmax'))
+  model.add(Dense(TARGET_COLS, activation='sigmoid'))
   model.compile(loss='binary_crossentropy', optimizer='rmsprop')
   return model
 
@@ -83,65 +83,59 @@ def get_last_instance_df(trn):
   last_instance_df = last_instance_df.fillna(0).astype('int')
   return last_instance_df
 
-def batch_generator(fname, batch_size, shuffle, train=True):
-  print 'fname {} batch_size {} shuffle {} train {}'.format(fname, batch_size, shuffle, train)
-  while 1:
-    # decide whether to include target cols
-    if train:
-      chunked_df = pd.read_csv(fname, usecols=['ncodpers']+cols_to_use+numerical_cols+target_cols, chunksize=batch_size)
+def batch_generator(file_name, batch_size, shuffle, state, train_input=True):
+  while (True):
+    if train_input:
+      chunked_df = pd.read_csv(file_name, usecols=['ncodpers']+cols_to_use+numerical_cols+target_cols, chunksize=batch_size)
     else:
-      chunked_df = pd.read_csv(fname, usecols=['ncodpers']+cols_to_use+numerical_cols, chunksize=batch_size)
+      chunked_df = pd.read_csv(file_name, usecols=['ncodpers']+cols_to_use+numerical_cols, chunksize=batch_size)
 
     nrows = 0
     for chunk_df in chunked_df:
-      # fillna
       chunk_X = chunk_df[cols_to_use]
       chunk_X = chunk_X.fillna(-99)
       for col_ind, col in enumerate(cols_to_use):
-        # convert string to int (LabelEncode)
         chunk_X[col] = chunk_X[col].apply(lambda x: mapping_dict[col][x])
         ohe = ohes[col_ind]
-        # convert to OHE
-        temp_X = ohe.transform(np.array(chunk_X[col]).reshape(-1,1))
-      
-        # stack
+        temp_X = ohe.transform( np.array(chunk_X[col]).reshape(-1,1) )
         if col_ind == 0:
           X = temp_X.todense().copy()
         else:
           X = np.hstack((X, temp_X.todense()))
 
-      # convert numericals to float
       chunk_X = chunk_df[numerical_cols]
       for ind, col in enumerate(numerical_cols):
         if chunk_X[col].dtype == 'object':
-          chunk_X[col] = chunk_X[col].map(str.strip).replace(['NA'], value=-1).fillna(-1).astype('float16')
+          chunk_X[col] = chunk_X[col].map(str.strip).replace(['NA'], value=-1).fillna(-1).astype('float64')
         else:
-          chunk_X[col] = chunk_X[col].fillna(-1).astype('float16')
-        chunk_X[col] = (chunk_X[col] - num_min_values[ind]) / (1. * num_range_values[ind])
-      chunk_X = np.array(chunk_X).astype('float16')
+          chunk_X[col] = chunk_X[col].fillna(-1).astype('float64')
+        chunk_X[col] = (chunk_X[col] - num_min_values[ind]) / num_range_values[ind]
+      chunk_X = np.array(chunk_X).astype('float64')
       X = np.hstack((X, chunk_X))
 
-    # get labels if trn/vld
-    if train:
-      y = np.array(chunk_df[target_cols].fillna(0))
-    
-    if shuffle:
-      shuffle_index = np.random.shuffle(np.arange(X.shape[0]))
-      X = X[shuffle_index,:]
-      if train:
-        y = y[shuffle_index,:]
+      if train_input:
+        y = np.array(chunk_df[target_cols].fillna(0))
 
-    # return values
-    if train:
-      yield X, y
-    else:
-      yield X
+      if shuffle:
+        shuffle_index = np.random.shuffle(np.arange(X.shape[0]))
+        X = X[shuffle_index,:]
+        if train_input:
+          y = y[shuffle_index,:]
 
-    # finish if over TRN_SIZE
-    nrows += batch_size
-    if train and nrows >= TRN_SIZE:
-      break
-     
+      if train_input:
+        yield X, y
+      else:
+        yield X
+
+      nrows += batch_size
+      if train_input:
+        if state == 'train' and nrows >= TRN_SIZE:
+          break
+        if state == 'valid' and nrows >= VLD_SIZE:
+          break
+      else:
+        if state == 'test' and nrows >= TST_SIZE:
+          break
 
 def main():
 
@@ -157,29 +151,28 @@ def main():
              .format(BATCH_SIZE,TRN_SIZE))
   if TRAIN_PHASE == 'sample' or TRAIN_PHASE == 'validate':
     fit = model.fit_generator(
-      generator = batch_generator(trn, BATCH_SIZE, False),
+      generator = batch_generator(trn, BATCH_SIZE, False, 'train'),
       nb_epoch = NB_EPOCH, 
       samples_per_epoch = TRN_SIZE,
-      validation_data = batch_generator(vld, BATCH_SIZE, False),
+      validation_data = batch_generator(vld, BATCH_SIZE, False, 'valid'),
       nb_val_samples = VLD_SIZE,
-      verbose = 1,
-      nb_worker = 8,
+      nb_worker = 10,
       pickle_safe = True
     )
   elif TRAIN_PHASE == 'submission':
     fit = model.fit_generator(
-      generator = batch_generator(trn, BATCH_SIZE, False),
+      generator = batch_generator(trn, BATCH_SIZE, False, 'train'),
       nb_epoch = NB_EPOCH, 
       samples_per_epoch = TRN_SIZE,
-      #nb_worker = 8,
-      #pickle_safe = True
+      nb_worker = 10,
+      pickle_safe = True
     )
 
   # submission
   LOG.info('# Predicting tst data with batch {} total {}' \
            .format(BATCH_SIZE*2, TST_SIZE))
   preds = model.predict_generator(
-    generator = batch_generator(tst, BATCH_SIZE*2, False, False),
+    generator = batch_generator(tst, BATCH_SIZE*2, False, 'test', False),
     val_samples = TST_SIZE
   )
   
