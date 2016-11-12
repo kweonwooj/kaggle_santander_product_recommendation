@@ -202,7 +202,21 @@ Kaggle / Santander Product Recommendation
     - PLB: 0.0256802 | CV: 0.0262318 | ARR: [1,16,20,9]                      | BOOLS: indfall, p_count               | seed: 777
     - PLB: 0.0256671 | CV: 0.0262332 | ARR: [13,4,16,1,18]                   | BOOLS: indfall, renta, p_count        | seed: 2016
     - PLB: 0.0253159 | CV: 0.0261475 | ARR: [1,22,9,20,19,12,15,3,4,2,10,11] | BOOLS: ult_fec, age, indfall, p_count | seed: 123
-    
+
+  - Replicated Keras starter by SRK
+    - as-is
+      - sample : PLB : 0.0158633 | CV : 
+      - validate :
+      - submission :
+    - feature-engineered > Use hand-crafted features copying threecourse approach
+      - sample :
+      - validate :
+      - submission :
+    - RNN (LSTM, GRU, standard-RNN)
+      - sample :
+      - validate :
+      - submission :
+
   - Replicate Coupon Purchase Prediction (threecourse) approach
     - [DOING] (user, target) pair in supervised learning method
       - Generate (data, label)
