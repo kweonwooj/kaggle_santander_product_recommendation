@@ -12,7 +12,7 @@ mapping_dict = {
 'sexo' 			: {'V':0, 'H':1, -99:2},
 'ind_nuevo' 	: {0.0:0, 1.0:1, -99.0:2},
 'indrel'		: {1.0:0, 99.0:1, -99.0:2},
-'indrel_1mes'	: {-99:0, 1.0:1, 1:1, 2.0:2, 2:2, 3.0:3, 3:3, 4.0:4, 4:4, 'P':5},
+'indrel_1mes'	: {-99:0, 1.0:1, 1:1, '1.0':1, '1':1, 2.0:2, 2:2, '2':2, 3.0:3, 3:3, '3':3, 4.0:4, 4:4, 'P':5},
 'tiprel_1mes'	: {-99:0, 'I':1, 'A':2, 'P':3, 'R':4, 'N':5},
 'indresi'		: {-99:0, 'S':1, 'N':2},
 'indext'		: {-99:0, 'S':1, 'N':2},
@@ -27,7 +27,7 @@ mapping_dict = {
 }
 
 # dtype list for columns to be used for reading #
-dtype_list = {'ind_cco_fin_ult1': 'int8', 'ind_deme_fin_ult1': 'int8', 'ind_aval_fin_ult1': 'int8', 'ind_valo_fin_ult1': 'int8', 'ind_reca_fin_ult1': 'int8', 'ind_ctju_fin_ult1': 'int8', 'ind_cder_fin_ult1': 'int8', 'ind_plan_fin_ult1': 'int8', 'ind_fond_fin_ult1': 'int8', 'ind_hip_fin_ult1': 'int8', 'ind_pres_fin_ult1': 'int8', 'ind_nomina_ult1': 'int8', 'ind_cno_fin_ult1': 'int8', 'ncodpers': 'int64', 'ind_ctpp_fin_ult1': 'int8', 'ind_ahor_fin_ult1': 'int8', 'ind_dela_fin_ult1': 'int8', 'ind_ecue_fin_ult1': 'int8', 'ind_nom_pens_ult1': 'int8', 'ind_recibo_ult1': 'int8', 'ind_deco_fin_ult1': 'int8', 'ind_tjcr_fin_ult1': 'int8', 'ind_ctop_fin_ult1': 'int8', 'ind_viv_fin_ult1': 'int8', 'ind_ctma_fin_ult1': 'int8'}
+dtype_list = {'ind_cco_fin_ult1': 'float16', 'ind_deme_fin_ult1': 'float16', 'ind_aval_fin_ult1': 'float16', 'ind_valo_fin_ult1': 'float16', 'ind_reca_fin_ult1': 'float16', 'ind_ctju_fin_ult1': 'float16', 'ind_cder_fin_ult1': 'float16', 'ind_plan_fin_ult1': 'float16', 'ind_fond_fin_ult1': 'float16', 'ind_hip_fin_ult1': 'float16', 'ind_pres_fin_ult1': 'float16', 'ind_nomina_ult1': 'float16', 'ind_cno_fin_ult1': 'float16', 'ncodpers': 'int64', 'ind_ctpp_fin_ult1': 'float16', 'ind_ahor_fin_ult1': 'float16', 'ind_dela_fin_ult1': 'float16', 'ind_ecue_fin_ult1': 'float16', 'ind_nom_pens_ult1': 'float16', 'ind_recibo_ult1': 'float16', 'ind_deco_fin_ult1': 'float16', 'ind_tjcr_fin_ult1': 'float16', 'ind_ctop_fin_ult1': 'float16', 'ind_viv_fin_ult1': 'float16', 'ind_ctma_fin_ult1': 'float16'}
 
 # target_cols
 target_cols = ['ind_ahor_fin_ult1','ind_aval_fin_ult1','ind_cco_fin_ult1','ind_cder_fin_ult1','ind_cno_fin_ult1','ind_ctju_fin_ult1','ind_ctma_fin_ult1','ind_ctop_fin_ult1','ind_ctpp_fin_ult1','ind_deco_fin_ult1','ind_deme_fin_ult1','ind_dela_fin_ult1','ind_ecue_fin_ult1','ind_fond_fin_ult1','ind_hip_fin_ult1','ind_plan_fin_ult1','ind_pres_fin_ult1','ind_reca_fin_ult1','ind_tjcr_fin_ult1','ind_valo_fin_ult1','ind_viv_fin_ult1','ind_nomina_ult1','ind_nom_pens_ult1','ind_recibo_ult1']

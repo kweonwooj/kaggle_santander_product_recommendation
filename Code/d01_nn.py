@@ -6,11 +6,14 @@
 """
 
 import numpy as np
+np.random.seed(7)
 import pandas as pd
 from keras.models import Sequential
 from keras.layers import Dense, Activation
+import warnings
 
 from utils.log_utils import get_logger
+from utils.eval_utils import eval_map7
 import d00_config
 
 ##################################################`
@@ -25,6 +28,7 @@ mapping_dict = d00_config.mapping_dict
 num_min_values = d00_config.num_min_values
 num_range_values = d00_config.num_range_values
 num_max_values = d00_config.num_max_values
+dtype_list = d00_config.dtype_list
 
 FEAT_COUNT = 0
 for ohe in ohes:
@@ -35,7 +39,7 @@ FEAT_COUNT += len(numerical_cols)
 TRAIN_PHASE = 'sample'
 TARGET_COLS = len(target_cols)
 BATCH_SIZE = 1024
-NB_EPOCH = 3
+NB_EPOCH = 1
 
 if TRAIN_PHASE == 'sample':
   TRN_SIZE = 1272204
@@ -49,8 +53,6 @@ TST_SIZE = 929615
 
 # Link : https://www.kaggle.com/sudalairajkumar/santander-product-recommendation/keras-starter-script/code
 ##################################################`
-
-np.random.seed(7)
 
 LOG = get_logger('d01_nn.txt')
 LOG.info('# Training Neural Network (Phase : {})...'.format(TRAIN_PHASE))
@@ -150,37 +152,53 @@ def main():
   LOG.info('# Fitting model to trn data with batch {} total {}' \
              .format(BATCH_SIZE,TRN_SIZE))
   if TRAIN_PHASE == 'sample' or TRAIN_PHASE == 'validate':
+    # fit 
     fit = model.fit_generator(
       generator = batch_generator(trn, BATCH_SIZE, False, 'train'),
       nb_epoch = NB_EPOCH, 
       samples_per_epoch = TRN_SIZE,
       validation_data = batch_generator(vld, BATCH_SIZE, False, 'valid'),
       nb_val_samples = VLD_SIZE,
-      nb_worker = 10,
+      nb_worker = 8,
       pickle_safe = True
     )
+
+    '''
+    # get map7 accuracy for validation set
+    vld_preds = model.predict_generator(
+      generator = batch_generator(vld, BATCH_SIZE, False, 'test', False),
+      val_samples = VLD_SIZE,
+      nb_worker = 8,
+      pickle_safe = True
+    )
+    vld_trues = pd.read_csv(vld, usecols=target_cols).values
+    eval_map7(vld_trues, vld_preds)
+    '''
+
   elif TRAIN_PHASE == 'submission':
     fit = model.fit_generator(
       generator = batch_generator(trn, BATCH_SIZE, False, 'train'),
       nb_epoch = NB_EPOCH, 
       samples_per_epoch = TRN_SIZE,
-      nb_worker = 10,
+      nb_worker = 8,
       pickle_safe = True
     )
 
   # submission
   LOG.info('# Predicting tst data with batch {} total {}' \
-           .format(BATCH_SIZE*2, TST_SIZE))
+           .format(5, TST_SIZE))
   preds = model.predict_generator(
-    generator = batch_generator(tst, BATCH_SIZE*2, False, 'test', False),
-    val_samples = TST_SIZE
+    generator = batch_generator(tst, 5, False, 'test', False),
+    val_samples = TST_SIZE,
+    nb_worker = 8,
+    pickle_safe = True
   )
   
   # making submission
   LOG.info('# Making submission csv...')
   last_instance_df = get_last_instance_df(trn)
   cust_dict = dict()
-  target_cols = np.array(target_cols)
+  target_cols = np.array(d00_config.target_cols)
   for ind, row in last_instance_df.iterrows():
     cust = row['ncodpers']
     used_products = set(target_cols[np.array(row[1:])==1])
@@ -203,7 +221,9 @@ def main():
         break
     final_preds.append(' '.join(new_top_products))
   out_df = pd.DataFrame({'ncodpers':test_id, 'added_products':final_preds})
-  out_df.to_csv('../Output/Subm/sub_keras_{}.csv'.format(TRAIN_PHASE), index=False)
+  out_df.to_csv('../Output/Subm/sub_keras__epoch_{}_{}.csv'.format(NB_EPOCH,TRAIN_PHASE), index=False)
 
 if __name__=='__main__':
-  main()
+  with warnings.catch_warnings():
+    warnings.simplefilter('ignore')
+    main()
