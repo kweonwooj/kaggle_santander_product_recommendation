@@ -44,24 +44,28 @@ NB_EPOCH = 1
 if TRAIN_PHASE == 'sample':
   TRN_SIZE = 1272204
   VLD_SIZE = 93166
+  TRN_PRED_BATCH = 35339
+  VLD_PRED_BATCH = 1259
 elif TRAIN_PHASE == 'validate':
   TRN_SIZE = 12715856
   VLD_SIZE = 931453
+  TRN_PRED_BATCH = 794741
+  VLD_PRED_BATCH = 1637
 elif TRAIN_PHASE == 'submission':
   TRN_SIZE = 13647309
 TST_SIZE = 929615
+TST_BATCH = 185923
 
-# Link : https://www.kaggle.com/sudalairajkumar/santander-product-recommendation/keras-starter-script/code
 ##################################################`
 
-LOG = get_logger('d01_nn.txt')
+LOG = get_logger('d01_nn_{}.txt'.format(TRAIN_PHASE))
 LOG.info('# Training Neural Network (Phase : {})...'.format(TRAIN_PHASE))
 
 def get_data_path():
   if TRAIN_PHASE == 'sample':
     trn = '../Data/Raw/sample_trn.csv'
     vld = '../Data/Raw/sample_vld.csv'
-  elif TRAIN_PAHSE == 'validate':
+  elif TRAIN_PHASE == 'validate':
     trn = '../Data/Raw/trn.csv'
     vld = '../Data/Raw/vld.csv'
   elif TRAIN_PHASE == 'submission':
@@ -139,16 +143,81 @@ def batch_generator(file_name, batch_size, shuffle, state, train_input=True):
         if state == 'test' and nrows >= TST_SIZE:
           break
 
-def main():
+def get_ytrues_trn(trn):
+  target_cols = np.array(d00_config.target_cols)
+  trn_targets = pd.read_csv(trn, usecols=['ncodpers']+list(target_cols), dtype=dtype_list)
+  
+  cust_dict = dict()
+  y_trues = []
+  for i, row in trn_targets.iterrows():
+    real = []
+    cust = trn_targets.ncodpers[i]
+    for ind, val in enumerate(row[target_cols]):
+      if cust in cust_dict:
+        if val == 1.0 and target_cols[ind] not in cust_dict[cust]:
+          real.append(ind)
+      else: # if new user
+        if val == 1.0:
+          real.append(ind)
+    y_trues.append(real)
 
-  # get path
-  trn, vld, tst = get_data_path()
+    used_products = set(target_cols[np.array(row[1:])==1])
+    cust_dict[cust] = used_products
 
-  # model
-  LOG.info('# Initialize Neural Net model')
-  model = keras_model()
+  return y_trues
 
-  # fit
+def get_ytrues_vld(trn, vld):
+  # get last instance of trn
+  last_instance_df = get_last_instance_df(trn)
+  cust_dict = dict()
+  target_cols = np.array(d00_config.target_cols)
+  for ind, row in last_instance_df.iterrows():
+    cust = row['ncodpers']
+    used_products = set(target_cols[np.array(row[1:])==1])
+    cust_dict[cust] = used_products
+  # get target_cols for vld to generate real y_trues
+  vld_targets = pd.read_csv(vld, usecols=['ncodpers']+list(target_cols), dtype=dtype_list)
+  
+  y_trues = []
+  for i, row in vld_targets.iterrows():
+    cust = vld_targets.ncodpers[i]
+    real = []
+    for ind, val in enumerate(row[target_cols]):
+      if cust in cust_dict:
+        if val == 1.0 and target_cols[ind] not in cust_dict[cust]:
+          real.append(ind)
+      else: # if new user
+        if val == 1.0:
+          real.append(ind)
+        
+    y_trues.append(real)
+  return y_trues
+    
+def get_map7(trn, vld, model):
+  # trn
+  trn_trues = get_ytrues_trn(trn)
+  trn_preds = model.predict_generator(
+    generator = batch_generator(trn, TRN_PRED_BATCH, False, 'test', False),
+    val_samples = VLD_SIZE,
+    nb_worker = 8,
+    pickle_safe = True
+  )
+  cv_score_trn = eval_map7(trn_trues, trn_preds)
+
+  # vld
+  vld_trues = get_ytrues_vld(trn, vld)
+  vld_preds = model.predict_generator(
+    generator = batch_generator(vld, VLD_PRED_BATCH, False, 'test', False),
+    val_samples = VLD_SIZE,
+    nb_worker = 8,
+    pickle_safe = True
+  )
+  cv_score_vld = eval_map7(vld_trues, vld_preds)
+
+  return cv_score_trn, cv_score_vld
+
+def fit_model(trn, vld, tst, model):
+
   LOG.info('# Fitting model to trn data with batch {} total {}' \
              .format(BATCH_SIZE,TRN_SIZE))
   if TRAIN_PHASE == 'sample' or TRAIN_PHASE == 'validate':
@@ -162,18 +231,13 @@ def main():
       nb_worker = 8,
       pickle_safe = True
     )
-
-    '''
-    # get map7 accuracy for validation set
-    vld_preds = model.predict_generator(
-      generator = batch_generator(vld, BATCH_SIZE, False, 'test', False),
-      val_samples = VLD_SIZE,
-      nb_worker = 8,
-      pickle_safe = True
-    )
-    vld_trues = pd.read_csv(vld, usecols=target_cols).values
-    eval_map7(vld_trues, vld_preds)
-    '''
+    LOG.info('# Evaluating Binary XEntropy score...')
+    LOG.info('## Fit History - Binary XEntropy\n    Train: {}\n    Valid: {}'.format(fit.history['loss'][0], fit.history['val_loss'][0]))
+    
+    # get map7 accuracy for train and validation set
+    LOG.info('# Evaluating MAP@7 score...')
+    cv_score_trn, cv_score_vld = get_map7(trn, vld, model)
+    LOG.info('## Fit History - MAP@7\n    Train: {}\n    Valid: {}'.format(cv_score_trn, cv_score_vld))
 
   elif TRAIN_PHASE == 'submission':
     fit = model.fit_generator(
@@ -183,19 +247,11 @@ def main():
       nb_worker = 8,
       pickle_safe = True
     )
+    LOG.info('## Fit History - Binary XEntropy\n    Train: {}'.format(fit.history['loss'][0]))
 
-  # submission
-  LOG.info('# Predicting tst data with batch {} total {}' \
-           .format(5, TST_SIZE))
-  preds = model.predict_generator(
-    generator = batch_generator(tst, 5, False, 'test', False),
-    val_samples = TST_SIZE,
-    nb_worker = 8,
-    pickle_safe = True
-  )
-  
-  # making submission
-  LOG.info('# Making submission csv...')
+  return model
+
+def get_final_preds(trn, tst, preds):
   last_instance_df = get_last_instance_df(trn)
   cust_dict = dict()
   target_cols = np.array(d00_config.target_cols)
@@ -221,7 +277,34 @@ def main():
         break
     final_preds.append(' '.join(new_top_products))
   out_df = pd.DataFrame({'ncodpers':test_id, 'added_products':final_preds})
-  out_df.to_csv('../Output/Subm/sub_keras__epoch_{}_{}.csv'.format(NB_EPOCH,TRAIN_PHASE), index=False)
+  return out_df
+
+def main():
+
+  # get path
+  trn, vld, tst = get_data_path()
+
+  # model
+  LOG.info('# Initialize Neural Net model')
+  model = keras_model()
+
+  # fit
+  model = fit_model(trn, vld, tst, model)
+
+  # submission
+  LOG.info('# Predicting tst data with batch {} total {}' \
+           .format(TST_BATCH, TST_SIZE)) 
+  preds = model.predict_generator(
+    generator = batch_generator(tst, TST_BATCH, False, 'test', False), 
+    val_samples = TST_SIZE,
+    nb_worker = 8,
+    pickle_safe = True
+  )
+  
+  # making submission
+  LOG.info('# Making submission csv...')
+  out_df = get_final_preds(trn, tst, preds)
+  out_df.to_csv('../Output/Subm/sub_keras_epoch_{}_{}.csv'.format(NB_EPOCH,TRAIN_PHASE), index=False)
 
 if __name__=='__main__':
   with warnings.catch_warnings():
