@@ -1,16 +1,19 @@
 """
     This file has a eval function for MAP@7 score
 """
-
-def get_true_index(y_true):
-  real = []
-  
-
+from __future__ import division
+import numpy as np
 
 def get_pred_index(y_pred):
-
+  ## Option A
+  # if confidence is low, return overallbest instead
+  real = sorted(range(len(y_pred)), key=lambda k: y_pred[k])[:7]
+  return real
 
 def apk(actual, predicted, k=7):
+    if len(actual) == 0:
+      return 0.0
+
     if len(predicted) > k:
         predicted = predicted[:k]
 
@@ -32,14 +35,11 @@ def eval_map7(y_trues, y_preds):
 
   map7 = 0.0
 
-  # check two dimension match
-  assert y_trues.shape == y_preds.shape
-
   # iterate over each row
   for row_ind in range(y_preds.shape[0]):
 
-    # convert y_true from [0,0,0,1,1,0] to [7,23,1,2] index
-    y_true = get_true_index(y_trues[row_ind])    
+    # y_true is in the form [7,23,1,2] index
+    y_true = y_trues[row_ind]
 
     # convert y_pred from [0.1, 0.2,...] to [7,23,1,2] index
     y_pred = get_pred_index(y_preds[row_ind])
