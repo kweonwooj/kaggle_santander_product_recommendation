@@ -204,6 +204,10 @@ Kaggle / Santander Product Recommendation
     - PLB: 0.0253159 | CV: 0.0261475 | ARR: [1,22,9,20,19,12,15,3,4,2,10,11] | BOOLS: ult_fec, age, indfall, p_count | seed: 123
 
   - Replicated Keras starter by SRK
+    - Added:
+      - failed to add custom keras loss function as MAP@7 > theano tensor error (want to use in_top_k at least!)
+      - used updated binary_xentropy loss instead
+      - using model_v2 with dropout and softmax
     - as-is
       - sample : PLB : 0.0158633 | CV : 
       - validate :
