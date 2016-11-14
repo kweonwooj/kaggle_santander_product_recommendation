@@ -24,6 +24,7 @@ import d00_config
 cols_to_use = list(d00_config.mapping_dict.keys())
 target_cols = d00_config.target_cols
 numerical_cols = d00_config.numerical_cols
+date_cols = d00_config.date_cols
 ohes = d00_config.ohes
 mapping_dict = d00_config.mapping_dict
 num_min_values = d00_config.num_min_values
@@ -37,7 +38,7 @@ for ohe in ohes:
 FEAT_COUNT += len(numerical_cols)
 
 # 'sample', 'validate', 'submission'
-TRAIN_PHASE = 'sample'
+TRAIN_PHASE = 'validate'
 TARGET_COLS = len(target_cols)
 BATCH_SIZE = 1024
 NB_EPOCH = 5
@@ -97,10 +98,11 @@ def get_last_instance_df(trn):
 def batch_generator(file_name, batch_size, shuffle, state, train_input=True):
   while (True):
     if train_input:
-      chunked_df = pd.read_csv(file_name, usecols=['ncodpers']+cols_to_use+numerical_cols+target_cols, chunksize=batch_size)
+      chunked_df = pd.read_csv(file_name, usecols=['ncodpers']+cols_to_use+numerical_cols+target_cols+date_cols, chunksize=batch_size)
     else:
-      chunked_df = pd.read_csv(file_name, usecols=['ncodpers']+cols_to_use+numerical_cols, chunksize=batch_size)
+      chunked_df = pd.read_csv(file_name, usecols=['ncodpers']+cols_to_use+numerical_cols+date_cols, chunksize=batch_size)
 
+    # Feature engineering on spot
     nrows = 0
     for chunk_df in chunked_df:
       chunk_X = chunk_df[cols_to_use]
@@ -123,6 +125,14 @@ def batch_generator(file_name, batch_size, shuffle, state, train_input=True):
         chunk_X[col] = (chunk_X[col] - num_min_values[ind]) / num_range_values[ind]
       chunk_X = np.array(chunk_X).astype('float64')
       X = np.hstack((X, chunk_X))
+
+      chunk_X = chunk_df[date_cols]
+      for ind, col in enumerate(date_cols):
+        if col == 'fecha_dato':
+          chunk_X['fecha_dat_y'] = pd.to_datetime(chunk_X[col]).dt.year # needs to be in ohe
+          chunk_X['fecha_dat_m'] = pd.to_datetime(chunk_X[col]).dt.month # needs to be in ohe
+        
+
 
       if train_input:
         y = np.array(chunk_df[target_cols].fillna(0))
