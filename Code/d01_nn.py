@@ -37,33 +37,11 @@ for ohe in ohes:
 FEAT_COUNT += len(numerical_cols)
 
 # 'sample', 'validate', 'submission'
-TRAIN_PHASE = 'validate'
+TRAIN_PHASE = 'sample'
 TARGET_COLS = len(target_cols)
 BATCH_SIZE = 1024
-NB_EPOCH = 1
-
-class fname():
-  def __init__(self):
-    self.MODEL_VERSION = ''
-    self.CV_SCORE_VLD = 0.0
-
-  def set_model_version(self, version):
-    self.MODEL_VERSION = version
-
-  def set_vld_score(self, vld_score):
-    self.CV_SCORE_VLD = vld_score
-fname_holder = fname()
-
-class y_past():
-  def __init__(self):
-    self.cust = dict()
-
-  def add_ncodpers(self, ncodpers, y_true):
-    self.cust[ncodpers] = y_true
-  
-  def reset(self):
-    self.cust = dict()
-y_pasts = y_past()
+NB_EPOCH = 5
+MODEL_VERSION = 'v2'
 
 if TRAIN_PHASE == 'sample':
   TRN_SIZE = 1272204
@@ -93,15 +71,12 @@ def get_data_path():
     trn = '../Data/Raw/trn.csv'
     vld = '../Data/Raw/vld.csv'
   elif TRAIN_PHASE == 'submission':
-    trn = '../Data/Raw/train_ver2.csv'
+    trn = '../Data/Raw/train_ver3.csv'
     vld = ''
   tst = '../Data/Raw/test_ver2.csv'
   return trn, vld, tst
 
 def keras_model():
-  MODEL_VERSION = 'v2'
-  fname_holder.set_model_version(MODEL_VERSION)
-
   model = Sequential()
   model.add(Dense(128, input_dim=FEAT_COUNT, init='he_uniform'))
   model.add(Activation('relu'))
@@ -113,6 +88,7 @@ def keras_model():
   return model
 
 def get_last_instance_df(trn):
+  trn = '../Data/Raw/train_ver2.csv'
   last_instance_df = pd.read_csv(trn, usecols=['ncodpers']+target_cols, dtype=dtype_list)
   last_instance_df = last_instance_df.drop_duplicates('ncodpers', keep='last')
   last_instance_df = last_instance_df.fillna(0).astype('int')
@@ -149,22 +125,8 @@ def batch_generator(file_name, batch_size, shuffle, state, train_input=True):
       X = np.hstack((X, chunk_X))
 
       if train_input:
-        # changing value of y to 'newly purchased items'
         y = np.array(chunk_df[target_cols].fillna(0))
-        ncodpers = chunk_df['ncodpers']
-        for ind, ncodper in enumerate(ncodpers):
-          if ncodper in y_pasts.cust:
-            y[ind] = np.clip(y[ind] - y_pasts.cust[ncodper],0,1)
-          else:
-            if state == 'train':
-              y_pasts.add_ncodpers(ncodper, y[ind])
           
-      if shuffle:
-        shuffle_index = np.random.shuffle(np.arange(X.shape[0]))
-        X = X[shuffle_index,:]
-        if train_input:
-          y = y[shuffle_index,:]
-
       if train_input:
         yield X, y
       else:
@@ -180,81 +142,7 @@ def batch_generator(file_name, batch_size, shuffle, state, train_input=True):
         if state == 'test' and nrows >= TST_SIZE:
           break
 
-def get_ytrues_trn(trn):
-  target_cols = np.array(d00_config.target_cols)
-  trn_targets = pd.read_csv(trn, usecols=['ncodpers']+list(target_cols), dtype=dtype_list)
-  
-  cust_dict = dict()
-  y_trues = []
-  for i, row in trn_targets.iterrows():
-    real = []
-    cust = trn_targets.ncodpers[i]
-    for ind, val in enumerate(row[target_cols]):
-      if cust in cust_dict:
-        if val == 1.0 and target_cols[ind] not in cust_dict[cust]:
-          real.append(ind)
-      else: # if new user
-        if val == 1.0:
-          real.append(ind)
-    y_trues.append(real)
-
-    used_products = set(target_cols[np.array(row[1:])==1])
-    cust_dict[cust] = used_products
-
-  return y_trues
-
-def get_ytrues_vld(trn, vld):
-  # get last instance of trn
-  last_instance_df = get_last_instance_df(trn)
-  cust_dict = dict()
-  target_cols = np.array(d00_config.target_cols)
-  for ind, row in last_instance_df.iterrows():
-    cust = row['ncodpers']
-    used_products = set(target_cols[np.array(row[1:])==1])
-    cust_dict[cust] = used_products
-  # get target_cols for vld to generate real y_trues
-  vld_targets = pd.read_csv(vld, usecols=['ncodpers']+list(target_cols), dtype=dtype_list)
-  
-  y_trues = []
-  for i, row in vld_targets.iterrows():
-    cust = vld_targets.ncodpers[i]
-    real = []
-    for ind, val in enumerate(row[target_cols]):
-      if cust in cust_dict:
-        if val == 1.0 and target_cols[ind] not in cust_dict[cust]:
-          real.append(ind)
-      else: # if new user
-        if val == 1.0:
-          real.append(ind)
-        
-    y_trues.append(real)
-  return y_trues
-    
-def get_map7(trn, vld, model):
-  # trn
-  trn_trues = get_ytrues_trn(trn)
-  trn_preds = model.predict_generator(
-    generator = batch_generator(trn, TRN_PRED_BATCH, False, 'test', False),
-    val_samples = TRN_SIZE,
-    nb_worker = 8,
-    pickle_safe = True
-  )
-  cv_score_trn = eval_map7(trn_trues, trn_preds)
-
-  # vld
-  vld_trues = get_ytrues_vld(trn, vld)
-  vld_preds = model.predict_generator(
-    generator = batch_generator(vld, VLD_PRED_BATCH, False, 'test', False),
-    val_samples = VLD_SIZE,
-    nb_worker = 8,
-    pickle_safe = True
-  )
-  cv_score_vld = eval_map7(vld_trues, vld_preds)
-
-  return cv_score_trn, cv_score_vld
-
 def fit_model(trn, vld, tst, model):
-
   LOG.info('# Fitting model to trn data with batch {} total {}' \
              .format(BATCH_SIZE,TRN_SIZE))
   if TRAIN_PHASE == 'sample' or TRAIN_PHASE == 'validate':
@@ -265,19 +153,11 @@ def fit_model(trn, vld, tst, model):
       samples_per_epoch = TRN_SIZE,
       validation_data = batch_generator(vld, BATCH_SIZE, False, 'valid'),
       nb_val_samples = VLD_SIZE,
-      #nb_worker = 8,
-      #pickle_safe = True,
+      nb_worker = 8,
+      pickle_safe = True,
     )
     LOG.info('# Evaluating Binary XEntropy score...')
-    LOG.info('## Fit History - Binary XEntropy\n    Train: {}\n    Valid: {}'.format(fit.history['loss'][0], fit.history['val_loss'][0]))
-    
-    '''
-    # get map7 accuracy for train and validation set
-    LOG.info('# Evaluating MAP@7 score...')
-    cv_score_trn, cv_score_vld = get_map7(trn, vld, model)
-    LOG.info('## Fit History - MAP@7\n    Train: {}\n    Valid: {}'.format(cv_score_trn, cv_score_vld))    
-    fname_holder.set_vld_score(cv_score_vld)
-    '''
+    LOG.info('## Fit History - Binary XEntropy\n    Train: {}\n    Valid: {}'.format(fit.history['loss'][-1], fit.history['val_loss'][-1]))
   elif TRAIN_PHASE == 'submission':
     fit = model.fit_generator(
       generator = batch_generator(trn, BATCH_SIZE, False, 'train'),
@@ -343,8 +223,8 @@ def main():
   # making submission
   LOG.info('# Making submission csv...')
   out_df = get_final_preds(trn, tst, preds)
-  out_df.to_csv('../Output/Subm/submission_keras_{}_{}_epoch_{}_cv_{}.csv' \
-                .format(fname_holder.MODEL_VERSION,TRAIN_PHASE,NB_EPOCH,fname_holder.CV_SCORE_VLD), index=False)
+  out_df.to_csv('../Output/Subm/submission_keras_{}_{}_epoch_{}.csv' \
+                .format(MODEL_VERSION,TRAIN_PHASE,NB_EPOCH), index=False)
 
 if __name__=='__main__':
   with warnings.catch_warnings():
