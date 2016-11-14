@@ -10,6 +10,7 @@ np.random.seed(7)
 import pandas as pd
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
+from keras.callbacks import Callback
 import warnings
 
 from utils.log_utils import get_logger
@@ -36,7 +37,7 @@ for ohe in ohes:
 FEAT_COUNT += len(numerical_cols)
 
 # 'sample', 'validate', 'submission'
-TRAIN_PHASE = 'sample'
+TRAIN_PHASE = 'validate'
 TARGET_COLS = len(target_cols)
 BATCH_SIZE = 1024
 NB_EPOCH = 1
@@ -51,8 +52,18 @@ class fname():
 
   def set_vld_score(self, vld_score):
     self.CV_SCORE_VLD = vld_score
-
 fname_holder = fname()
+
+class y_past():
+  def __init__(self):
+    self.cust = dict()
+
+  def add_ncodpers(self, ncodpers, y_true):
+    self.cust[ncodpers] = y_true
+  
+  def reset(self):
+    self.cust = dict()
+y_pasts = y_past()
 
 if TRAIN_PHASE == 'sample':
   TRN_SIZE = 1272204
@@ -86,13 +97,6 @@ def get_data_path():
     vld = ''
   tst = '../Data/Raw/test_ver2.csv'
   return trn, vld, tst
-
-def Map7History(keras.callbacks.Callback):
-  def on_train_begin(self, logs={}):
-    self.losses = []
-
-  def on_batch_end(self, batch, logs={}):
-    print batch
 
 def keras_model():
   MODEL_VERSION = 'v2'
@@ -145,8 +149,16 @@ def batch_generator(file_name, batch_size, shuffle, state, train_input=True):
       X = np.hstack((X, chunk_X))
 
       if train_input:
+        # changing value of y to 'newly purchased items'
         y = np.array(chunk_df[target_cols].fillna(0))
-
+        ncodpers = chunk_df['ncodpers']
+        for ind, ncodper in enumerate(ncodpers):
+          if ncodper in y_pasts.cust:
+            y[ind] = np.clip(y[ind] - y_pasts.cust[ncodper],0,1)
+          else:
+            if state == 'train':
+              y_pasts.add_ncodpers(ncodper, y[ind])
+          
       if shuffle:
         shuffle_index = np.random.shuffle(np.arange(X.shape[0]))
         X = X[shuffle_index,:]
@@ -253,18 +265,19 @@ def fit_model(trn, vld, tst, model):
       samples_per_epoch = TRN_SIZE,
       validation_data = batch_generator(vld, BATCH_SIZE, False, 'valid'),
       nb_val_samples = VLD_SIZE,
-      nb_worker = 8,
-      pickle_safe = True
+      #nb_worker = 8,
+      #pickle_safe = True,
     )
     LOG.info('# Evaluating Binary XEntropy score...')
     LOG.info('## Fit History - Binary XEntropy\n    Train: {}\n    Valid: {}'.format(fit.history['loss'][0], fit.history['val_loss'][0]))
     
+    '''
     # get map7 accuracy for train and validation set
     LOG.info('# Evaluating MAP@7 score...')
     cv_score_trn, cv_score_vld = get_map7(trn, vld, model)
     LOG.info('## Fit History - MAP@7\n    Train: {}\n    Valid: {}'.format(cv_score_trn, cv_score_vld))    
     fname_holder.set_vld_score(cv_score_vld)
-
+    '''
   elif TRAIN_PHASE == 'submission':
     fit = model.fit_generator(
       generator = batch_generator(trn, BATCH_SIZE, False, 'train'),
