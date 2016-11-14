@@ -9,7 +9,7 @@ import numpy as np
 np.random.seed(7)
 import pandas as pd
 from keras.models import Sequential
-from keras.layers import Dense, Activation
+from keras.layers import Dense, Activation, Dropout
 import warnings
 
 from utils.log_utils import get_logger
@@ -40,6 +40,19 @@ TRAIN_PHASE = 'sample'
 TARGET_COLS = len(target_cols)
 BATCH_SIZE = 1024
 NB_EPOCH = 1
+
+class fname():
+  def __init__(self):
+    self.MODEL_VERSION = ''
+    self.CV_SCORE_VLD = 0.0
+
+  def set_model_version(self, version):
+    self.MODEL_VERSION = version
+
+  def set_vld_score(self, vld_score):
+    self.CV_SCORE_VLD = vld_score
+
+fname_holder = fname()
 
 if TRAIN_PHASE == 'sample':
   TRN_SIZE = 1272204
@@ -74,12 +87,24 @@ def get_data_path():
   tst = '../Data/Raw/test_ver2.csv'
   return trn, vld, tst
 
+def Map7History(keras.callbacks.Callback):
+  def on_train_begin(self, logs={}):
+    self.losses = []
+
+  def on_batch_end(self, batch, logs={}):
+    print batch
+
 def keras_model():
+  MODEL_VERSION = 'v2'
+  fname_holder.set_model_version(MODEL_VERSION)
+
   model = Sequential()
   model.add(Dense(128, input_dim=FEAT_COUNT, init='he_uniform'))
   model.add(Activation('relu'))
+  model.add(Dropout(0.5))
   model.add(Dense(128, activation='relu'))
-  model.add(Dense(TARGET_COLS, activation='sigmoid'))
+  model.add(Dropout(0.5))
+  model.add(Dense(TARGET_COLS, activation='softmax'))
   model.compile(loss='binary_crossentropy', optimizer='rmsprop')
   return model
 
@@ -198,7 +223,7 @@ def get_map7(trn, vld, model):
   trn_trues = get_ytrues_trn(trn)
   trn_preds = model.predict_generator(
     generator = batch_generator(trn, TRN_PRED_BATCH, False, 'test', False),
-    val_samples = VLD_SIZE,
+    val_samples = TRN_SIZE,
     nb_worker = 8,
     pickle_safe = True
   )
@@ -237,7 +262,8 @@ def fit_model(trn, vld, tst, model):
     # get map7 accuracy for train and validation set
     LOG.info('# Evaluating MAP@7 score...')
     cv_score_trn, cv_score_vld = get_map7(trn, vld, model)
-    LOG.info('## Fit History - MAP@7\n    Train: {}\n    Valid: {}'.format(cv_score_trn, cv_score_vld))
+    LOG.info('## Fit History - MAP@7\n    Train: {}\n    Valid: {}'.format(cv_score_trn, cv_score_vld))    
+    fname_holder.set_vld_score(cv_score_vld)
 
   elif TRAIN_PHASE == 'submission':
     fit = model.fit_generator(
@@ -304,7 +330,8 @@ def main():
   # making submission
   LOG.info('# Making submission csv...')
   out_df = get_final_preds(trn, tst, preds)
-  out_df.to_csv('../Output/Subm/sub_keras_epoch_{}_{}.csv'.format(NB_EPOCH,TRAIN_PHASE), index=False)
+  out_df.to_csv('../Output/Subm/submission_keras_{}_{}_epoch_{}_cv_{}.csv' \
+                .format(fname_holder.MODEL_VERSION,TRAIN_PHASE,NB_EPOCH,fname_holder.CV_SCORE_VLD), index=False)
 
 if __name__=='__main__':
   with warnings.catch_warnings():

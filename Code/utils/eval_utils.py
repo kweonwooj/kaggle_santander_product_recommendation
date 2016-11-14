@@ -7,7 +7,8 @@ import numpy as np
 def get_pred_index(y_pred):
   ## Option A
   # if confidence is low, return overallbest instead
-  real = sorted(range(len(y_pred)), key=lambda k: y_pred[k])[:7]
+  y_pred = list(y_pred)
+  real = sorted(range(len(y_pred)), key=lambda k: y_pred[k], reverse=True)[:7]
   return real
 
 def apk(actual, predicted, k=7):
