@@ -51,3 +51,12 @@ for col in cols_to_use:
   ohes.append(ohe)
 
 
+date_map_dict = {
+'fecha_dato_y' 	: {2016:0, 2015:1},
+'fecha_dato_m'	: {1:1, 2:2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9, 10:10, 11:11, 12:0},
+}
+date_ohes = []
+for col in list(date_map_dict.keys()):
+  ohe = OneHotEncoder()
+  ohe.fit(np.array(list(date_map_dict[col].values())).reshape(-1,1))
+  date_ohes.append(ohe)

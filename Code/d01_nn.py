@@ -26,7 +26,9 @@ target_cols = d00_config.target_cols
 numerical_cols = d00_config.numerical_cols
 date_cols = d00_config.date_cols
 ohes = d00_config.ohes
+date_ohes = d00_config.date_ohes
 mapping_dict = d00_config.mapping_dict
+date_map_dict = d00_config.date_map_dict
 num_min_values = d00_config.num_min_values
 num_range_values = d00_config.num_range_values
 num_max_values = d00_config.num_max_values
@@ -38,17 +40,17 @@ for ohe in ohes:
 FEAT_COUNT += len(numerical_cols)
 
 # 'sample', 'validate', 'submission'
-TRAIN_PHASE = 'validate'
+TRAIN_PHASE = 'sample'
 TARGET_COLS = len(target_cols)
-BATCH_SIZE = 1024
-NB_EPOCH = 5
+BATCH_SIZE = 100 # 1024
+NB_EPOCH = 1
 MODEL_VERSION = 'v2'
 
 if TRAIN_PHASE == 'sample':
-  TRN_SIZE = 1272204
-  VLD_SIZE = 93166
-  TRN_PRED_BATCH = 35339
-  VLD_PRED_BATCH = 1259
+  TRN_SIZE = 2000 # 1272204
+  VLD_SIZE = 1000 # 93166
+  TRN_PRED_BATCH = 200 # 35339
+  VLD_PRED_BATCH = 100 # 1259
 elif TRAIN_PHASE == 'validate':
   TRN_SIZE = 12715856
   VLD_SIZE = 931453
@@ -129,9 +131,23 @@ def batch_generator(file_name, batch_size, shuffle, state, train_input=True):
       chunk_X = chunk_df[date_cols]
       for ind, col in enumerate(date_cols):
         if col == 'fecha_dato':
-          chunk_X['fecha_dat_y'] = pd.to_datetime(chunk_X[col]).dt.year # needs to be in ohe
-          chunk_X['fecha_dat_m'] = pd.to_datetime(chunk_X[col]).dt.month # needs to be in ohe
-        
+          chunk_X['fecha_dato_y'] = pd.to_datetime(chunk_X[col]).dt.year.apply(lambda x: date_map_dict['fecha_dato_y'][x])
+          ohe = date_ohes[1]
+          temp_X = ohe.transform( np.array(chunk_X['fecha_dato_y']).reshape(-1,1) )
+          X = np.hstack((X, temp_X.todense()))
+
+          chunk_X['fecha_dato_m'] = pd.to_datetime(chunk_X[col]).dt.month.apply(lambda x: date_map_dict['fecha_dato_m'][x])
+          ohe = date_ohes[0]
+          temp_X = ohe.transform( np.array(chunk_X['fecha_dato_m']).reshape(-1,1) )
+          X = np.hstack((X, temp_X.todense()))
+        elif col == 'fecha_alta':
+          chunk_X['fecha_alta_m'] = pd.to_datetime(chunk_X[col]).dt.month.apply(lambda x: date_map_dict['fecha_dato_m'][x])
+          ohe = date_ohes[0]
+          temp_X = ohe.transform( np.array(chunk_X['fecha_alta_m']).reshape(-1,1) )
+          X = np.hstack((X, temp_X.todense()))
+
+          chunk_X['dato_alta'] = pd.to_datetime(chunk_X['fecha_dato']) - pd.to_datetime(chunk_X['fecha_alta'])
+          # treat like numerical_cols. normalize
 
 
       if train_input:
@@ -163,8 +179,8 @@ def fit_model(trn, vld, tst, model):
       samples_per_epoch = TRN_SIZE,
       validation_data = batch_generator(vld, BATCH_SIZE, False, 'valid'),
       nb_val_samples = VLD_SIZE,
-      nb_worker = 8,
-      pickle_safe = True,
+      #nb_worker = 8,
+      #pickle_safe = True,
     )
     LOG.info('# Evaluating Binary XEntropy score...')
     LOG.info('## Fit History - Binary XEntropy\n    Train: {}\n    Valid: {}'.format(fit.history['loss'][-1], fit.history['val_loss'][-1]))
@@ -219,7 +235,7 @@ def main():
 
   # fit
   model = fit_model(trn, vld, tst, model)
-
+  a
   # submission
   LOG.info('# Predicting tst data with batch {} total {}' \
            .format(TST_BATCH, TST_SIZE)) 
