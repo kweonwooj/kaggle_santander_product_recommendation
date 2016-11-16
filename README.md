@@ -212,6 +212,7 @@ Kaggle / Santander Product Recommendation
       - using model_v2 with dropout and softmax
     - Train 24 Classes separately
       - higher MAP@7 score in base_randomforest model (0.0139 > 0.0143)
+      - XGBoost with separate class (MAP@7 : 0.0205)
     - as-is
       - sample : PLB : 0.0158633 | CV : 
       - validate :
