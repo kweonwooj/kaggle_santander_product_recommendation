@@ -12,10 +12,20 @@ def get_true_index(y_true):
   return real
 
 def get_pred_index(y_pred):
-  ## Option A
   # if confidence is low, return overallbest instead
   y_pred = list(y_pred)
+
+  overallbest = [23,22,21,2,18,4,12,11,17,6,19,7,13,9,8,15,5,10,16,3,14,20,1,0]
+  num_confident = sum([int(pred >= 0.5) for pred in y_pred])
   real = sorted(range(len(y_pred)), key=lambda k: y_pred[k], reverse=True)[:7]
+
+  for ind, r in enumerate(real):
+    if ind >= num_confident:
+      for best in overallbest:
+        if best not in real[:ind]:
+          real[ind] = best
+          break
+
   return real
 
 def apk(actual, predicted, k=7):

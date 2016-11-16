@@ -10,7 +10,7 @@ np.random.seed(7)
 import pandas as pd
 import warnings
 
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
 from sklearn.metrics import average_precision_score
 from utils.log_utils import get_logger
 from utils.eval_utils import eval_map7
@@ -50,18 +50,22 @@ def get_last_instance_df(trn):
 def fit_model(trn, vld, model):
   if TRAIN_PHASE == 'sample' or TRAIN_PHASE == 'validate':
     # load data
-    trn = pd.read_csv(trn)
+    trn = pd.read_csv(trn, dtype='int8')
     X_trn, y_trn = trn.iloc[:,:55], trn.iloc[:,55:]
     LOG.info('# Fitting model to trn data\n# X_trn: {} y_trn: {}'.format(X_trn.shape, y_trn.shape))
+    LOG.info('# Memory Usage:\n# X_trn: {}MB y_trn: {}MB' \
+              .format(X_trn.memory_usage().sum()/(1024*1024), y_trn.memory_usage().sum()/(1024*1024)))
 
     # fit 
     model.fit(X_trn, y_trn)
     del trn, X_trn, y_trn
 
     LOG.info('# Evaluating vld set...')
-    vld = pd.read_csv(vld)
+    vld = pd.read_csv(vld, dtype='int8')
     X_vld, y_vld = vld.iloc[:,:55], vld.iloc[:,55:]
     LOG.info('# Evaluating on vld data\n# X_vld: {} y_vld: {}'.format(X_vld.shape, y_vld.shape))
+    LOG.info('# Memory Usage:\n# X_vld: {}MB y_vld: {}MB' \
+              .format(X_vld.memory_usage().sum()/(1024*1024), y_vld.memory_usage().sum()/(1024*1024)))
 
     preds = model.predict_proba(X_vld) # need to reshape this
     preds = [1-pred[:,0] for pred in preds]
@@ -115,8 +119,8 @@ def main():
 
   # model
   LOG.info('# Initialize RandomForest model')
-  model = RandomForestClassifier(
-		n_estimators = 1000,
+  model = ExtraTreesClassifier(
+		n_estimators = 100,
 		n_jobs=-1, random_state=7)
 
   # fit
