@@ -24,10 +24,11 @@ import d01_skl
 TRAIN_PHASE = 'sample'
 REMOVE_ZERO = True
 VERBOSE = False
-N_ESTIMATORS = 10
+N_ESTIMATORS = 100
 
 xgb_pars = {
-    'eta': 0.05,
+    #'booster': 'gblinear',
+    'eta': 0.01,
     'gamma': 0.01,
     'max_depth': 5,
     'subsample': 0.8,
@@ -73,7 +74,9 @@ def fit_model(trn, vld):
       watchlist = [(dtrain,'train'),(dval,'val')]
 
       #### add early stopping
-      model = xgb.train(xgb_pars, dtrain, num_boost_round=N_ESTIMATORS, evals=watchlist)
+      model = xgb.train(xgb_pars, dtrain, \
+                        early_stopping_rounds=5, \
+                        num_boost_round=N_ESTIMATORS, evals=watchlist)
       preds.append(model.predict(dval))
     
     preds = np.asarray(preds).T.tolist()
