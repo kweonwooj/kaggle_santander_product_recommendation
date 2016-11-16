@@ -13,7 +13,7 @@ import warnings
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
 from sklearn.metrics import average_precision_score
 from utils.log_utils import get_logger
-from utils.eval_utils import eval_map7
+from utils.eval_utils import eval_map7, get_pred_index
 import d00_config
 
 ##################################################`
@@ -94,11 +94,13 @@ def get_final_preds(trn, tst, preds):
     cust_dict[cust] = used_products
   del last_instance_df
 
+  # add overallbest if confidence is low
   preds = np.argsort(preds, axis=1)
   preds = np.fliplr(preds)
   test_id = np.array(pd.read_csv(tst, usecols=['ncodpers'])['ncodpers'])
   final_preds = []
   for ind, pred in enumerate(preds):
+    pred = get_pred_index(pred)
     cust = test_id[ind]
     top_products = target_cols[pred]
     used_products = cust_dict.get(cust,[])
@@ -130,6 +132,8 @@ def main():
   LOG.info('# Predicting tst data...')
   X_tst = pd.read_csv(tst)
   preds = model.predict_proba(X_tst)
+  preds = [1-pred[:,0] for pred in preds]
+  preds = np.asarray(preds).T.tolist()
 
   # making submission
   LOG.info('# Making submission csv...')
