@@ -26,6 +26,7 @@ def get_pred_index(y_pred):
           real[ind] = best
           break
 
+  y_pred = list(y_pred)
   return real
 
 def apk(actual, predicted, k=7):
