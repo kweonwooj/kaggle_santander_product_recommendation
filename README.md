@@ -210,6 +210,8 @@ Kaggle / Santander Product Recommendation
       - failed to add custom keras loss function as MAP@7 > theano tensor error (want to use in_top_k at least!)
       - used updated binary_xentropy loss instead
       - using model_v2 with dropout and softmax
+    - Train 24 Classes separately
+      - higher MAP@7 score in base_randomforest model (0.0139 > 0.0143)
     - as-is
       - sample : PLB : 0.0158633 | CV : 
       - validate :
