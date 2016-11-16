@@ -4,6 +4,13 @@
 from __future__ import division
 import numpy as np
 
+def get_true_index(y_true):
+  real = []
+  for i in range(len(y_true)):
+    if y_true[i] == 1:
+      real.append(i)
+  return real
+
 def get_pred_index(y_pred):
   ## Option A
   # if confidence is low, return overallbest instead
@@ -31,16 +38,15 @@ def apk(actual, predicted, k=7):
 
     return score / min(len(actual), k)
 
-
 def eval_map7(y_trues, y_preds):
 
   map7 = 0.0
 
   # iterate over each row
-  for row_ind in range(y_preds.shape[0]):
+  for row_ind in range(len(y_preds)):
 
     # y_true is in the form [7,23,1,2] index
-    y_true = y_trues[row_ind]
+    y_true = get_true_index(y_trues[row_ind])
 
     # convert y_pred from [0.1, 0.2,...] to [7,23,1,2] index
     y_pred = get_pred_index(y_preds[row_ind])
@@ -49,6 +55,6 @@ def eval_map7(y_trues, y_preds):
     map7 += apk(y_true, y_pred)
 
   # divide by number of rows
-  map7 /= (1. * y_preds.shape[0])
+  map7 /= (1. * len(y_preds))
 
   return map7 
