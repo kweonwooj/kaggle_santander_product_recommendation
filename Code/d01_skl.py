@@ -18,12 +18,12 @@ def get_data_path(TRAIN_PHASE):
     trn = '../Data/Raw/sample_trn.csv'
     vld = '../Data/Raw/sample_vld.csv'
   elif TRAIN_PHASE == 'validate':
-    trn = '../Data/Raw/trn.csv'
-    vld = '../Data/Raw/vld.csv'
+    trn = '../Data/Raw/validate_trn.csv'
+    vld = '../Data/Raw/validate_vld.csv'
   elif TRAIN_PHASE == 'submission':
-    trn = '../Data/Raw/train_ver3.csv'
+    trn = '../Data/Raw/submission_trn.csv'
     vld = ''
-  tst = '../Data/Raw/test_ver2.csv'
+  tst = '../Data/Raw/submission_vld.csv'
   return trn, vld, tst
 
 def get_last_instance_df(trn):
