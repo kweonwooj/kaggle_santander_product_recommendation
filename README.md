@@ -152,15 +152,34 @@ Kaggle / Santander Product Recommendation
 
 ## What to do
 - Exploratory Data Analysis
-  - Check whether description matches. Find new patterns for..
-    - fecha_alta, ind_nuevo, antiguedad, indrel, ult_fec_cli_1t, indrel_1mes, tiprel_1mes, conyuemp, tipodom, cod_prov, nomprov, ind_actividad_cliente
-  - Feature Engineering via import all
-    - [Try to capture change in status, employment, role which triggers purchase]
-    - move of address = hikkoshi
-    - change of segmento 
-  - Feed into XGBoost
-    - (user, taret) pair -> label
-    - replication of threecourse's approach
+  - Check whether description matches. 
+  - Explore feature engineering ideas : try to capture change in status which triggers purchase
+- Experiment with 1/100 data
+  - Establish Pipeline
+    - Feature Engineering
+    - Linear, Tree Model
+    - Evaluation
+    - Generate Submission
+- Validate Pipeline
+  - validate feature engineering
+    - check the range of each feature, distribution etc
+  - validate evaluation method
+    - check via putting handcrafted values
+  - validate submission
+    - check correlation with CV
+- [Data] Scale upto 1/10, 1
+  - Run pipeline
+  - check improvement in evaluation score
+  - check CV-LB correlation
+- [Model] Parameter Tuning
+  - Tune with 1/100 > apply to 1/10
+  - Tune with 1/10 > apply to 1
+- Single Model Process ends here
+- Ensemble
+  - bagging technique using different seed with 'best single model'
+  - make different DB by sampling (0.6 ~ 0.8) of columns and apply differing models > Stacking
+  
+## What I did
 - [ZFTurbo](https://www.kaggle.com/zfturbo/santander-product-recommendation/santander-battle/code)
   - Method
     - Collaborative Filtering: uses feature set to group user into demographics, and recommend most popular item within demographics purchased product that a user does not have. Extends to overall demographics if new user or 7 recommendation is not filled.
@@ -185,8 +204,6 @@ Kaggle / Santander Product Recommendation
     - Modularizaton
       - randomly select grouping conditions
       - Evaluate on (Grouping number, Local CV, Public LB)
-  
-## What I did
   - Replicated ZFTurbo
     - [DONE] Modularize Hash function based on ZFTurbo
       - Given the best score being 0.03, I am still underfitting! Bigger model + Train longer
@@ -202,37 +219,29 @@ Kaggle / Santander Product Recommendation
     - PLB: 0.0256802 | CV: 0.0262318 | ARR: [1,16,20,9]                      | BOOLS: indfall, p_count               | seed: 777
     - PLB: 0.0256671 | CV: 0.0262332 | ARR: [13,4,16,1,18]                   | BOOLS: indfall, renta, p_count        | seed: 2016
     - PLB: 0.0253159 | CV: 0.0261475 | ARR: [1,22,9,20,19,12,15,3,4,2,10,11] | BOOLS: ult_fec, age, indfall, p_count | seed: 123
-
-  - Replicated Keras/RanfomForest/XGBoost starter by SRK
-    - Added:
-      - preprocessed data via ```d00_prepare.py``` in prvious pipeline (needs normalization for keras usage) 
-      - used non-zero newly purhchased target data only. (1/10 of original)
-      - failed to add custom keras loss function as MAP@7 > theano tensor error (want to use in_top_k at least!)
-      - used updated binary_xentropy loss instead
-      - using model_v2 with dropout and softmax
-    - Train 24 Classes separately
-      - higher MAP@7 score in base_randomforest model (0.0139 > 0.0143)
-      - XGBoost with separate class (MAP@7 : 0.0205)
-    - as-is
-      - sample : PLB : 0.0158633 | CV : 
-      - validate :
-      - submission :
-    - feature-engineered > Use hand-crafted features copying threecourse approach
-      - sample :
-      - validate :
-      - submission :
-    - RNN (LSTM, GRU, standard-RNN)
-      - sample :
-      - validate :
-      - submission :
-
-  - Replicate Coupon Purchase Prediction (threecourse) approach
-    - [DOING] (user, target) pair in supervised learning method
-      - Generate (data, label)
-      - Train with random forest with (data, label) where label = length==24 list >> Memory issue!
-        - I can train and predict (data, label) for each labels 24 times and get top 7 predictions
-        - I can use keras online learning to avoid memory issue
-        - 
+- Replicated Keras/RanfomForest/XGBoost starter by SRK
+  - Added:
+    - preprocessed data via ```d00_prepare.py``` in prvious pipeline (needs normalization for keras usage) 
+    - used non-zero newly purhchased target data only. (1/10 of original)
+    - failed to add custom keras loss function as MAP@7 > theano tensor error (want to use in_top_k at least!)
+    - used updated binary_xentropy loss instead
+    - using model_v2 with dropout and softmax
+  - Train 24 Classes separately
+    - higher MAP@7 score in base_randomforest model (0.0139 > 0.0143)
+    - XGBoost with separate class (MAP@7 : 0.0205)
+  - as-is
+    - sample : PLB : 0.0158633 | CV : 
+    - validate :
+    - submission :
+  - feature-engineered > Use hand-crafted features copying threecourse approach
+    - sample :
+    - validate :
+    - submission :
+  - RNN (LSTM, GRU, standard-RNN)
+    - sample :
+    - validate :
+    - submission :
+    
 ## Related Works from past Kaggle Competitions
   - 1. [Coupon Purchase Prediction](https://www.kaggle.com/c/coupon-purchase-prediction)
     - General: 
