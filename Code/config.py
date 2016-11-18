@@ -6,8 +6,9 @@
 
 import os
 import platform
+import pandas as pd
 import numpy as np
-
+from sklearn.ensemble import RandomForestClassifier
 from utils import os_utils
 """
 to run above code,
@@ -17,6 +18,48 @@ to run above code,
 2. source ~/.bashrc
 3. create blank __init__.py
 """
+
+state = 'sample'
+model = RandomForestClassifier(n_jobs=-1, random_state=7)
+
+feature_cols = ["ind_empleado","pais_residencia","sexo","age", "ind_nuevo", "antiguedad", "nomprov", "segmento"]
+dtype_list = {'ind_cco_fin_ult1': 'float16', 'ind_deme_fin_ult1': 'float16', 'ind_aval_fin_ult1': 'float16', 'ind_valo_fin_ult1': 'float16', 'ind_reca_fin_ult1': 'float16', 'ind_ctju_fin_ult1': 'float16', 'ind_cder_fin_ult1': 'float16', 'ind_plan_fin_ult1': 'float16', 'ind_fond_fin_ult1': 'float16', 'ind_hip_fin_ult1': 'float16', 'ind_pres_fin_ult1': 'float16', 'ind_nomina_ult1': 'float16', 'ind_cno_fin_ult1': 'float16', 'ncodpers': 'int64', 'ind_ctpp_fin_ult1': 'float16', 'ind_ahor_fin_ult1': 'float16', 'ind_dela_fin_ult1': 'float16', 'ind_ecue_fin_ult1': 'float16', 'ind_nom_pens_ult1': 'float16', 'ind_recibo_ult1': 'float16', 'ind_deco_fin_ult1': 'float16', 'ind_tjcr_fin_ult1': 'float16', 'ind_ctop_fin_ult1': 'float16', 'ind_viv_fin_ult1': 'float16', 'ind_ctma_fin_ult1': 'float16'}
+target_cols = ['ind_ahor_fin_ult1','ind_aval_fin_ult1','ind_cco_fin_ult1','ind_cder_fin_ult1','ind_cno_fin_ult1','ind_ctju_fin_ult1','ind_ctma_fin_ult1','ind_ctop_fin_ult1','ind_ctpp_fin_ult1','ind_deco_fin_ult1','ind_deme_fin_ult1','ind_dela_fin_ult1','ind_ecue_fin_ult1','ind_fond_fin_ult1','ind_hip_fin_ult1','ind_plan_fin_ult1','ind_pres_fin_ult1','ind_reca_fin_ult1','ind_tjcr_fin_ult1','ind_valo_fin_ult1','ind_viv_fin_ult1','ind_nomina_ult1','ind_nom_pens_ult1','ind_recibo_ult1']
+
+def generate_label_sp(LOG):
+	df = pd.read_csv('../Data/Raw/train_ver2.csv', usecols=target_cols, dtype=dtype_list)
+	ncodper = pd.read_csv('../Data/Raw/train_ver2.csv', usecols=['ncodpers'], dtype='object')
+	df['ncodpers'] = ncodper
+	f = open('../Data/Raw/sample_label_sp.csv','w')
+	f.write('ind_ahor_fin_ult1,ind_aval_fin_ult1,ind_cco_fin_ult1,ind_cder_fin_ult1,ind_cno_fin_ult1,ind_ctju_fin_ult1,ind_ctma_fin_ult1,ind_ctop_fin_ult1,ind_ctpp_fin_ult1,ind_deco_fin_ult1,ind_deme_fin_ult1,ind_dela_fin_ult1,ind_ecue_fin_ult1,ind_fond_fin_ult1,ind_hip_fin_ult1,ind_plan_fin_ult1,ind_pres_fin_ult1,ind_reca_fin_ult1,ind_tjcr_fin_ult1,ind_valo_fin_ult1,ind_viv_fin_ult1,ind_nomina_ult1,ind_nom_pens_ult1,ind_recibo_ult1\n')
+
+	cust = dict()	
+	total = 0
+	for ind, (run, row) in enumerate(df.iterrows()):
+
+		ncodpers = row['ncodpers']
+		t_row = row[target_cols].fillna(0).values.astype(int)
+
+		sp_y = np.zeros(24).astype(int)
+		if ncodpers in cust:
+			for i in range(24):
+				if t_row[i] == 1 and cust[ncodpers][i] == 0:
+					sp_y[i] = 1
+		else:
+			sp_y = t_row
+		cust[ncodpers] = sp_y
+
+		sp_y = np.char.mod('%d', sp_y)
+		out = ','.join(sp_y) + '\n'
+		f.write(out)
+
+		total += 1
+		if total % 100000 == 0:
+			LOG.info('# Processing {} lines..'.format(total))
+	f.close()
+
+
+'''
 
 # ----- Overall ----- 
 TASK = "all"
@@ -77,4 +120,4 @@ DIRS += [OUTPUT_DIR, SUBM_DIR, MODEL_DIR]
 
 DIRS += [LOG_DIR, FIG_DIR]
 os_utils._create_dirs(DIRS)
-
+'''

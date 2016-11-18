@@ -83,6 +83,8 @@ def main():
   # get path
   trn, vld, tst = d01_skl.get_data_path(TRAIN_PHASE)
 
+  print trn,vld,tst
+
   # model
   LOG.info('# Initialize RandomForest model')
   model = RandomForestClassifier(

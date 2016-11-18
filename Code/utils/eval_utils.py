@@ -15,8 +15,8 @@ def get_pred_index(y_pred):
   # if confidence is low, return overallbest instead
   y_pred = list(y_pred)
 
-  overallbest = [23,22,21,2,18,4,12,11,17,6,19,7,13,9,8,15,5,10,16,3,14,20,1,0]
-  num_confident = sum([int(pred >= 0.5) for pred in y_pred])
+  overallbest = [2,23,22,21,7,18,4,12,11,17,8,19,6,13,5,15,9,14,20,16,10,3,0,1]
+  num_confident = sum([int(pred > 0) for pred in y_pred])
   real = sorted(range(len(y_pred)), key=lambda k: y_pred[k], reverse=True)[:7]
 
   for ind, r in enumerate(real):
@@ -61,7 +61,7 @@ def eval_map7(y_trues, y_preds):
 
     # convert y_pred from [0.1, 0.2,...] to [7,23,1,2] index
     y_pred = get_pred_index(y_preds[row_ind])
-
+    
     # get score and add to map7
     map7 += apk(y_true, y_pred)
 

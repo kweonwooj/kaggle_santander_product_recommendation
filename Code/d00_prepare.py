@@ -43,20 +43,40 @@ def process(df, prefix, state, prev_target, prev_cust):
     f = open('../Data/Raw/{}_{}.csv'.format(prefix,state),'w')
     f.write('product_count,n_change,na_count,fd_y,fd_m,fd_m_int,fa_y,fa_m,fa_m_int,fd_fa,uf_y,uf_m,uf_m_int,fd_uf,d_u_f,d_age,age,antiguedad,d_a,renta,d_r,cod_prov,d_c_p,ind_empleado,d_i_e,pais_residencia,d_p_r,sexo,ind_nuevo,d_i_n,indrel,d_il,indrel_1mes,d_i_1,tiprel_1mes,d_t_1,indresi,d_ii,indext,d_it,conyuemp,d_cp,canal_entrada,d_c_e,indfall,d_fall,tipodom,d_tm,nomprov,d_nv,ind_actividad_cliente,d_i_a_c,segmento,d_so,ncodper,ind_ahor_fin_ult1,ind_aval_fin_ult1,ind_cco_fin_ult1,ind_cder_fin_ult1,ind_cno_fin_ult1,ind_ctju_fin_ult1,ind_ctma_fin_ult1,ind_ctop_fin_ult1,ind_ctpp_fin_ult1,ind_deco_fin_ult1,ind_deme_fin_ult1,ind_dela_fin_ult1,ind_ecue_fin_ult1,ind_fond_fin_ult1,ind_hip_fin_ult1,ind_plan_fin_ult1,ind_pres_fin_ult1,ind_reca_fin_ult1,ind_tjcr_fin_ult1,ind_valo_fin_ult1,ind_viv_fin_ult1,ind_nomina_ult1,ind_nom_pens_ult1,ind_recibo_ult1\n')
 
+    count = 0
     for ind, (run, row) in enumerate(df.iterrows()):
+
         # feature engineer
         out = ''
         ncodper = row['ncodpers']    
 
-        ## SPECIAL ## 
+        ## Target ##
+        
+        # adjust target so that newly purchase is recorded
+        target_row = row[24:].fillna(0).values.astype(np.int8)
+        if target_row.shape[0] == 0:
+            targets = np.zeros(24).astype(np.int8)
+        else:
+            targets = np.zeros(24).astype(np.int8)
+            if ncodper in prev_target:
+                for i in range(24):
+                    if target_row[i] == 1 and prev_target[ncodper][i] == 0:
+                        targets[i] = 1
+            else:
+                targets = row[24:].fillna(0).values.astype(np.int8)
 
+        # skip zero targets
+        if state == 'trn' and sum(targets) == 0:
+            continue
+
+        count += 1
+            
+        ## SPECIAL ## 
         # product_count
         product_count = 0
         if ncodper in prev_target:
             for i in prev_target[ncodper]:
                 product_count += int(i)
-        else:
-            product_count = -1
 
         # number of changes from its previous state
         n_change = 0
@@ -67,9 +87,6 @@ def process(df, prefix, state, prev_target, prev_cust):
                         n_change += 1
                 except:
                     pass
-        else:
-            n_change = -1
-
         # na_count
         na_count = row.isnull().sum()
 
@@ -78,7 +95,7 @@ def process(df, prefix, state, prev_target, prev_cust):
         # fecha_dato
         col = 'fecha_dato'
         fd_y, fd_m, _ = row[col].split('-')
-        fd_y = int(fd_y)
+        fd_y = int(fd_y)-2014
         fd_m = int(fd_m)
         fd_m_int = fd_y * 12 + fd_m
 
@@ -86,20 +103,20 @@ def process(df, prefix, state, prev_target, prev_cust):
         col = 'fecha_alta'
         try:
             fa_y, fa_m, _ = row[col].split('-')
-            fa_y = int(fa_y)
+            fa_y = int(fa_y)-1995
             fa_m = int(fa_m)
             fa_m_int = fa_y * 12 + fa_m
         except:
             fa_y, fa_m, fa_m_int = 0, 0, 0
 
         # fd - fa
-        fd_fa = fd_m_int - fa_m_int
+        fd_fa = fd_m_int - fa_m_int + (19*12)
 
         # ult_fec_cli_1t
         col = 'ult_fec_cli_1t'
         try:
             uf_y, uf_m, _ = row[col].split('-')
-            uf_y = int(uf_y)
+            uf_y = int(uf_y)-2014
             uf_m = int(uf_m)
             uf_m_int = uf_y * 12 + uf_m
         except:
@@ -120,24 +137,28 @@ def process(df, prefix, state, prev_target, prev_cust):
         try:
             age = int(np.clip(int(float(row[col])),0,80)/5.)
         except:
-            age = -1
+            age = 5
 
         # antiguedad
         col = 'antiguedad'
         try:
             antiguedad = int(float(row[col]))
         except:
-            antiguedad = -99
+            antiguedad = 0
         d_a = get_d_val(row,col,prev_cust,ncodper)
 
         # renta
         col = 'renta'
         renta = int(float(row[col]))
+        if renta == -99:
+          renta = 0
         d_r = get_d_val(row,col,prev_cust,ncodper)
 
         # cod_prov
         col = 'cod_prov'
         cod_prov = int(float(row[col]))
+        if cod_prov == -99:
+          cod_prov = 0
         d_c_p = get_d_val(row,col,prev_cust,ncodper)
 
 
@@ -222,18 +243,9 @@ def process(df, prefix, state, prev_target, prev_cust):
         segmento = mapping_dict[col][row[col]]
         d_so = get_d_val(row,col,prev_cust,ncodper)
 
-        # adjust target so that newly purchase is recorded
-        targets = np.zeros(24).astype(np.int8)
-        if ncodper in prev_target and (prefix!='submission' or state!='vld'):
-            for i in range(24):
-                if row[24:][i] == 1 and prev_target[ncodper][i] == 0:
-                    targets[i] = 1
-        else:
-            targets = row[24:].values.astype(np.int8)
-
-        prev_target[ncodper] = np.nan_to_num(row[24:]).astype(np.int8)
+        prev_target[ncodper] = target_row
         prev_cust[ncodper] = row[:24]
-
+        
         # ncopder
         ncodper = int(float(row['ncodpers']))
 
@@ -254,11 +266,12 @@ def process(df, prefix, state, prev_target, prev_cust):
             #break
 
         out += str([i for i in np.hstack((np.array(feat),targets))]).strip('[]')
-
+        
         out += '\n'
         f.write(out)
     f.close()  
     LOG.info('# Processed {}_{}.csv'.format(prefix,state))
+    LOG.info('# Processed {} lines in total'.format(count))
 
 def preprocess(trn, vld, prefix):
   prev = PREV()
@@ -266,6 +279,7 @@ def preprocess(trn, vld, prefix):
   prev_cust = prev.prev_cust
 
   process(trn, prefix, 'trn', prev_target, prev_cust)
+  del trn
   process(vld, prefix, 'vld', prev_target, prev_cust)
 
 def sample(df):
@@ -322,8 +336,8 @@ def main():
   path = '../Data/Raw/'
   df = pd.read_csv(path+'train_ver2.csv')
 
-  sample(df)
-  validate(df)
+  #sample(df)
+  #validate(df)
   submission(df)
 
 if __name__=='__main__':
