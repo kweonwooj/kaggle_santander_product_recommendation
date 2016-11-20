@@ -5,7 +5,7 @@
 	input : raw trn, raw tst
 	output : preprocessed trn, tst
 """
-from config import state, feature_cols, dtype_list, target_cols
+from config import state, dtype_list, target_cols, initial_run
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
@@ -14,6 +14,8 @@ import time
 from config import generate_label_sp
 
 st = time.time()
+
+feature_cols = ["ind_empleado","pais_residencia","sexo","age", "ind_nuevo", "antiguedad", "nomprov", "segmento"]
 
 LOG = get_logger('preprocess_{}.txt'.format(state))
 LOG.info('# Begin Preprocessing _ {}'.format(state))
@@ -28,6 +30,10 @@ trn_size = 13647309
 nrows =    13647309
 start_index = trn_size - nrows
 LOG.info('# Preprocessing {} rows / {} : {}'.format(nrows, trn_size, round(1.*nrows/trn_size*100,3)))
+
+# get trn_sp_y
+
+# get ncodpers that has purchased something in May only
 
 colnames = []
 for ind, col in enumerate(feature_cols):
@@ -60,18 +66,19 @@ for ind, col in enumerate(feature_cols):
 		tst_x = np.hstack([tst_x, temp_tst_x])
 	del trn, tst
 
-trn_y = pd.read_csv(trn_file, usecols=['ncodpers']+target_cols, dtype=dtype_list)
-last_instance_df = trn_y.drop_duplicates('ncodpers', keep='last')
-
 # one-time only
-#LOG.info('# Generate label_sparse')
-#generate_label_sp(LOG)
+if initial_run:
+	LOG.info('# Generate label_sparse')
+	generate_label_sp(LOG)
+	
+	LOG.info('# Save trn_y')
+	trn_y = pd.read_csv(trn_file, usecols=['ncodpers']+target_cols, dtype=dtype_list)
+	trn_y = np.array(trn_y.fillna(0)).astype('int')[start_index:,1:]
+	pd.DataFrame(trn_y, columns=target_cols).to_csv('{}{}_label.csv'.format(data_path, state), index=False)
 
-trn_y = np.array(trn_y.fillna(0)).astype('int')[start_index:,1:]
 LOG.info('# Saving preprocessed outputs')
 pd.DataFrame(trn_x, columns=colnames).to_csv('{}{}_trn.csv'.format(data_path, state), index=False)
 pd.DataFrame(tst_x, columns=colnames).to_csv('{}{}_tst.csv'.format(data_path, state), index=False)
-pd.DataFrame(trn_y, columns=target_cols).to_csv('{}{}_label.csv'.format(data_path, state), index=False)
 
 en = time.time()
 el = en-st
