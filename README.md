@@ -241,6 +241,21 @@ Kaggle / Santander Product Recommendation
     - sample :
     - validate :
     - submission :
+- ML Pipeline via kweonwooj[for FASTCAMPUS]
+  - initialPreprocess
+    - purpose: get train_sp_y
+    - unitTest: passed @ ```unitTest.py```
+  - preprocess
+    - purpose: select May16 purchased rows only, feature engineering, transform by splitting multi-purchased rows into multiple single purchased rows
+    - unitTest:
+    - selection criteria + feature engineering = hyperparameter
+  - fit_eval
+    - purpose: select model and evaluate
+    - unitTest:
+    - model selection, parameter settings = hyperparameter
+  - predict
+    - purpose: feature engineer tst file, generate submission
+    - unitTest:
     
 ## Related Works from past Kaggle Competitions
   - 1. [Coupon Purchase Prediction](https://www.kaggle.com/c/coupon-purchase-prediction)
