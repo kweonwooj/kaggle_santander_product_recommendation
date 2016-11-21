@@ -12,6 +12,16 @@ from config import state, model
 from utils.log_utils import get_logger
 from utils.eval_utils import eval_map7
 import time
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+import pickle
+
+np.random.seed(7)
+
+# use xgboost - softprob
+# make validation process - MAP@7
+def get_index(df, col, values):
+    return np.where(df[col].isin(values))[0]
 
 st = time.time()
 
@@ -19,41 +29,39 @@ LOG = get_logger('fit_eval_{}.txt'.format(state))
 LOG.info('# Fitting and Evaluating {}'.format(state))
 
 data_path = '../Data/Raw/'
-x = pd.read_csv('{}{}_trn.csv'.format(data_path, state))
-#sp_y = pd.read_csv('{}{}_label_sp.csv'.format(data_path, state))
-y = pd.read_csv('{}{}_label.csv'.format(data_path, state))
-LOG.info('# x\t{}\t| y\t{}'.format(x.shape, y.shape))
+df = pd.read_csv('{}trn_{}.csv'.format(data_path, state))
+x = df.iloc[:,:-1]
+x.fillna(0, inplace=True) ## treat this in preprocessing.py
+y = df.iloc[:,-1]
+LOG.info('# df\t{}'.format(df.shape))
 
-vld_bound = 11787582
+buy_ncodpers = pickle.load(open('../Data/Raw/buy_ncodpers.pkl','rb'))
 
-trn_x = x.iloc[:vld_bound,:]
-vld_x = x.iloc[vld_bound:,:]
-trn_y = y.iloc[:vld_bound,:]
-vld_y = y.iloc[vld_bound:,:]
-#trn_sp_y = sp_y.iloc[:vld_bound,:]
-#vld_sp_y = sp_y.iloc[vld_bound:,:]
-LOG.info('# trn_x\t{}\t| trn_y\t{}\t| trn_sp_y\t{}'.format(trn_x.shape, trn_y.shape, 1))#trn_sp_y.shape))
-LOG.info('# vld_x\t{}\t| vld_y\t{}\t| vld_sp_y\t{}'.format(vld_x.shape, vld_y.shape, 1))#vld_sp_y.shape))
+for i in range(5):
+	arr = np.random.permutation(buy_ncodpers.shape[0])
+	t_ind = arr < (buy_ncodpers.shape[0] * 0.2)
+	t_ncodpers = buy_ncodpers[t_ind]
+	v_ncodpers = buy_ncodpers[~t_ind]
+	t_ind = np.in1d(x.ncodpers,t_ncodpers.values)
+	v_ind = np.in1d(x.ncodpers,v_ncodpers.values)
 
-# train with trn_y
-trn_preds = []; vld_preds = []
-for ind, col in enumerate(trn_y.columns):
-	LOG.info('# Fitting model on {} with trn_y\t| {} / {}'.format(col,ind+1,len(trn_y.columns)))
-	model.fit(trn_x, trn_y[col])
+	x_trn = x.iloc[t_ind]
+	x_vld = x.iloc[v_ind]
+	y_trn = y[t_ind]
+	y_vld = y[v_ind]
+    
+	model.fit(x_trn, y_trn)
+    
+	preds_trn = model.predict_proba(x_trn)
+	preds_trn = [np.argmax(pred) for pred in preds_trn]
+	score = accuracy_score(y_trn, preds_trn)
+	print 'TRN:', score
+    
+	preds_vld = model.predict_proba(x_vld)
+	preds_vld = [np.argmax(pred) for pred in preds_vld]
+	score = accuracy_score(y_vld, preds_vld)
+	print 'VLD:', score
 
-	# eval
-	preds = np.array(model.predict_proba(trn_x))[:,1]
-	trn_preds.append(preds)
-	preds = np.array(model.predict_proba(vld_x))[:,1]
-	vld_preds.append(preds)
-
-trn_preds = np.array(trn_preds).T
-vld_preds = np.array(vld_preds).T
-LOG.info('# trn preds {} vld_preds {}'.format(trn_preds.shape, vld_preds.shape))
-map7 = eval_map7(trn_y.values.tolist(), (trn_preds).tolist()) # must be sp_y
-LOG.info('# MAP@7 score _trn : {}'.format(map7))
-map7 = eval_map7(vld_y.values.tolist(), (vld_preds).tolist()) # must be sp_y
-LOG.info('# MAP@7 score _vld : {}'.format(map7))
 
 en = time.time()
 el = en-st

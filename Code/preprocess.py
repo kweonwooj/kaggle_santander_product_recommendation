@@ -2,83 +2,66 @@
 """
 @author: Kweonwoo Jung
 @brief:
-	input : raw trn, raw tst
-	output : preprocessed trn, tst
+	input : raw trn, label_sp
+	output : only select buyers at May 2016.
+		 feature engineer
+		 convert into single multiclass classification
 """
-from config import state, dtype_list, target_cols, initial_run
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from utils.log_utils import get_logger
 import time
-from config import generate_label_sp
+import pickle
 
 st = time.time()
 
-feature_cols = ["ind_empleado","pais_residencia","sexo","age", "ind_nuevo", "antiguedad", "nomprov", "segmento"]
+LOG = get_logger('preprocess.txt')
+LOG.info('# Begin Preprocessing')
 
-LOG = get_logger('preprocess_{}.txt'.format(state))
-LOG.info('# Begin Preprocessing _ {}'.format(state))
+## June 2015 only
+st_index = 3144384
+en_index = 3776493
+## define label_cols (same as target_cols)
 
-# initialize logger
+LOG.info('# Select June 2015 purchase only')
+# select ncodpers that purchased on June 2015 only
+labels = pd.read_csv('../Data/Raw/labels.csv', header=None)
+buy_flag = labels.iloc[st_index:en_index,:].sum(axis=1)
+ncodpers = pd.read_csv('../Data/Raw/train_ver2.csv', usecols=['ncodpers'])
+buy_ncodpers = ncodpers.iloc[st_index:en_index][buy_flag > 0]
+pickle.dump(buy_ncodpers, open('../Data/Raw/buy_ncodpers.pkl','wb'))
+index = ncodpers.isin(buy_ncodpers).values
+del ncodpers
 
-data_path = '../Data/Raw/'
-trn_file = data_path + 'train_ver2.csv'
-tst_file = data_path + 'test_ver2.csv'
+# use indexed rows
+feature_cols = ['ncodpers','age','ind_nuevo','antiguedad']
+trn = pd.read_csv('../Data/Raw/train_ver2.csv', usecols=feature_cols)
+trn = trn[index]
+labels = labels[index]
 
-trn_size = 13647309
-nrows =    13647309
-start_index = trn_size - nrows
-LOG.info('# Preprocessing {} rows / {} : {}'.format(nrows, trn_size, round(1.*nrows/trn_size*100,3)))
+LOG.info('# Feature engineering..')
+# feature engineer
+## None for initial 
 
-# get trn_sp_y
+# convert to multiclass classification
+f = open('../Data/Raw/trn_v1.csv','w')
+out = ','.join(feature_cols) + ',label\n' 
+f.write(out)
 
-# get ncodpers that has purchased something in May only
+check_point = labels.shape[0]/10
+for ind, (run, row) in enumerate(labels.iterrows()):
+	for i,r in enumerate(row):
+		if r == 1:
+			## put modularized feature engineerer, reusable at tst time
+			row_str = [str(val).strip() for val in trn.ix[run].values]
+			out = ','.join(row_str) + ',' + str(i) + '\n'
+			f.write(out)
+	if ind % check_point == 0:
+		LOG.info('# Processing {} lines..'.format(ind))
 
-colnames = []
-for ind, col in enumerate(feature_cols):
-        LOG.info('# Preprocessing column: {} | {}/{}'.format(col, ind+1, len(feature_cols)))
-	trn = pd.read_csv(trn_file, usecols=[col])
-	tst = pd.read_csv(tst_file, usecols=[col])
-
-	trn.fillna(-99,inplace=True)
-	tst.fillna(-99,inplace=True)
-
-	## ADD ## 
-	# special preprocessing for each columns
-	# additional feature engineering possible
-	colnames.append(col)
-
-	if trn[col].dtype == 'object':
-		le = LabelEncoder()
-		le.fit(list(trn[col].values)+list(tst[col].values))
-		temp_trn_x = le.transform(list(trn[col].values)).reshape(-1,1)[start_index:,:]
-		temp_tst_x = le.transform(list(tst[col].values)).reshape(-1,1)
-	else:
-		temp_trn_x = np.array(trn[col]).reshape(-1,1)[start_index:,:]
-		temp_tst_x = np.array(tst[col]).reshape(-1,1)
-
-	if ind == 0:
-		trn_x = temp_trn_x.copy()
-		tst_x = temp_tst_x.copy()
-	else:
-		trn_x = np.hstack([trn_x, temp_trn_x])
-		tst_x = np.hstack([tst_x, temp_tst_x])
-	del trn, tst
-
-# one-time only
-if initial_run:
-	LOG.info('# Generate label_sparse')
-	generate_label_sp(LOG)
-	
-	LOG.info('# Save trn_y')
-	trn_y = pd.read_csv(trn_file, usecols=['ncodpers']+target_cols, dtype=dtype_list)
-	trn_y = np.array(trn_y.fillna(0)).astype('int')[start_index:,1:]
-	pd.DataFrame(trn_y, columns=target_cols).to_csv('{}{}_label.csv'.format(data_path, state), index=False)
-
-LOG.info('# Saving preprocessed outputs')
-pd.DataFrame(trn_x, columns=colnames).to_csv('{}{}_trn.csv'.format(data_path, state), index=False)
-pd.DataFrame(tst_x, columns=colnames).to_csv('{}{}_tst.csv'.format(data_path, state), index=False)
+LOG.info('# Processed total of {} lines.'.format(ind))
+f.close()
 
 en = time.time()
 el = en-st
