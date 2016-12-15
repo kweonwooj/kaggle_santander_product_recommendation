@@ -1,16 +1,40 @@
-## kaggle_santander
-Kaggle / Santander Product Recommendation
+## Kaggle/Santander Product Recommendation
+<div align="center">
+  <img src="https://kaggle2.blob.core.windows.net/competitions/kaggle/5558/media/santander-banner-ts-660x.png"><br><br>
+</div>
+
+## Introduction
+**Santander Bank** offers a lending hand to their customers through personalized product recommendations. In their second competition, Santander is challenging Kagglers to predict which products their existing customers will use in the next month based on their past behavior and that of similar customers.
+
+Competition data consists of customer data from 2015-01 ~ 2016-05 (total of 17 month timestamps) including customer's demographic information and their product purchase behavior. Competition challenges you to predict top 7 products out of 24, that each customer in the test data is most likely to purchase on 2016-06.
+
+Evaluation metric is in MAP@7, which made the direct optimization difficult during training phase. Instead, the mlogloss was widely used among kagglers to indirectly optimize the solution.
+
+With BreakfastPirates generos info, using 2015-06 data-only as a training data seemed to perform pretty well in the leaderboard (reaching almost ~0.03). Single model performance was enough to place you on top of the leaderboard, since MAP@7 made the effect of ensemble almost negligible.
+
+As always, feature engineering seemed to be the most important factor in this competition, along with good cv scheme to reach the best hyper-parameter that squeezes the performance from the given data.
 
 ## Objective
-- Bronze Medal
-- Replicate past competition winning scripts
-- Efficient Decision Making via Visualization/Bias_Variance Analysis
+My goals in this competition were as below:
+- win a first Bronze Medal
+- replicate past competition winning scripts
+- do an Eeficient Decision Making via Visualization/Bias_Variance Analysis
+
+Fortunately, I have won my first Bronze medal in Kaggle competition! (yay!)
+Instead of replicating the past competition, I eagerly followed Forum posts to get the idea for feature engineering, cv scheme, optimization goal and so on.
+From next time, I should equally spend my time replicating the past competition's winning scripts.
+Once I was able to fix the cv scheme, I was able to stabilize my machine learning pipeline. Confirmations were made via forum posts, not from my own experiment or theory. From next time, I should be independent and responsible for my own cv scheme.
 
 ## Related works
 - Current state-of-the-art recommendation systems follow two main streams
   - Factorization-based approache
   - Topic models
   - [Integrating Topic Models and Latent Factors for Recommendation](https://arxiv.org/abs/1610.09077)
+  
+- Actual Implementation
+  - lag-5 features 
+  - feature engineering
+  - XGBoost 
   
 ## Evaluation
 - [Mean Average Precision @ 7](https://www.kaggle.com/c/santander-product-recommendation/details/evaluation)
@@ -23,6 +47,7 @@ Kaggle / Santander Product Recommendation
   - Always try : New model architecture, feature engineering
 
 ## Workflow
+- 
 - [00] Run 10% of data as quick iteration > 100% for submission only
 - [01] Data Exploration
   - [Example]
@@ -142,14 +167,6 @@ Kaggle / Santander Product Recommendation
 - [04] Model Selection
 - [05] Ensemble
 
-## Benchmark
-- [01] Initial Benchmark
-- [02] 
-
-## Lessons learnt
-
-## How to run
-
 ## What to do
 - Exploratory Data Analysis
   - Check whether description matches. 
@@ -185,78 +202,23 @@ Kaggle / Santander Product Recommendation
     - Collaborative Filtering: uses feature set to group user into demographics, and recommend most popular item within demographics purchased product that a user does not have. Extends to overall demographics if new user or 7 recommendation is not filled.
     - defining feature set to group users can be key
     - Very memory efficient and fast method!
-  - [01] As-is
-    - no preprocessing on raw data
-    - Grouping Condition (4670 groups)
-      - pais_residencia, sexo, age, ind_nuevo, segmento, ind_empleado, ind_actividad_cliente, indresi
-    - Local CV: 0.022101
-    - Public LB: 0.0241798
-  - [02] Modularize Hash methods
-    - Preprocessing
-      - age: clipped age to 0 ~ 80 and divided by 10
-      - indlfall: deceased bucketed to (ncodpers, indfall)
-        - 80% of deceased has static purchase record, other 20% has updates in their purchase
-      - renta: bin into four (0, 25, 50, 75, 100)
-      - existing purchase count
-      - date between ult_fec_cli_1t and fecha_dato in month
-      - divide categorical by renta/age (not implemented)
-    - 2 hash model
-    - Modularizaton
-      - randomly select grouping conditions
-      - Evaluate on (Grouping number, Local CV, Public LB)
-  - Replicated ZFTurbo
-    - [DONE] Modularize Hash function based on ZFTurbo
-      - Given the best score being 0.03, I am still underfitting! Bigger model + Train longer
-    - 1st Iteration(up to 27 = 8hr)
-    - PLB: 0.0257818 | CV: 0.0261322 | ARR: [1,18,21,15,7,16,3]     | BOOLS: indfall                   | seed: 2016
-    - PLB: 0.0257672 | CV: 0.0260855 | ARR: [11,14,13,1,2,15,21,23] | BOOLS: ult_fec, age, indfall     | seed: 7
-    - PLB: 0.0256543 | CV: 0.0262139 | ARR: [20,11,10,1,19]         | BOOLS: ult_fec, indfall, p_count | seed: 777
-    - PLB: 0.0256031 | CV: 0.0261260 | ARR: [1]                     | BOOLS: renta, p_count            | seed: 14
-    - PLB: 0.0250847 | CV: 0.0250923 | ARR: [2,23,10,17,16,22]      | BOOLS: ult_fec, renta            | seed: 123
-    - 2nd Iteration(up to 100 = 24hr)
-    - PLB: 0.0257856 | CV: 0.0261497 | ARR: [19,17,12,1,4]                   | BOOLS: ult_fec, age, p_count          | seed: 7
-    - PLB: 0.0257669 | CV: 0.0261701 | ARR: [2,12,1,4,18]                    | BOOLS: renta, p_count                 | seed: 14
-    - PLB: 0.0256802 | CV: 0.0262318 | ARR: [1,16,20,9]                      | BOOLS: indfall, p_count               | seed: 777
-    - PLB: 0.0256671 | CV: 0.0262332 | ARR: [13,4,16,1,18]                   | BOOLS: indfall, renta, p_count        | seed: 2016
-    - PLB: 0.0253159 | CV: 0.0261475 | ARR: [1,22,9,20,19,12,15,3,4,2,10,11] | BOOLS: ult_fec, age, indfall, p_count | seed: 123
-- Replicated Keras/RanfomForest/XGBoost starter by SRK
-  - Added:
-    - preprocessed data via ```d00_prepare.py``` in prvious pipeline (needs normalization for keras usage) 
-    - used non-zero newly purhchased target data only. (1/10 of original)
-    - failed to add custom keras loss function as MAP@7 > theano tensor error (want to use in_top_k at least!)
-    - used updated binary_xentropy loss instead
-    - using model_v2 with dropout and softmax
-  - Train 24 Classes separately
-    - higher MAP@7 score in base_randomforest model (0.0139 > 0.0143)
-    - XGBoost with separate class (MAP@7 : 0.0205)
-  - as-is
-    - sample : PLB : 0.0158633 | CV : 
-    - validate :
-    - submission :
-  - feature-engineered > Use hand-crafted features copying threecourse approach
-    - sample :
-    - validate :
-    - submission :
-  - RNN (LSTM, GRU, standard-RNN)
-    - sample :
-    - validate :
-    - submission :
-- ML Pipeline via kweonwooj[for FASTCAMPUS]
-  - initialPreprocess
-    - purpose: get train_sp_y
-    - unitTest: passed @ ```unitTest.py```
-  - preprocess
-    - purpose: select May16 purchased rows only, feature engineering, transform by splitting multi-purchased rows into multiple single purchased rows
-    - unitTest:
-    - selection criteria + feature engineering = hyperparameter
-  - fit_eval
-    - purpose: select model and evaluate
-    - unitTest:
-    - model selection, parameter settings = hyperparameter
-  - predict
-    - purpose: feature engineer tst file, generate submission
-    - unitTest:
-    
+  - Result
+    - Best PLB : 0.0257818 | CV: 0.0261322 
+- BreakfastPirate's advice
+  - Method
+    - Use 2015-06 data as training data.
+    - Change problem into multi-class classification via melting the 24 target cols into single target col.
+    - drop customers with no purchases
+    - use lag-5 feature
+    - feature engineer on product purchase behavior side
+  - Possible improvements
+    - clearer preprocessing methodology
+    - XGBoost param tuning experience
+    - feature engineering ideas
+  - Result
+    - Best PLB : 0.029975 | CV : ~0.94 (mlogloss)
+
+
 ## Related Works from past Kaggle Competitions
   - 1. [Coupon Purchase Prediction](https://www.kaggle.com/c/coupon-purchase-prediction)
     - General: 
