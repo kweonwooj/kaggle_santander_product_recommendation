@@ -3,6 +3,8 @@
   <img src="https://kaggle2.blob.core.windows.net/competitions/kaggle/5558/media/santander-banner-ts-660x.png"><br><br>
 </div>
 ## Abstract
+[Kaggle Santander Product Recommendation Competition](https://www.kaggle.com/c/santander-product-recommendation)
+
 - Host : **Santander**, British bank, wholly owned by the Spanish Santander Group.
 - Prize : $ 60,000
 - Problem : Multi-class Classification based Recommendation
