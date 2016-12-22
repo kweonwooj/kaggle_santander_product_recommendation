@@ -21,13 +21,15 @@ As always, feature engineering seemed to be the most important factor in this co
 
 
 ## Result
-| Name | Public LB | Rank | Private LB | Rank |
-|------|-----------|------|------------|------|
-| bare_minimum|
-| Best single model from kweonwooj| 
-| 5th
-| 3rd
-| 1st
+| Submission | CV LogLoss | Public LB | Rank | Private LB | Rank |
+|:----------:|:----------:|:---------:|:----:|:----------:|:----:|
+| bare_minimum | 1.84295 | 
+| kweonwooj | 
+| 84th | 
+| 14th | 
+| 7th | 
+| 6th | 
+| 1st| 
 
 ## How to Run
 
@@ -43,6 +45,8 @@ Above results can be replicated by runinng
 python code/main.py
 ```
 for each of the directories.
+
+Make sure you are on Python 3.5.2 with library versions same as specified in requirements.txt
 
 **[Submit]**
 
