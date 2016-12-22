@@ -4,9 +4,9 @@
     Cross-validation scheme uses 9:1 split stratifiedshufflesplit x 5 times
 
     This script has result as below:
-        TRN logloss : 1.80879
-        VLD logloss : 1.84295
-        PLB :
+        TRN logloss : 1.80492
+        VLD logloss : 1.84515
+        Private LB  : 0.0165546
 '''
 
 import pandas as pd

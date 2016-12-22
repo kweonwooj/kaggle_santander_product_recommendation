@@ -25,7 +25,7 @@ As always, feature engineering seemed to be the most important factor in this co
 ## Result
 | Submission | CV LogLoss | Public LB | Rank | Private LB | Rank |
 |:----------:|:----------:|:---------:|:----:|:----------:|:----:|
-| bare_minimum | 1.84295 | 
+| bare_minimum | 1.84515 | - | - | 0.0165546 | **1406** |
 | kweonwooj | 
 | 84th | 
 | 14th | 
