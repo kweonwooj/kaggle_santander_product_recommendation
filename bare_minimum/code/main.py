@@ -17,6 +17,8 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import log_loss
 import xgboost as xgb
 import os
+import time
+
 
 def main():
     # file paths
@@ -227,4 +229,6 @@ def main():
 
 
 if __name__=='__main__':
+    start = time.time()
     main()
+    print('finished ({:.2f} sec elapsed)'.format(time.time() - start))
