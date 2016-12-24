@@ -30,11 +30,7 @@ As always, feature engineering seemed to be the most important factor in this co
 | bare_minimum | 1.84515 | - | - | 0.0165546 | **1406** |
 | reduced version by kweonwooj | 0.9492806 | - | - | 0.0302238 | **208** |
 | best single model by kweonwooj | 0.9396864 | 0.029975 | **182** | 0.0302794 | **175** |
-| 84th | 
-| 14th | 
-| 7th | 
-| 6th | 
-| 1st| 
+|  
 
 ## How to Run
 
