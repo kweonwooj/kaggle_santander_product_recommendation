@@ -4,9 +4,9 @@
     Cross-validation scheme uses 9:1 split stratifiedshufflesplit x 5 times
 
     This script has result as below:
-        TRN logloss : 1.80879
-        VLD logloss : 1.84295
-        PLB :
+        TRN logloss : 1.80492
+        VLD logloss : 1.84515
+        Private LB  : 0.0165546
 '''
 
 import pandas as pd
@@ -17,6 +17,8 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import log_loss
 import xgboost as xgb
 import os
+import time
+
 
 def main():
     # file paths
@@ -183,9 +185,9 @@ def main():
     print('# TRN logloss: {}'.format(np.mean(trn_scores)))
     print('# VLD logloss: {}'.format(np.mean(vld_scores)))
     print('# Best Iters : {}'.format(np.mean(best_iters)))
-    # TRN logloss : 1.80879
-    # VLD logloss : 1.84295
-    # Best Iters  : 56
+    # TRN logloss : 1.8049220522722245
+    # VLD logloss : 1.8451546928938647
+    # Best Iters  : 63.6
 
     ##################################################################################################################
     ### Model Fit
@@ -193,7 +195,7 @@ def main():
 
     print('# Refit and predict on test data..')
     dtrn = xgb.DMatrix(trn, label=y)
-    num_round = 56
+    num_round = int(np.mean(best_iters) / 0.9)
     bst = xgb.train(xgb_params, dtrn, num_round, verbose_eval=False)
 
     dtst = xgb.DMatrix(tst)
@@ -220,8 +222,13 @@ def main():
     test_id = t_index['ncodpers']
     out_df = pd.DataFrame({'ncodpers': test_id, 'added_products': final_preds})
     file_name = datetime.now().strftime("result_%Y%m%d%H%M%S") + '.csv'
-    out_df.to_csv(os.path.join('./output', file_name), index=False)
+    path = './output'
+    if not os.path.exists(path):
+        os.makedirs(path)
+    out_df.to_csv(os.path.join(path, file_name), index=False)
 
 
 if __name__=='__main__':
+    start = time.time()
     main()
+    print('finished ({:.2f} sec elapsed)'.format(time.time() - start))

@@ -1,8 +1,12 @@
 # Kaggle/Santander Product Recommendation
+
 <div align="center">
   <img src="https://kaggle2.blob.core.windows.net/competitions/kaggle/5558/media/santander-banner-ts-660x.png"><br><br>
 </div>
+
 ## Abstract
+[Kaggle Santander Product Recommendation Competition](https://www.kaggle.com/c/santander-product-recommendation)
+
 - Host : **Santander**, British bank, wholly owned by the Spanish Santander Group.
 - Prize : $ 60,000
 - Problem : Multi-class Classification based Recommendation
@@ -23,13 +27,10 @@ As always, feature engineering seemed to be the most important factor in this co
 ## Result
 | Submission | CV LogLoss | Public LB | Rank | Private LB | Rank |
 |:----------:|:----------:|:---------:|:----:|:----------:|:----:|
-| bare_minimum | 1.84295 | 
-| kweonwooj | 
-| 84th | 
-| 14th | 
-| 7th | 
-| 6th | 
-| 1st| 
+| bare_minimum | 1.84515 | - | - | 0.0165546 | **1406** |
+| reduced version by kweonwooj | 0.9492806 | - | - | 0.0302238 | **208** |
+| best single model by kweonwooj | 0.9396864 | 0.029975 | **182** | 0.0302794 | **175** |
+|  
 
 ## How to Run
 
@@ -54,10 +55,25 @@ Submit the resulting csv file [here](https://www.kaggle.com/c/santander-product-
 
 ## Expected Result
 
-img of submitted result
+for bare minimum
+<div align="center">
+  <img src="./root_input/bare_minimum.png"><br><br>
+</div>
+
+for reduced version of kweonwooj
+<div align="center">
+  <img src="./root_input/kweonwooj.png"><br><br>
+</div>
 
 ## Winnig Solutions
-- 6th place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26786/solution-sharing) by BreakfastPirate
+- 1st place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26835/1-solution) by idle_speculation
+- 2nd place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26824/2nd-place-solution) by Tom Van de Wiele
+- 4th place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26845/4th-place-solution) by yoniko
+- 5th place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26786/solution-sharing) by BreakfastPirate, on [Forum](https://www.kaggle.com/forums/f/1789/santander-product-recommendation/t/26841/5-solution), [GitHub](https://github.com/jturkewitz/SideProjects/tree/master/Kaggle/Santander_Prod) by Jared Turkewitz
 - 7th place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26802/7-solution) by Evgeny Patekha
-- 14th place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26785/aj-and-matt-s-solution-details), [Blog](http://alanpryorjr.com/Kaggle-Competition-Santander-Solution/), [GitHub](https://github.com/apryor6/Kaggle-Competition-Santander) by Alan (AJ) Pryor, Jr.
-- 84th place solution on [forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26789/simple-model-solution-0-0305221-top-5) by MxDbld
+- 8th place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26838/8-solution-code), [GitHub](https://github.com/yaxinus/santander-product-recommendation-8th-place) by Alexander Ponomarchuk and sh1ng
+- 9th place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26809/9-solution) by raddar and Davut Polat
+- 11th place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26823/11-solution-and-code), [GitHub](https://github.com/rohanrao91/Kaggle_SantanderProductRecommendation) by SRK and Rohan Rao
+- 13th place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26816/13-solution-sharing) by Sameh Faidi
+- 14th place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26808/some-ideas-from-my-solution) by alijs
+- 20th place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26785/aj-and-matt-s-solution-details), [GitHub](https://github.com/apryor6/Kaggle-Competition-Santander) by Alan (AJ) Pryor, Jr. and Matt Mills
