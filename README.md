@@ -1,7 +1,9 @@
 # Kaggle/Santander Product Recommendation
+
 <div align="center">
   <img src="https://kaggle2.blob.core.windows.net/competitions/kaggle/5558/media/santander-banner-ts-660x.png"><br><br>
 </div>
+
 ## Abstract
 [Kaggle Santander Product Recommendation Competition](https://www.kaggle.com/c/santander-product-recommendation)
 
@@ -26,7 +28,8 @@ As always, feature engineering seemed to be the most important factor in this co
 | Submission | CV LogLoss | Public LB | Rank | Private LB | Rank |
 |:----------:|:----------:|:---------:|:----:|:----------:|:----:|
 | bare_minimum | 1.84515 | - | - | 0.0165546 | **1406** |
-| kweonwooj | 
+| reduced version by kweonwooj | 0.9492806 | - | - | 0.0302238 | **208** |
+| best single model by kweonwooj | 0.9396864 | 0.029975 | **182** | 0.0302794 | **175** |
 | 84th | 
 | 14th | 
 | 7th | 
@@ -56,7 +59,15 @@ Submit the resulting csv file [here](https://www.kaggle.com/c/santander-product-
 
 ## Expected Result
 
-img of submitted result
+for bare minimum
+<div align="center">
+  <img src="./root_input/bare_minimum.png"><br><br>
+</div>
+
+for reduced version of kweonwooj
+<div align="center">
+  <img src="./root_input/kweonwooj.png"><br><br>
+</div>
 
 ## Winnig Solutions
 - 1st place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26835/1-solution) by idle_speculation
