@@ -1,0 +1,1248 @@
+restore data...
+restore data: cpu 8.34, time 29.79
+
+['age', 'antiguedad', 'canal_entrada', 'cod_prov', 'conyuemp_n', 'dato_minus_alta', 'fecha_alta_month', 'fecha_alta_year', 'fecha_dato', 'fecha_dato_month', 'fecha_dato_year', 'ind_actividad_cliente', 'ind_ahor_fin_ult1', 'ind_ahor_fin_ult1_max_2_3', 'ind_ahor_fin_ult1_max_2_5', 'ind_ahor_fin_ult1_min_2_3', 'ind_ahor_fin_ult1_min_2_5', 'ind_ahor_fin_ult1_prev1', 'ind_ahor_fin_ult1_prev2', 'ind_ahor_fin_ult1_std_1_3', 'ind_ahor_fin_ult1_std_1_5', 'ind_ahor_fin_ult1_std_2_5', 'ind_aval_fin_ult1', 'ind_aval_fin_ult1_max_2_3', 'ind_aval_fin_ult1_max_2_5', 'ind_aval_fin_ult1_min_2_3', 'ind_aval_fin_ult1_min_2_5', 'ind_aval_fin_ult1_prev1', 'ind_aval_fin_ult1_prev2', 'ind_aval_fin_ult1_std_1_3', 'ind_aval_fin_ult1_std_1_5', 'ind_aval_fin_ult1_std_2_5', 'ind_cco_fin_ult1', 'ind_cco_fin_ult1_max_2_3', 'ind_cco_fin_ult1_max_2_5', 'ind_cco_fin_ult1_min_2_3', 'ind_cco_fin_ult1_min_2_5', 'ind_cco_fin_ult1_prev1', 'ind_cco_fin_ult1_prev2', 'ind_cco_fin_ult1_std_1_3', 'ind_cco_fin_ult1_std_1_5', 'ind_cco_fin_ult1_std_2_5', 'ind_cder_fin_ult1', 'ind_cder_fin_ult1_max_2_3', 'ind_cder_fin_ult1_max_2_5', 'ind_cder_fin_ult1_min_2_3', 'ind_cder_fin_ult1_min_2_5', 'ind_cder_fin_ult1_prev1', 'ind_cder_fin_ult1_prev2', 'ind_cder_fin_ult1_std_1_3', 'ind_cder_fin_ult1_std_1_5', 'ind_cder_fin_ult1_std_2_5', 'ind_cno_fin_ult1', 'ind_cno_fin_ult1_max_2_3', 'ind_cno_fin_ult1_max_2_5', 'ind_cno_fin_ult1_min_2_3', 'ind_cno_fin_ult1_min_2_5', 'ind_cno_fin_ult1_prev1', 'ind_cno_fin_ult1_prev2', 'ind_cno_fin_ult1_std_1_3', 'ind_cno_fin_ult1_std_1_5', 'ind_cno_fin_ult1_std_2_5', 'ind_ctju_fin_ult1', 'ind_ctju_fin_ult1_max_2_3', 'ind_ctju_fin_ult1_max_2_5', 'ind_ctju_fin_ult1_min_2_3', 'ind_ctju_fin_ult1_min_2_5', 'ind_ctju_fin_ult1_prev1', 'ind_ctju_fin_ult1_prev2', 'ind_ctju_fin_ult1_std_1_3', 'ind_ctju_fin_ult1_std_1_5', 'ind_ctju_fin_ult1_std_2_5', 'ind_ctma_fin_ult1', 'ind_ctma_fin_ult1_max_2_3', 'ind_ctma_fin_ult1_max_2_5', 'ind_ctma_fin_ult1_min_2_3', 'ind_ctma_fin_ult1_min_2_5', 'ind_ctma_fin_ult1_prev1', 'ind_ctma_fin_ult1_prev2', 'ind_ctma_fin_ult1_std_1_3', 'ind_ctma_fin_ult1_std_1_5', 'ind_ctma_fin_ult1_std_2_5', 'ind_ctop_fin_ult1', 'ind_ctop_fin_ult1_max_2_3', 'ind_ctop_fin_ult1_max_2_5', 'ind_ctop_fin_ult1_min_2_3', 'ind_ctop_fin_ult1_min_2_5', 'ind_ctop_fin_ult1_prev1', 'ind_ctop_fin_ult1_prev2', 'ind_ctop_fin_ult1_std_1_3', 'ind_ctop_fin_ult1_std_1_5', 'ind_ctop_fin_ult1_std_2_5', 'ind_ctpp_fin_ult1', 'ind_ctpp_fin_ult1_max_2_3', 'ind_ctpp_fin_ult1_max_2_5', 'ind_ctpp_fin_ult1_min_2_3', 'ind_ctpp_fin_ult1_min_2_5', 'ind_ctpp_fin_ult1_prev1', 'ind_ctpp_fin_ult1_prev2', 'ind_ctpp_fin_ult1_std_1_3', 'ind_ctpp_fin_ult1_std_1_5', 'ind_ctpp_fin_ult1_std_2_5', 'ind_deco_fin_ult1', 'ind_deco_fin_ult1_max_2_3', 'ind_deco_fin_ult1_max_2_5', 'ind_deco_fin_ult1_min_2_3', 'ind_deco_fin_ult1_min_2_5', 'ind_deco_fin_ult1_prev1', 'ind_deco_fin_ult1_prev2', 'ind_deco_fin_ult1_std_1_3', 'ind_deco_fin_ult1_std_1_5', 'ind_deco_fin_ult1_std_2_5', 'ind_dela_fin_ult1', 'ind_dela_fin_ult1_max_2_3', 'ind_dela_fin_ult1_max_2_5', 'ind_dela_fin_ult1_min_2_3', 'ind_dela_fin_ult1_min_2_5', 'ind_dela_fin_ult1_prev1', 'ind_dela_fin_ult1_prev2', 'ind_dela_fin_ult1_std_1_3', 'ind_dela_fin_ult1_std_1_5', 'ind_dela_fin_ult1_std_2_5', 'ind_deme_fin_ult1', 'ind_deme_fin_ult1_max_2_3', 'ind_deme_fin_ult1_max_2_5', 'ind_deme_fin_ult1_min_2_3', 'ind_deme_fin_ult1_min_2_5', 'ind_deme_fin_ult1_prev1', 'ind_deme_fin_ult1_prev2', 'ind_deme_fin_ult1_std_1_3', 'ind_deme_fin_ult1_std_1_5', 'ind_deme_fin_ult1_std_2_5', 'ind_ecue_fin_ult1', 'ind_ecue_fin_ult1_max_2_3', 'ind_ecue_fin_ult1_max_2_5', 'ind_ecue_fin_ult1_min_2_3', 'ind_ecue_fin_ult1_min_2_5', 'ind_ecue_fin_ult1_prev1', 'ind_ecue_fin_ult1_prev2', 'ind_ecue_fin_ult1_std_1_3', 'ind_ecue_fin_ult1_std_1_5', 'ind_ecue_fin_ult1_std_2_5', 'ind_empleado_a', 'ind_empleado_b', 'ind_empleado_f', 'ind_empleado_n', 'ind_fond_fin_ult1', 'ind_fond_fin_ult1_max_2_3', 'ind_fond_fin_ult1_max_2_5', 'ind_fond_fin_ult1_min_2_3', 'ind_fond_fin_ult1_min_2_5', 'ind_fond_fin_ult1_prev1', 'ind_fond_fin_ult1_prev2', 'ind_fond_fin_ult1_std_1_3', 'ind_fond_fin_ult1_std_1_5', 'ind_fond_fin_ult1_std_2_5', 'ind_hip_fin_ult1', 'ind_hip_fin_ult1_max_2_3', 'ind_hip_fin_ult1_max_2_5', 'ind_hip_fin_ult1_min_2_3', 'ind_hip_fin_ult1_min_2_5', 'ind_hip_fin_ult1_prev1', 'ind_hip_fin_ult1_prev2', 'ind_hip_fin_ult1_std_1_3', 'ind_hip_fin_ult1_std_1_5', 'ind_hip_fin_ult1_std_2_5', 'ind_nom_pens_ult1', 'ind_nom_pens_ult1_max_2_3', 'ind_nom_pens_ult1_max_2_5', 'ind_nom_pens_ult1_min_2_3', 'ind_nom_pens_ult1_min_2_5', 'ind_nom_pens_ult1_prev1', 'ind_nom_pens_ult1_prev2', 'ind_nom_pens_ult1_std_1_3', 'ind_nom_pens_ult1_std_1_5', 'ind_nom_pens_ult1_std_2_5', 'ind_nomina_ult1', 'ind_nomina_ult1_max_2_3', 'ind_nomina_ult1_max_2_5', 'ind_nomina_ult1_min_2_3', 'ind_nomina_ult1_min_2_5', 'ind_nomina_ult1_prev1', 'ind_nomina_ult1_prev2', 'ind_nomina_ult1_std_1_3', 'ind_nomina_ult1_std_1_5', 'ind_nomina_ult1_std_2_5', 'ind_nuevo_new', 'ind_plan_fin_ult1', 'ind_plan_fin_ult1_max_2_3', 'ind_plan_fin_ult1_max_2_5', 'ind_plan_fin_ult1_min_2_3', 'ind_plan_fin_ult1_min_2_5', 'ind_plan_fin_ult1_prev1', 'ind_plan_fin_ult1_prev2', 'ind_plan_fin_ult1_std_1_3', 'ind_plan_fin_ult1_std_1_5', 'ind_plan_fin_ult1_std_2_5', 'ind_pres_fin_ult1', 'ind_pres_fin_ult1_max_2_3', 'ind_pres_fin_ult1_max_2_5', 'ind_pres_fin_ult1_min_2_3', 'ind_pres_fin_ult1_min_2_5', 'ind_pres_fin_ult1_prev1', 'ind_pres_fin_ult1_prev2', 'ind_pres_fin_ult1_std_1_3', 'ind_pres_fin_ult1_std_1_5', 'ind_pres_fin_ult1_std_2_5', 'ind_reca_fin_ult1', 'ind_reca_fin_ult1_max_2_3', 'ind_reca_fin_ult1_max_2_5', 'ind_reca_fin_ult1_min_2_3', 'ind_reca_fin_ult1_min_2_5', 'ind_reca_fin_ult1_prev1', 'ind_reca_fin_ult1_prev2', 'ind_reca_fin_ult1_std_1_3', 'ind_reca_fin_ult1_std_1_5', 'ind_reca_fin_ult1_std_2_5', 'ind_recibo_ult1', 'ind_recibo_ult1_max_2_3', 'ind_recibo_ult1_max_2_5', 'ind_recibo_ult1_min_2_3', 'ind_recibo_ult1_min_2_5', 'ind_recibo_ult1_prev1', 'ind_recibo_ult1_prev2', 'ind_recibo_ult1_std_1_3', 'ind_recibo_ult1_std_1_5', 'ind_recibo_ult1_std_2_5', 'ind_tjcr_fin_ult1', 'ind_tjcr_fin_ult1_max_2_3', 'ind_tjcr_fin_ult1_max_2_5', 'ind_tjcr_fin_ult1_min_2_3', 'ind_tjcr_fin_ult1_min_2_5', 'ind_tjcr_fin_ult1_prev1', 'ind_tjcr_fin_ult1_prev2', 'ind_tjcr_fin_ult1_std_1_3', 'ind_tjcr_fin_ult1_std_1_5', 'ind_tjcr_fin_ult1_std_2_5', 'ind_valo_fin_ult1', 'ind_valo_fin_ult1_max_2_3', 'ind_valo_fin_ult1_max_2_5', 'ind_valo_fin_ult1_min_2_3', 'ind_valo_fin_ult1_min_2_5', 'ind_valo_fin_ult1_prev1', 'ind_valo_fin_ult1_prev2', 'ind_valo_fin_ult1_std_1_3', 'ind_valo_fin_ult1_std_1_5', 'ind_valo_fin_ult1_std_2_5', 'ind_viv_fin_ult1', 'ind_viv_fin_ult1_max_2_3', 'ind_viv_fin_ult1_max_2_5', 'ind_viv_fin_ult1_min_2_3', 'ind_viv_fin_ult1_min_2_5', 'ind_viv_fin_ult1_prev1', 'ind_viv_fin_ult1_prev2', 'ind_viv_fin_ult1_std_1_3', 'ind_viv_fin_ult1_std_1_5', 'ind_viv_fin_ult1_std_2_5', 'indext_s', 'indfall_s', 'indrel_1', 'indrel_1mes', 'indrel_99', 'indresi_n', 'int_date', 'ncodpers', 'pais_residencia', 'renta', 'renta_top', 'segmento_particulares', 'segmento_top', 'segmento_universitario', 'sexo_h', 'sexo_v', 'tipodom', 'tiprel_1mes_a', 'tiprel_1mes_i', 'tiprel_1mes_p', 'tiprel_1mes_r']
+278 278
+251 251
+ind_ahor_fin_ult1 (1, 278)
+ind_aval_fin_ult1 (4, 278)
+ind_cco_fin_ult1 (65249, 278)
+ind_cder_fin_ult1 (131, 278)
+ind_cno_fin_ult1 (34752, 278)
+ind_ctju_fin_ult1 (442, 278)
+ind_ctma_fin_ult1 (6344, 278)
+ind_ctop_fin_ult1 (3643, 278)
+ind_ctpp_fin_ult1 (2287, 278)
+ind_deco_fin_ult1 (3061, 278)
+ind_deme_fin_ult1 (250, 278)
+ind_dela_fin_ult1 (12613, 278)
+ind_ecue_fin_ult1 (23652, 278)
+ind_fond_fin_ult1 (3633, 278)
+ind_hip_fin_ult1 (72, 278)
+ind_plan_fin_ult1 (596, 278)
+ind_pres_fin_ult1 (140, 278)
+ind_reca_fin_ult1 (8955, 278)
+ind_tjcr_fin_ult1 (64870, 278)
+ind_valo_fin_ult1 (4665, 278)
+ind_viv_fin_ult1 (63, 278)
+ind_nomina_ult1 (68265, 278)
+ind_nom_pens_ult1 (79196, 278)
+ind_recibo_ult1 (142983, 278)
+(array([1, 2, 3, 4, 5, 6, 7]), array([334120,  64115,  18222,   2051,    122,      5,      1]))
+(array([ 0.42437285,  0.43459821,  0.44932896,  0.47236655,  0.51341712,
+        0.60653066,  1.        ]), array([     1,      5,    122,   2051,  18222,  64115, 334120]))
+before merge 525867
+after merge 525867
+(525867, 283)
+prepare test data...
+prepare test data: cpu 82.07, time 82.15
+
+Max MAP@7 2016-05-28 0.0300810542776 1.0
+XGBoost...
+train...
+{'colsample_bylevel': 0.9, 'max_depth': 8, 'eta': 0.1, 'silent': 1, 'colsample_bytree': 0.8, 'num_class': 24, 'eval_metric': 'mlogloss', 'objective': 'multi:softprob', 'min_child_weight': 10}
+[0]	train-mlogloss:2.56307	eval-mlogloss:2.56692
+Multiple eval metrics have been passed: 'eval-mlogloss' will be used for early stopping.
+
+Will train until eval-mlogloss hasn't improved in 20 rounds.
+[1]	train-mlogloss:2.2989	eval-mlogloss:2.3047
+[2]	train-mlogloss:2.10942	eval-mlogloss:2.11651
+[3]	train-mlogloss:1.96575	eval-mlogloss:1.97407
+[4]	train-mlogloss:1.84804	eval-mlogloss:1.85736
+[5]	train-mlogloss:1.74877	eval-mlogloss:1.75902
+[6]	train-mlogloss:1.6636	eval-mlogloss:1.6746
+[7]	train-mlogloss:1.59044	eval-mlogloss:1.60216
+[8]	train-mlogloss:1.52698	eval-mlogloss:1.5395
+[9]	train-mlogloss:1.47115	eval-mlogloss:1.48433
+[10]	train-mlogloss:1.42104	eval-mlogloss:1.43497
+[11]	train-mlogloss:1.37643	eval-mlogloss:1.39103
+[12]	train-mlogloss:1.33652	eval-mlogloss:1.35169
+[13]	train-mlogloss:1.29974	eval-mlogloss:1.31545
+[14]	train-mlogloss:1.26695	eval-mlogloss:1.28326
+[15]	train-mlogloss:1.23709	eval-mlogloss:1.25399
+[16]	train-mlogloss:1.20954	eval-mlogloss:1.22692
+[17]	train-mlogloss:1.18482	eval-mlogloss:1.20277
+[18]	train-mlogloss:1.16248	eval-mlogloss:1.18095
+[19]	train-mlogloss:1.14164	eval-mlogloss:1.16064
+[20]	train-mlogloss:1.12254	eval-mlogloss:1.14198
+[21]	train-mlogloss:1.10492	eval-mlogloss:1.1248
+[22]	train-mlogloss:1.08898	eval-mlogloss:1.10941
+[23]	train-mlogloss:1.07402	eval-mlogloss:1.09492
+[24]	train-mlogloss:1.06035	eval-mlogloss:1.08172
+[25]	train-mlogloss:1.04744	eval-mlogloss:1.06926
+[26]	train-mlogloss:1.03546	eval-mlogloss:1.05773
+[27]	train-mlogloss:1.02437	eval-mlogloss:1.04705
+[28]	train-mlogloss:1.01416	eval-mlogloss:1.03728
+[29]	train-mlogloss:1.00471	eval-mlogloss:1.02828
+[30]	train-mlogloss:0.995905	eval-mlogloss:1.01996
+[31]	train-mlogloss:0.987547	eval-mlogloss:1.01209
+[32]	train-mlogloss:0.979845	eval-mlogloss:1.00482
+[33]	train-mlogloss:0.972475	eval-mlogloss:0.997939
+[34]	train-mlogloss:0.96566	eval-mlogloss:0.991623
+[35]	train-mlogloss:0.959386	eval-mlogloss:0.985859
+[36]	train-mlogloss:0.953306	eval-mlogloss:0.980288
+[37]	train-mlogloss:0.947611	eval-mlogloss:0.975049
+[38]	train-mlogloss:0.942225	eval-mlogloss:0.97014
+[39]	train-mlogloss:0.937232	eval-mlogloss:0.965568
+[40]	train-mlogloss:0.93249	eval-mlogloss:0.961299
+[41]	train-mlogloss:0.928107	eval-mlogloss:0.957347
+[42]	train-mlogloss:0.923852	eval-mlogloss:0.953577
+[43]	train-mlogloss:0.91981	eval-mlogloss:0.950045
+[44]	train-mlogloss:0.916101	eval-mlogloss:0.946771
+[45]	train-mlogloss:0.912577	eval-mlogloss:0.943652
+[46]	train-mlogloss:0.909199	eval-mlogloss:0.940745
+[47]	train-mlogloss:0.90598	eval-mlogloss:0.938003
+[48]	train-mlogloss:0.902979	eval-mlogloss:0.935421
+[49]	train-mlogloss:0.900022	eval-mlogloss:0.932901
+[50]	train-mlogloss:0.897267	eval-mlogloss:0.930613
+[51]	train-mlogloss:0.894647	eval-mlogloss:0.928418
+[52]	train-mlogloss:0.892102	eval-mlogloss:0.92629
+[53]	train-mlogloss:0.889738	eval-mlogloss:0.924313
+[54]	train-mlogloss:0.887458	eval-mlogloss:0.922503
+[55]	train-mlogloss:0.885171	eval-mlogloss:0.92067
+[56]	train-mlogloss:0.883131	eval-mlogloss:0.91897
+[57]	train-mlogloss:0.881183	eval-mlogloss:0.917429
+[58]	train-mlogloss:0.879254	eval-mlogloss:0.915943
+[59]	train-mlogloss:0.877401	eval-mlogloss:0.914477
+[60]	train-mlogloss:0.875558	eval-mlogloss:0.913051
+[61]	train-mlogloss:0.873843	eval-mlogloss:0.911829
+[62]	train-mlogloss:0.872238	eval-mlogloss:0.910619
+[63]	train-mlogloss:0.870616	eval-mlogloss:0.909444
+[64]	train-mlogloss:0.869152	eval-mlogloss:0.908374
+[65]	train-mlogloss:0.867775	eval-mlogloss:0.907336
+[66]	train-mlogloss:0.866348	eval-mlogloss:0.906357
+[67]	train-mlogloss:0.865039	eval-mlogloss:0.905385
+[68]	train-mlogloss:0.863646	eval-mlogloss:0.90451
+[69]	train-mlogloss:0.862392	eval-mlogloss:0.903651
+[70]	train-mlogloss:0.861152	eval-mlogloss:0.902834
+[71]	train-mlogloss:0.859995	eval-mlogloss:0.902074
+[72]	train-mlogloss:0.858901	eval-mlogloss:0.901374
+[73]	train-mlogloss:0.85783	eval-mlogloss:0.900645
+[74]	train-mlogloss:0.856724	eval-mlogloss:0.899974
+[75]	train-mlogloss:0.855701	eval-mlogloss:0.899338
+[76]	train-mlogloss:0.854667	eval-mlogloss:0.89874
+[77]	train-mlogloss:0.853768	eval-mlogloss:0.898213
+[78]	train-mlogloss:0.852794	eval-mlogloss:0.897603
+[79]	train-mlogloss:0.851895	eval-mlogloss:0.897106
+[80]	train-mlogloss:0.851052	eval-mlogloss:0.896632
+[81]	train-mlogloss:0.850234	eval-mlogloss:0.896206
+[82]	train-mlogloss:0.84942	eval-mlogloss:0.895774
+[83]	train-mlogloss:0.84861	eval-mlogloss:0.895346
+[84]	train-mlogloss:0.847877	eval-mlogloss:0.89494
+[85]	train-mlogloss:0.847111	eval-mlogloss:0.894505
+[86]	train-mlogloss:0.84645	eval-mlogloss:0.894157
+[87]	train-mlogloss:0.845765	eval-mlogloss:0.89381
+[88]	train-mlogloss:0.845045	eval-mlogloss:0.893438
+[89]	train-mlogloss:0.844388	eval-mlogloss:0.893119
+[90]	train-mlogloss:0.843741	eval-mlogloss:0.892816
+[91]	train-mlogloss:0.843133	eval-mlogloss:0.892503
+[92]	train-mlogloss:0.842499	eval-mlogloss:0.892239
+[93]	train-mlogloss:0.841846	eval-mlogloss:0.891944
+[94]	train-mlogloss:0.841299	eval-mlogloss:0.89167
+[95]	train-mlogloss:0.840674	eval-mlogloss:0.89139
+[96]	train-mlogloss:0.84008	eval-mlogloss:0.891097
+[97]	train-mlogloss:0.839505	eval-mlogloss:0.890841
+[98]	train-mlogloss:0.838952	eval-mlogloss:0.890625
+[99]	train-mlogloss:0.838335	eval-mlogloss:0.890406
+[100]	train-mlogloss:0.837648	eval-mlogloss:0.890095
+[101]	train-mlogloss:0.837097	eval-mlogloss:0.889931
+[102]	train-mlogloss:0.836581	eval-mlogloss:0.889762
+[103]	train-mlogloss:0.836025	eval-mlogloss:0.889579
+[104]	train-mlogloss:0.8354	eval-mlogloss:0.889329
+[105]	train-mlogloss:0.834942	eval-mlogloss:0.8892
+[106]	train-mlogloss:0.834407	eval-mlogloss:0.889032
+[107]	train-mlogloss:0.833823	eval-mlogloss:0.888853
+[108]	train-mlogloss:0.833316	eval-mlogloss:0.888674
+[109]	train-mlogloss:0.832879	eval-mlogloss:0.88854
+[110]	train-mlogloss:0.832417	eval-mlogloss:0.888365
+[111]	train-mlogloss:0.83195	eval-mlogloss:0.888243
+[112]	train-mlogloss:0.831493	eval-mlogloss:0.888147
+[113]	train-mlogloss:0.831017	eval-mlogloss:0.88801
+[114]	train-mlogloss:0.830553	eval-mlogloss:0.887904
+[115]	train-mlogloss:0.830079	eval-mlogloss:0.887768
+[116]	train-mlogloss:0.829646	eval-mlogloss:0.887673
+[117]	train-mlogloss:0.829195	eval-mlogloss:0.887616
+[118]	train-mlogloss:0.828697	eval-mlogloss:0.887514
+[119]	train-mlogloss:0.828291	eval-mlogloss:0.887397
+[120]	train-mlogloss:0.827871	eval-mlogloss:0.887282
+[121]	train-mlogloss:0.827452	eval-mlogloss:0.887214
+[122]	train-mlogloss:0.827008	eval-mlogloss:0.887113
+[123]	train-mlogloss:0.826548	eval-mlogloss:0.887006
+[124]	train-mlogloss:0.826197	eval-mlogloss:0.886935
+[125]	train-mlogloss:0.825777	eval-mlogloss:0.886851
+[126]	train-mlogloss:0.825404	eval-mlogloss:0.886788
+[127]	train-mlogloss:0.824958	eval-mlogloss:0.886712
+[128]	train-mlogloss:0.824448	eval-mlogloss:0.88664
+[129]	train-mlogloss:0.82398	eval-mlogloss:0.886595
+[130]	train-mlogloss:0.823587	eval-mlogloss:0.886553
+[131]	train-mlogloss:0.823108	eval-mlogloss:0.886498
+[132]	train-mlogloss:0.822693	eval-mlogloss:0.886404
+[133]	train-mlogloss:0.822294	eval-mlogloss:0.886332
+[134]	train-mlogloss:0.821965	eval-mlogloss:0.886325
+[135]	train-mlogloss:0.821479	eval-mlogloss:0.886271
+[136]	train-mlogloss:0.820964	eval-mlogloss:0.886196
+[137]	train-mlogloss:0.820513	eval-mlogloss:0.886161
+[138]	train-mlogloss:0.820119	eval-mlogloss:0.886141
+[139]	train-mlogloss:0.819744	eval-mlogloss:0.886118
+[140]	train-mlogloss:0.819293	eval-mlogloss:0.886053
+[141]	train-mlogloss:0.818804	eval-mlogloss:0.886042
+[142]	train-mlogloss:0.818437	eval-mlogloss:0.886019
+[143]	train-mlogloss:0.817964	eval-mlogloss:0.885953
+[144]	train-mlogloss:0.817565	eval-mlogloss:0.885936
+[145]	train-mlogloss:0.817122	eval-mlogloss:0.88589
+[146]	train-mlogloss:0.816645	eval-mlogloss:0.885849
+[147]	train-mlogloss:0.81631	eval-mlogloss:0.885807
+[148]	train-mlogloss:0.815811	eval-mlogloss:0.885775
+[149]	train-mlogloss:0.815437	eval-mlogloss:0.885796
+[150]	train-mlogloss:0.815021	eval-mlogloss:0.885757
+[151]	train-mlogloss:0.814614	eval-mlogloss:0.885721
+[152]	train-mlogloss:0.814297	eval-mlogloss:0.885708
+[153]	train-mlogloss:0.813961	eval-mlogloss:0.885722
+[154]	train-mlogloss:0.813458	eval-mlogloss:0.885704
+[155]	train-mlogloss:0.813067	eval-mlogloss:0.885703
+[156]	train-mlogloss:0.812723	eval-mlogloss:0.885694
+[157]	train-mlogloss:0.812359	eval-mlogloss:0.885678
+[158]	train-mlogloss:0.811912	eval-mlogloss:0.885649
+[159]	train-mlogloss:0.811583	eval-mlogloss:0.885639
+[160]	train-mlogloss:0.811206	eval-mlogloss:0.885613
+[161]	train-mlogloss:0.810904	eval-mlogloss:0.885602
+[162]	train-mlogloss:0.810604	eval-mlogloss:0.885589
+[163]	train-mlogloss:0.810162	eval-mlogloss:0.885558
+[164]	train-mlogloss:0.809762	eval-mlogloss:0.885565
+[165]	train-mlogloss:0.809422	eval-mlogloss:0.885531
+[166]	train-mlogloss:0.809096	eval-mlogloss:0.885531
+[167]	train-mlogloss:0.808638	eval-mlogloss:0.885467
+[168]	train-mlogloss:0.80824	eval-mlogloss:0.88544
+[169]	train-mlogloss:0.807738	eval-mlogloss:0.885389
+[170]	train-mlogloss:0.807363	eval-mlogloss:0.885384
+[171]	train-mlogloss:0.807013	eval-mlogloss:0.885384
+[172]	train-mlogloss:0.806602	eval-mlogloss:0.885366
+[173]	train-mlogloss:0.806204	eval-mlogloss:0.885373
+[174]	train-mlogloss:0.805827	eval-mlogloss:0.885381
+[175]	train-mlogloss:0.805394	eval-mlogloss:0.885374
+[176]	train-mlogloss:0.805077	eval-mlogloss:0.885374
+[177]	train-mlogloss:0.804744	eval-mlogloss:0.885336
+[178]	train-mlogloss:0.804309	eval-mlogloss:0.885326
+[179]	train-mlogloss:0.803913	eval-mlogloss:0.885343
+[180]	train-mlogloss:0.80357	eval-mlogloss:0.885345
+[181]	train-mlogloss:0.803204	eval-mlogloss:0.885355
+[182]	train-mlogloss:0.802906	eval-mlogloss:0.885315
+[183]	train-mlogloss:0.802504	eval-mlogloss:0.8853
+[184]	train-mlogloss:0.802155	eval-mlogloss:0.885307
+[185]	train-mlogloss:0.801856	eval-mlogloss:0.885286
+[186]	train-mlogloss:0.801586	eval-mlogloss:0.885272
+[187]	train-mlogloss:0.801236	eval-mlogloss:0.885278
+[188]	train-mlogloss:0.800938	eval-mlogloss:0.885307
+[189]	train-mlogloss:0.800647	eval-mlogloss:0.885295
+[190]	train-mlogloss:0.800296	eval-mlogloss:0.885317
+[191]	train-mlogloss:0.799887	eval-mlogloss:0.88531
+[192]	train-mlogloss:0.799574	eval-mlogloss:0.885325
+[193]	train-mlogloss:0.799224	eval-mlogloss:0.885352
+[194]	train-mlogloss:0.79883	eval-mlogloss:0.885357
+[195]	train-mlogloss:0.798494	eval-mlogloss:0.885358
+[196]	train-mlogloss:0.798107	eval-mlogloss:0.885357
+[197]	train-mlogloss:0.797818	eval-mlogloss:0.88536
+[198]	train-mlogloss:0.79753	eval-mlogloss:0.885346
+[199]	train-mlogloss:0.797166	eval-mlogloss:0.885332
+[200]	train-mlogloss:0.79682	eval-mlogloss:0.885344
+[201]	train-mlogloss:0.796411	eval-mlogloss:0.885333
+[202]	train-mlogloss:0.796083	eval-mlogloss:0.885361
+[203]	train-mlogloss:0.795751	eval-mlogloss:0.885393
+[204]	train-mlogloss:0.795458	eval-mlogloss:0.885392
+[205]	train-mlogloss:0.795067	eval-mlogloss:0.885441
+[206]	train-mlogloss:0.794721	eval-mlogloss:0.885487
+Stopping. Best iteration:
+[186]	train-mlogloss:0.801586	eval-mlogloss:0.885272
+
+train: cpu 44431.67, time 3777.22
+
+[0]	all_data-mlogloss:2.57026
+[1]	all_data-mlogloss:2.30545
+[2]	all_data-mlogloss:2.11346
+[3]	all_data-mlogloss:1.96982
+[4]	all_data-mlogloss:1.85052
+[5]	all_data-mlogloss:1.75109
+[6]	all_data-mlogloss:1.66815
+[7]	all_data-mlogloss:1.5959
+[8]	all_data-mlogloss:1.53199
+[9]	all_data-mlogloss:1.47449
+[10]	all_data-mlogloss:1.42449
+[11]	all_data-mlogloss:1.37893
+[12]	all_data-mlogloss:1.33836
+[13]	all_data-mlogloss:1.30185
+[14]	all_data-mlogloss:1.26888
+[15]	all_data-mlogloss:1.23909
+[16]	all_data-mlogloss:1.21177
+[17]	all_data-mlogloss:1.18769
+[18]	all_data-mlogloss:1.16525
+[19]	all_data-mlogloss:1.14432
+[20]	all_data-mlogloss:1.12518
+[21]	all_data-mlogloss:1.1075
+[22]	all_data-mlogloss:1.09122
+[23]	all_data-mlogloss:1.07667
+[24]	all_data-mlogloss:1.06336
+[25]	all_data-mlogloss:1.05092
+[26]	all_data-mlogloss:1.03909
+[27]	all_data-mlogloss:1.02806
+[28]	all_data-mlogloss:1.01774
+[29]	all_data-mlogloss:1.00812
+[30]	all_data-mlogloss:0.999426
+[31]	all_data-mlogloss:0.991036
+[32]	all_data-mlogloss:0.983227
+[33]	all_data-mlogloss:0.975939
+[34]	all_data-mlogloss:0.969335
+[35]	all_data-mlogloss:0.963063
+[36]	all_data-mlogloss:0.957119
+[37]	all_data-mlogloss:0.951651
+[38]	all_data-mlogloss:0.946305
+[39]	all_data-mlogloss:0.941332
+[40]	all_data-mlogloss:0.936634
+[41]	all_data-mlogloss:0.932058
+[42]	all_data-mlogloss:0.927988
+[43]	all_data-mlogloss:0.924019
+[44]	all_data-mlogloss:0.920344
+[45]	all_data-mlogloss:0.916729
+[46]	all_data-mlogloss:0.913331
+[47]	all_data-mlogloss:0.910179
+[48]	all_data-mlogloss:0.907198
+[49]	all_data-mlogloss:0.90429
+[50]	all_data-mlogloss:0.901597
+[51]	all_data-mlogloss:0.898973
+[52]	all_data-mlogloss:0.896489
+[53]	all_data-mlogloss:0.894106
+[54]	all_data-mlogloss:0.891879
+[55]	all_data-mlogloss:0.889716
+[56]	all_data-mlogloss:0.887708
+[57]	all_data-mlogloss:0.885784
+[58]	all_data-mlogloss:0.883876
+[59]	all_data-mlogloss:0.882016
+[60]	all_data-mlogloss:0.880303
+[61]	all_data-mlogloss:0.878664
+[62]	all_data-mlogloss:0.877087
+[63]	all_data-mlogloss:0.875495
+[64]	all_data-mlogloss:0.874064
+[65]	all_data-mlogloss:0.872658
+[66]	all_data-mlogloss:0.871334
+[67]	all_data-mlogloss:0.869996
+[68]	all_data-mlogloss:0.868797
+[69]	all_data-mlogloss:0.867578
+[70]	all_data-mlogloss:0.866443
+[71]	all_data-mlogloss:0.865281
+[72]	all_data-mlogloss:0.864187
+[73]	all_data-mlogloss:0.863133
+[74]	all_data-mlogloss:0.862056
+[75]	all_data-mlogloss:0.861108
+[76]	all_data-mlogloss:0.860167
+[77]	all_data-mlogloss:0.859307
+[78]	all_data-mlogloss:0.858388
+[79]	all_data-mlogloss:0.857454
+[80]	all_data-mlogloss:0.856647
+[81]	all_data-mlogloss:0.85589
+[82]	all_data-mlogloss:0.855051
+[83]	all_data-mlogloss:0.85432
+[84]	all_data-mlogloss:0.853594
+[85]	all_data-mlogloss:0.852808
+[86]	all_data-mlogloss:0.852098
+[87]	all_data-mlogloss:0.851364
+[88]	all_data-mlogloss:0.850665
+[89]	all_data-mlogloss:0.84998
+[90]	all_data-mlogloss:0.849427
+[91]	all_data-mlogloss:0.848783
+[92]	all_data-mlogloss:0.848094
+[93]	all_data-mlogloss:0.847439
+[94]	all_data-mlogloss:0.846911
+[95]	all_data-mlogloss:0.846266
+[96]	all_data-mlogloss:0.845722
+[97]	all_data-mlogloss:0.845213
+[98]	all_data-mlogloss:0.844658
+[99]	all_data-mlogloss:0.844149
+[100]	all_data-mlogloss:0.843596
+[101]	all_data-mlogloss:0.842987
+[102]	all_data-mlogloss:0.842501
+[103]	all_data-mlogloss:0.841986
+[104]	all_data-mlogloss:0.841481
+[105]	all_data-mlogloss:0.84105
+[106]	all_data-mlogloss:0.840538
+[107]	all_data-mlogloss:0.840137
+[108]	all_data-mlogloss:0.839635
+[109]	all_data-mlogloss:0.839109
+[110]	all_data-mlogloss:0.838619
+[111]	all_data-mlogloss:0.83808
+[112]	all_data-mlogloss:0.837648
+[113]	all_data-mlogloss:0.837194
+[114]	all_data-mlogloss:0.836675
+[115]	all_data-mlogloss:0.83634
+[116]	all_data-mlogloss:0.835917
+[117]	all_data-mlogloss:0.835514
+[118]	all_data-mlogloss:0.835065
+[119]	all_data-mlogloss:0.834611
+[120]	all_data-mlogloss:0.834252
+[121]	all_data-mlogloss:0.833903
+[122]	all_data-mlogloss:0.833515
+[123]	all_data-mlogloss:0.833138
+[124]	all_data-mlogloss:0.832774
+[125]	all_data-mlogloss:0.832375
+[126]	all_data-mlogloss:0.832038
+[127]	all_data-mlogloss:0.831683
+[128]	all_data-mlogloss:0.831379
+[129]	all_data-mlogloss:0.831086
+[130]	all_data-mlogloss:0.830688
+[131]	all_data-mlogloss:0.830354
+[132]	all_data-mlogloss:0.829949
+[133]	all_data-mlogloss:0.829591
+[134]	all_data-mlogloss:0.829234
+[135]	all_data-mlogloss:0.828844
+[136]	all_data-mlogloss:0.828522
+[137]	all_data-mlogloss:0.828066
+[138]	all_data-mlogloss:0.827642
+[139]	all_data-mlogloss:0.82731
+[140]	all_data-mlogloss:0.827009
+[141]	all_data-mlogloss:0.82665
+[142]	all_data-mlogloss:0.826334
+[143]	all_data-mlogloss:0.825912
+[144]	all_data-mlogloss:0.825437
+[145]	all_data-mlogloss:0.825001
+[146]	all_data-mlogloss:0.824653
+[147]	all_data-mlogloss:0.824297
+[148]	all_data-mlogloss:0.823887
+[149]	all_data-mlogloss:0.823588
+[150]	all_data-mlogloss:0.823264
+[151]	all_data-mlogloss:0.822904
+[152]	all_data-mlogloss:0.822504
+[153]	all_data-mlogloss:0.822132
+[154]	all_data-mlogloss:0.82177
+[155]	all_data-mlogloss:0.821412
+[156]	all_data-mlogloss:0.821094
+[157]	all_data-mlogloss:0.820772
+[158]	all_data-mlogloss:0.820431
+[159]	all_data-mlogloss:0.820117
+[160]	all_data-mlogloss:0.819709
+[161]	all_data-mlogloss:0.819342
+[162]	all_data-mlogloss:0.819004
+[163]	all_data-mlogloss:0.818689
+[164]	all_data-mlogloss:0.81828
+[165]	all_data-mlogloss:0.817938
+[166]	all_data-mlogloss:0.817666
+[167]	all_data-mlogloss:0.817341
+[168]	all_data-mlogloss:0.816999
+[169]	all_data-mlogloss:0.816681
+[170]	all_data-mlogloss:0.816319
+[171]	all_data-mlogloss:0.81601
+[172]	all_data-mlogloss:0.815745
+[173]	all_data-mlogloss:0.815431
+[174]	all_data-mlogloss:0.815071
+[175]	all_data-mlogloss:0.814778
+[176]	all_data-mlogloss:0.8145
+[177]	all_data-mlogloss:0.814173
+[178]	all_data-mlogloss:0.813836
+[179]	all_data-mlogloss:0.81347
+[180]	all_data-mlogloss:0.813085
+[181]	all_data-mlogloss:0.812755
+[182]	all_data-mlogloss:0.812442
+[183]	all_data-mlogloss:0.812124
+[184]	all_data-mlogloss:0.811849
+[185]	all_data-mlogloss:0.811554
+[186]	all_data-mlogloss:0.81122
+[187]	all_data-mlogloss:0.810893
+[188]	all_data-mlogloss:0.810655
+[189]	all_data-mlogloss:0.81033
+[190]	all_data-mlogloss:0.810041
+[191]	all_data-mlogloss:0.809786
+[192]	all_data-mlogloss:0.809576
+[193]	all_data-mlogloss:0.809246
+[194]	all_data-mlogloss:0.808931
+[195]	all_data-mlogloss:0.808616
+[196]	all_data-mlogloss:0.8083
+[197]	all_data-mlogloss:0.807989
+[198]	all_data-mlogloss:0.807738
+[199]	all_data-mlogloss:0.807391
+[200]	all_data-mlogloss:0.806993
+[201]	all_data-mlogloss:0.806715
+[202]	all_data-mlogloss:0.806342
+[203]	all_data-mlogloss:0.806021
+[204]	all_data-mlogloss:0.805744
+[205]	all_data-mlogloss:0.805405
+[206]	all_data-mlogloss:0.805122
+[207]	all_data-mlogloss:0.804851
+[208]	all_data-mlogloss:0.804531
+[209]	all_data-mlogloss:0.8042
+[210]	all_data-mlogloss:0.803866
+[211]	all_data-mlogloss:0.803678
+[212]	all_data-mlogloss:0.803395
+[213]	all_data-mlogloss:0.803118
+[214]	all_data-mlogloss:0.802782
+[215]	all_data-mlogloss:0.802584
+[216]	all_data-mlogloss:0.802317
+[217]	all_data-mlogloss:0.80204
+[218]	all_data-mlogloss:0.801696
+[219]	all_data-mlogloss:0.801356
+[220]	all_data-mlogloss:0.801152
+[221]	all_data-mlogloss:0.800898
+[222]	all_data-mlogloss:0.800668
+[223]	all_data-mlogloss:0.800422
+[224]	all_data-mlogloss:0.800162
+[225]	all_data-mlogloss:0.799828
+[226]	all_data-mlogloss:0.799513
+[227]	all_data-mlogloss:0.799214
+[228]	all_data-mlogloss:0.798816
+[229]	all_data-mlogloss:0.798587
+[230]	all_data-mlogloss:0.798378
+[231]	all_data-mlogloss:0.798096
+[232]	all_data-mlogloss:0.797847
+Feature importance:
+('renta', 25252)
+('age', 23848)
+('antiguedad', 19675)
+('dato_minus_alta', 19339)
+('fecha_dato_month', 16570)
+('cod_prov', 11736)
+('fecha_alta_month', 11147)
+('canal_entrada', 10204)
+('fecha_alta_year', 4366)
+('ind_recibo_ult1_prev1', 3596)
+('ind_cco_fin_ult1_prev1', 3595)
+('sexo_v', 2776)
+('ind_cno_fin_ult1_prev1', 2454)
+('ind_nom_pens_ult1_prev1', 2379)
+('ind_recibo_ult1_std_1_5', 2318)
+('fecha_dato_year', 2274)
+('ind_tjcr_fin_ult1_std_1_5', 2142)
+('ind_tjcr_fin_ult1_prev1', 2117)
+('ind_ecue_fin_ult1_prev1', 2105)
+('segmento_top', 2010)
+('ind_cco_fin_ult1_std_1_5', 1918)
+('ind_actividad_cliente', 1840)
+('ind_nom_pens_ult1_std_1_5', 1796)
+('segmento_particulares', 1750)
+('ind_nomina_ult1_prev1', 1726)
+('ind_cno_fin_ult1_std_1_5', 1521)
+('ind_recibo_ult1_std_2_5', 1496)
+('ind_nomina_ult1_std_1_5', 1420)
+('ind_recibo_ult1_prev2', 1387)
+('ind_cco_fin_ult1_std_2_5', 1351)
+('ind_recibo_ult1_max_2_5', 1291)
+('ind_recibo_ult1_std_1_3', 1265)
+('ind_cco_fin_ult1_prev2', 1264)
+('ind_dela_fin_ult1_prev1', 1243)
+('ind_nom_pens_ult1_prev2', 1231)
+('sexo_h', 1219)
+('tiprel_1mes_i', 1213)
+('ind_nom_pens_ult1_std_1_3', 1146)
+('ind_reca_fin_ult1_prev1', 1109)
+('ind_ecue_fin_ult1_prev2', 1105)
+('ind_cco_fin_ult1_std_1_3', 1062)
+('ind_valo_fin_ult1_prev1', 988)
+('ind_tjcr_fin_ult1_std_2_5', 984)
+('ind_cco_fin_ult1_min_2_5', 974)
+('ind_cno_fin_ult1_prev2', 967)
+('ind_cco_fin_ult1_max_2_5', 950)
+('ind_nom_pens_ult1_std_2_5', 943)
+('indext_s', 942)
+('ind_dela_fin_ult1_std_1_5', 927)
+('renta_top', 926)
+('ind_cno_fin_ult1_max_2_5', 896)
+('ind_tjcr_fin_ult1_std_1_3', 896)
+('ind_nomina_ult1_prev2', 890)
+('segmento_universitario', 881)
+('ind_ecue_fin_ult1_std_1_5', 877)
+('ind_nomina_ult1_std_2_5', 861)
+('ind_recibo_ult1_min_2_5', 852)
+('ind_cco_fin_ult1_min_2_3', 850)
+('ind_recibo_ult1_max_2_3', 833)
+('tiprel_1mes_a', 832)
+('ind_ctop_fin_ult1_prev1', 823)
+('ind_tjcr_fin_ult1_prev2', 811)
+('ind_ctma_fin_ult1_prev1', 790)
+('ind_dela_fin_ult1_max_2_5', 788)
+('ind_recibo_ult1_min_2_3', 785)
+('ind_tjcr_fin_ult1_max_2_5', 774)
+('ind_fond_fin_ult1_prev1', 763)
+('ind_cco_fin_ult1_max_2_3', 759)
+('ind_cno_fin_ult1_std_2_5', 756)
+('ind_cno_fin_ult1_std_1_3', 743)
+('ind_ctpp_fin_ult1_prev1', 743)
+('ind_ecue_fin_ult1_min_2_5', 725)
+('ind_nomina_ult1_std_1_3', 714)
+('ind_dela_fin_ult1_prev2', 686)
+('ind_ecue_fin_ult1_max_2_5', 676)
+('ind_ctop_fin_ult1_prev2', 653)
+('ind_ecue_fin_ult1_min_2_3', 645)
+('ind_reca_fin_ult1_prev2', 630)
+('ind_cno_fin_ult1_min_2_5', 622)
+('ind_ctma_fin_ult1_std_1_5', 557)
+('ind_tjcr_fin_ult1_min_2_3', 550)
+('ind_tjcr_fin_ult1_min_2_5', 526)
+('ind_deco_fin_ult1_prev1', 524)
+('ind_nom_pens_ult1_max_2_5', 522)
+('ind_nom_pens_ult1_min_2_3', 521)
+('ind_tjcr_fin_ult1_max_2_3', 504)
+('ind_valo_fin_ult1_std_1_5', 495)
+('ind_ecue_fin_ult1_std_1_3', 490)
+('ind_nomina_ult1_min_2_3', 484)
+('ind_cno_fin_ult1_min_2_3', 482)
+('ind_deco_fin_ult1_std_1_5', 462)
+('ind_dela_fin_ult1_std_1_3', 457)
+('ind_dela_fin_ult1_min_2_5', 456)
+('ind_ctpp_fin_ult1_std_1_5', 455)
+('ind_cno_fin_ult1_max_2_3', 452)
+('ind_reca_fin_ult1_min_2_5', 450)
+('ind_ctop_fin_ult1_std_1_5', 449)
+('ind_ecue_fin_ult1_std_2_5', 438)
+('ind_ctpp_fin_ult1_prev2', 421)
+('ind_valo_fin_ult1_prev2', 419)
+('ind_ecue_fin_ult1_max_2_3', 414)
+('ind_ctma_fin_ult1_prev2', 395)
+('ind_plan_fin_ult1_prev1', 392)
+('ind_nuevo_new', 390)
+('ind_nom_pens_ult1_max_2_3', 376)
+('ind_ctop_fin_ult1_min_2_5', 371)
+('ind_nomina_ult1_max_2_5', 366)
+('ind_ctma_fin_ult1_max_2_5', 361)
+('ind_ctma_fin_ult1_std_2_5', 353)
+('ind_fond_fin_ult1_std_1_5', 352)
+('ind_dela_fin_ult1_std_2_5', 348)
+('ind_dela_fin_ult1_max_2_3', 341)
+('ind_ctop_fin_ult1_max_2_5', 336)
+('ind_deco_fin_ult1_min_2_3', 332)
+('ind_reca_fin_ult1_min_2_3', 325)
+('ind_nomina_ult1_max_2_3', 319)
+('ind_fond_fin_ult1_prev2', 319)
+('ind_ctma_fin_ult1_min_2_3', 318)
+('ind_deco_fin_ult1_max_2_5', 315)
+('ind_ctpp_fin_ult1_max_2_5', 312)
+('ind_ctma_fin_ult1_std_1_3', 298)
+('ind_deco_fin_ult1_std_2_5', 294)
+('ind_dela_fin_ult1_min_2_3', 294)
+('ind_deco_fin_ult1_prev2', 280)
+('ind_nom_pens_ult1_min_2_5', 278)
+('ind_valo_fin_ult1_max_2_5', 276)
+('ind_valo_fin_ult1_std_1_3', 275)
+('ind_deco_fin_ult1_std_1_3', 273)
+('ind_fond_fin_ult1_min_2_5', 266)
+('ind_nomina_ult1_min_2_5', 265)
+('ind_ctop_fin_ult1_std_2_5', 262)
+('ind_ctpp_fin_ult1_min_2_5', 246)
+('ind_fond_fin_ult1_max_2_5', 240)
+('ind_ctop_fin_ult1_max_2_3', 234)
+('ind_ctma_fin_ult1_max_2_3', 211)
+('ind_ctop_fin_ult1_std_1_3', 210)
+('ind_valo_fin_ult1_min_2_5', 207)
+('pais_residencia', 205)
+('ind_valo_fin_ult1_std_2_5', 204)
+('ind_ctpp_fin_ult1_std_1_3', 203)
+('ind_ctop_fin_ult1_min_2_3', 198)
+('ind_plan_fin_ult1_prev2', 193)
+('ind_hip_fin_ult1_prev1', 184)
+('ind_valo_fin_ult1_max_2_3', 178)
+('ind_reca_fin_ult1_std_1_5', 167)
+('ind_ctpp_fin_ult1_max_2_3', 166)
+('ind_valo_fin_ult1_min_2_3', 164)
+('ind_reca_fin_ult1_std_2_5', 163)
+('ind_ctpp_fin_ult1_std_2_5', 152)
+('ind_plan_fin_ult1_min_2_5', 151)
+('ind_fond_fin_ult1_min_2_3', 151)
+('ind_ctpp_fin_ult1_min_2_3', 149)
+('indrel_99', 139)
+('ind_empleado_a', 133)
+('ind_deme_fin_ult1_std_1_5', 131)
+('ind_ctju_fin_ult1_prev2', 122)
+('ind_deco_fin_ult1_max_2_3', 121)
+('ind_fond_fin_ult1_std_2_5', 120)
+('ind_plan_fin_ult1_max_2_5', 113)
+('ind_hip_fin_ult1_prev2', 107)
+('ind_ctju_fin_ult1_prev1', 104)
+('ind_ctju_fin_ult1_std_1_5', 104)
+('ind_deco_fin_ult1_min_2_5', 103)
+('ind_deme_fin_ult1_prev1', 100)
+('ind_ctma_fin_ult1_min_2_5', 96)
+('ind_fond_fin_ult1_max_2_3', 95)
+('ind_viv_fin_ult1_prev2', 95)
+('ind_pres_fin_ult1_std_1_5', 94)
+('ind_fond_fin_ult1_std_1_3', 93)
+('ind_viv_fin_ult1_std_1_5', 90)
+('indfall_s', 89)
+('ind_deme_fin_ult1_prev2', 85)
+('ind_empleado_n', 81)
+('ind_viv_fin_ult1_max_2_5', 78)
+('ind_plan_fin_ult1_std_1_5', 76)
+('ind_viv_fin_ult1_prev1', 72)
+('ind_deme_fin_ult1_max_2_5', 72)
+('ind_reca_fin_ult1_std_1_3', 71)
+('ind_cder_fin_ult1_prev1', 71)
+('ind_plan_fin_ult1_std_2_5', 71)
+('ind_reca_fin_ult1_max_2_3', 70)
+('ind_ctju_fin_ult1_std_1_3', 65)
+('ind_pres_fin_ult1_max_2_5', 64)
+('ind_hip_fin_ult1_max_2_5', 64)
+('ind_deme_fin_ult1_min_2_5', 61)
+('ind_hip_fin_ult1_min_2_5', 60)
+('ind_ctju_fin_ult1_max_2_5', 60)
+('indresi_n', 59)
+('ind_plan_fin_ult1_min_2_3', 59)
+('ind_cder_fin_ult1_std_1_5', 57)
+('ind_ctju_fin_ult1_max_2_3', 57)
+('ind_deme_fin_ult1_min_2_3', 55)
+('ind_plan_fin_ult1_max_2_3', 54)
+('ind_ahor_fin_ult1_prev2', 54)
+('ind_ahor_fin_ult1_std_2_5', 52)
+('ind_deme_fin_ult1_std_2_5', 51)
+('ind_pres_fin_ult1_prev1', 48)
+('ind_reca_fin_ult1_max_2_5', 41)
+('ind_plan_fin_ult1_std_1_3', 40)
+('ind_pres_fin_ult1_prev2', 39)
+('ind_cder_fin_ult1_max_2_5', 39)
+('ind_cder_fin_ult1_prev2', 37)
+('ind_viv_fin_ult1_std_1_3', 33)
+('ind_pres_fin_ult1_min_2_3', 33)
+('ind_viv_fin_ult1_min_2_3', 32)
+('ind_pres_fin_ult1_min_2_5', 31)
+('indrel_1', 29)
+('ind_ctju_fin_ult1_std_2_5', 26)
+('ind_hip_fin_ult1_max_2_3', 26)
+('ind_pres_fin_ult1_max_2_3', 23)
+('ind_aval_fin_ult1_prev2', 22)
+('ind_ctju_fin_ult1_min_2_5', 21)
+('ind_viv_fin_ult1_max_2_3', 21)
+('ind_pres_fin_ult1_std_2_5', 20)
+('ind_hip_fin_ult1_std_1_5', 20)
+('ind_deme_fin_ult1_max_2_3', 20)
+('ind_hip_fin_ult1_std_2_5', 17)
+('ind_hip_fin_ult1_min_2_3', 16)
+('ind_cder_fin_ult1_std_1_3', 16)
+('ind_ctju_fin_ult1_min_2_3', 15)
+('conyuemp_n', 15)
+('ind_cder_fin_ult1_std_2_5', 15)
+('indrel_1mes', 15)
+('ind_deme_fin_ult1_std_1_3', 14)
+('ind_aval_fin_ult1_std_2_5', 13)
+('ind_pres_fin_ult1_std_1_3', 13)
+('ind_cder_fin_ult1_max_2_3', 12)
+('ind_viv_fin_ult1_min_2_5', 11)
+('ind_empleado_f', 9)
+('ind_viv_fin_ult1_std_2_5', 7)
+('ind_hip_fin_ult1_std_1_3', 5)
+('tiprel_1mes_p', 2)
+('tipodom', 2)
+('ind_cder_fin_ult1_min_2_5', 1)
+make submission...
+make submission: cpu 21.54, time 21.56
+
+XGBoost MAP@7 2016-05-28 0.0270471559677 0.899142553918
+XGBoost: cpu 107739.73, time 9196.95
+
+['age', 'antiguedad', 'canal_entrada', 'cod_prov', 'conyuemp_n', 'dato_minus_alta', 'fecha_alta_month', 'fecha_alta_year', 'fecha_dato', 'fecha_dato_month', 'fecha_dato_year', 'ind_actividad_cliente', 'ind_ahor_fin_ult1', 'ind_ahor_fin_ult1_max_2_3', 'ind_ahor_fin_ult1_max_2_5', 'ind_ahor_fin_ult1_min_2_3', 'ind_ahor_fin_ult1_min_2_5', 'ind_ahor_fin_ult1_prev1', 'ind_ahor_fin_ult1_prev2', 'ind_ahor_fin_ult1_std_1_3', 'ind_ahor_fin_ult1_std_1_5', 'ind_ahor_fin_ult1_std_2_5', 'ind_aval_fin_ult1', 'ind_aval_fin_ult1_max_2_3', 'ind_aval_fin_ult1_max_2_5', 'ind_aval_fin_ult1_min_2_3', 'ind_aval_fin_ult1_min_2_5', 'ind_aval_fin_ult1_prev1', 'ind_aval_fin_ult1_prev2', 'ind_aval_fin_ult1_std_1_3', 'ind_aval_fin_ult1_std_1_5', 'ind_aval_fin_ult1_std_2_5', 'ind_cco_fin_ult1', 'ind_cco_fin_ult1_max_2_3', 'ind_cco_fin_ult1_max_2_5', 'ind_cco_fin_ult1_min_2_3', 'ind_cco_fin_ult1_min_2_5', 'ind_cco_fin_ult1_prev1', 'ind_cco_fin_ult1_prev2', 'ind_cco_fin_ult1_std_1_3', 'ind_cco_fin_ult1_std_1_5', 'ind_cco_fin_ult1_std_2_5', 'ind_cder_fin_ult1', 'ind_cder_fin_ult1_max_2_3', 'ind_cder_fin_ult1_max_2_5', 'ind_cder_fin_ult1_min_2_3', 'ind_cder_fin_ult1_min_2_5', 'ind_cder_fin_ult1_prev1', 'ind_cder_fin_ult1_prev2', 'ind_cder_fin_ult1_std_1_3', 'ind_cder_fin_ult1_std_1_5', 'ind_cder_fin_ult1_std_2_5', 'ind_cno_fin_ult1', 'ind_cno_fin_ult1_max_2_3', 'ind_cno_fin_ult1_max_2_5', 'ind_cno_fin_ult1_min_2_3', 'ind_cno_fin_ult1_min_2_5', 'ind_cno_fin_ult1_prev1', 'ind_cno_fin_ult1_prev2', 'ind_cno_fin_ult1_std_1_3', 'ind_cno_fin_ult1_std_1_5', 'ind_cno_fin_ult1_std_2_5', 'ind_ctju_fin_ult1', 'ind_ctju_fin_ult1_max_2_3', 'ind_ctju_fin_ult1_max_2_5', 'ind_ctju_fin_ult1_min_2_3', 'ind_ctju_fin_ult1_min_2_5', 'ind_ctju_fin_ult1_prev1', 'ind_ctju_fin_ult1_prev2', 'ind_ctju_fin_ult1_std_1_3', 'ind_ctju_fin_ult1_std_1_5', 'ind_ctju_fin_ult1_std_2_5', 'ind_ctma_fin_ult1', 'ind_ctma_fin_ult1_max_2_3', 'ind_ctma_fin_ult1_max_2_5', 'ind_ctma_fin_ult1_min_2_3', 'ind_ctma_fin_ult1_min_2_5', 'ind_ctma_fin_ult1_prev1', 'ind_ctma_fin_ult1_prev2', 'ind_ctma_fin_ult1_std_1_3', 'ind_ctma_fin_ult1_std_1_5', 'ind_ctma_fin_ult1_std_2_5', 'ind_ctop_fin_ult1', 'ind_ctop_fin_ult1_max_2_3', 'ind_ctop_fin_ult1_max_2_5', 'ind_ctop_fin_ult1_min_2_3', 'ind_ctop_fin_ult1_min_2_5', 'ind_ctop_fin_ult1_prev1', 'ind_ctop_fin_ult1_prev2', 'ind_ctop_fin_ult1_std_1_3', 'ind_ctop_fin_ult1_std_1_5', 'ind_ctop_fin_ult1_std_2_5', 'ind_ctpp_fin_ult1', 'ind_ctpp_fin_ult1_max_2_3', 'ind_ctpp_fin_ult1_max_2_5', 'ind_ctpp_fin_ult1_min_2_3', 'ind_ctpp_fin_ult1_min_2_5', 'ind_ctpp_fin_ult1_prev1', 'ind_ctpp_fin_ult1_prev2', 'ind_ctpp_fin_ult1_std_1_3', 'ind_ctpp_fin_ult1_std_1_5', 'ind_ctpp_fin_ult1_std_2_5', 'ind_deco_fin_ult1', 'ind_deco_fin_ult1_max_2_3', 'ind_deco_fin_ult1_max_2_5', 'ind_deco_fin_ult1_min_2_3', 'ind_deco_fin_ult1_min_2_5', 'ind_deco_fin_ult1_prev1', 'ind_deco_fin_ult1_prev2', 'ind_deco_fin_ult1_std_1_3', 'ind_deco_fin_ult1_std_1_5', 'ind_deco_fin_ult1_std_2_5', 'ind_dela_fin_ult1', 'ind_dela_fin_ult1_max_2_3', 'ind_dela_fin_ult1_max_2_5', 'ind_dela_fin_ult1_min_2_3', 'ind_dela_fin_ult1_min_2_5', 'ind_dela_fin_ult1_prev1', 'ind_dela_fin_ult1_prev2', 'ind_dela_fin_ult1_std_1_3', 'ind_dela_fin_ult1_std_1_5', 'ind_dela_fin_ult1_std_2_5', 'ind_deme_fin_ult1', 'ind_deme_fin_ult1_max_2_3', 'ind_deme_fin_ult1_max_2_5', 'ind_deme_fin_ult1_min_2_3', 'ind_deme_fin_ult1_min_2_5', 'ind_deme_fin_ult1_prev1', 'ind_deme_fin_ult1_prev2', 'ind_deme_fin_ult1_std_1_3', 'ind_deme_fin_ult1_std_1_5', 'ind_deme_fin_ult1_std_2_5', 'ind_ecue_fin_ult1', 'ind_ecue_fin_ult1_max_2_3', 'ind_ecue_fin_ult1_max_2_5', 'ind_ecue_fin_ult1_min_2_3', 'ind_ecue_fin_ult1_min_2_5', 'ind_ecue_fin_ult1_prev1', 'ind_ecue_fin_ult1_prev2', 'ind_ecue_fin_ult1_std_1_3', 'ind_ecue_fin_ult1_std_1_5', 'ind_ecue_fin_ult1_std_2_5', 'ind_empleado_a', 'ind_empleado_b', 'ind_empleado_f', 'ind_empleado_n', 'ind_fond_fin_ult1', 'ind_fond_fin_ult1_max_2_3', 'ind_fond_fin_ult1_max_2_5', 'ind_fond_fin_ult1_min_2_3', 'ind_fond_fin_ult1_min_2_5', 'ind_fond_fin_ult1_prev1', 'ind_fond_fin_ult1_prev2', 'ind_fond_fin_ult1_std_1_3', 'ind_fond_fin_ult1_std_1_5', 'ind_fond_fin_ult1_std_2_5', 'ind_hip_fin_ult1', 'ind_hip_fin_ult1_max_2_3', 'ind_hip_fin_ult1_max_2_5', 'ind_hip_fin_ult1_min_2_3', 'ind_hip_fin_ult1_min_2_5', 'ind_hip_fin_ult1_prev1', 'ind_hip_fin_ult1_prev2', 'ind_hip_fin_ult1_std_1_3', 'ind_hip_fin_ult1_std_1_5', 'ind_hip_fin_ult1_std_2_5', 'ind_nom_pens_ult1', 'ind_nom_pens_ult1_max_2_3', 'ind_nom_pens_ult1_max_2_5', 'ind_nom_pens_ult1_min_2_3', 'ind_nom_pens_ult1_min_2_5', 'ind_nom_pens_ult1_prev1', 'ind_nom_pens_ult1_prev2', 'ind_nom_pens_ult1_std_1_3', 'ind_nom_pens_ult1_std_1_5', 'ind_nom_pens_ult1_std_2_5', 'ind_nomina_ult1', 'ind_nomina_ult1_max_2_3', 'ind_nomina_ult1_max_2_5', 'ind_nomina_ult1_min_2_3', 'ind_nomina_ult1_min_2_5', 'ind_nomina_ult1_prev1', 'ind_nomina_ult1_prev2', 'ind_nomina_ult1_std_1_3', 'ind_nomina_ult1_std_1_5', 'ind_nomina_ult1_std_2_5', 'ind_nuevo_new', 'ind_plan_fin_ult1', 'ind_plan_fin_ult1_max_2_3', 'ind_plan_fin_ult1_max_2_5', 'ind_plan_fin_ult1_min_2_3', 'ind_plan_fin_ult1_min_2_5', 'ind_plan_fin_ult1_prev1', 'ind_plan_fin_ult1_prev2', 'ind_plan_fin_ult1_std_1_3', 'ind_plan_fin_ult1_std_1_5', 'ind_plan_fin_ult1_std_2_5', 'ind_pres_fin_ult1', 'ind_pres_fin_ult1_max_2_3', 'ind_pres_fin_ult1_max_2_5', 'ind_pres_fin_ult1_min_2_3', 'ind_pres_fin_ult1_min_2_5', 'ind_pres_fin_ult1_prev1', 'ind_pres_fin_ult1_prev2', 'ind_pres_fin_ult1_std_1_3', 'ind_pres_fin_ult1_std_1_5', 'ind_pres_fin_ult1_std_2_5', 'ind_reca_fin_ult1', 'ind_reca_fin_ult1_max_2_3', 'ind_reca_fin_ult1_max_2_5', 'ind_reca_fin_ult1_min_2_3', 'ind_reca_fin_ult1_min_2_5', 'ind_reca_fin_ult1_prev1', 'ind_reca_fin_ult1_prev2', 'ind_reca_fin_ult1_std_1_3', 'ind_reca_fin_ult1_std_1_5', 'ind_reca_fin_ult1_std_2_5', 'ind_recibo_ult1', 'ind_recibo_ult1_max_2_3', 'ind_recibo_ult1_max_2_5', 'ind_recibo_ult1_min_2_3', 'ind_recibo_ult1_min_2_5', 'ind_recibo_ult1_prev1', 'ind_recibo_ult1_prev2', 'ind_recibo_ult1_std_1_3', 'ind_recibo_ult1_std_1_5', 'ind_recibo_ult1_std_2_5', 'ind_tjcr_fin_ult1', 'ind_tjcr_fin_ult1_max_2_3', 'ind_tjcr_fin_ult1_max_2_5', 'ind_tjcr_fin_ult1_min_2_3', 'ind_tjcr_fin_ult1_min_2_5', 'ind_tjcr_fin_ult1_prev1', 'ind_tjcr_fin_ult1_prev2', 'ind_tjcr_fin_ult1_std_1_3', 'ind_tjcr_fin_ult1_std_1_5', 'ind_tjcr_fin_ult1_std_2_5', 'ind_valo_fin_ult1', 'ind_valo_fin_ult1_max_2_3', 'ind_valo_fin_ult1_max_2_5', 'ind_valo_fin_ult1_min_2_3', 'ind_valo_fin_ult1_min_2_5', 'ind_valo_fin_ult1_prev1', 'ind_valo_fin_ult1_prev2', 'ind_valo_fin_ult1_std_1_3', 'ind_valo_fin_ult1_std_1_5', 'ind_valo_fin_ult1_std_2_5', 'ind_viv_fin_ult1', 'ind_viv_fin_ult1_max_2_3', 'ind_viv_fin_ult1_max_2_5', 'ind_viv_fin_ult1_min_2_3', 'ind_viv_fin_ult1_min_2_5', 'ind_viv_fin_ult1_prev1', 'ind_viv_fin_ult1_prev2', 'ind_viv_fin_ult1_std_1_3', 'ind_viv_fin_ult1_std_1_5', 'ind_viv_fin_ult1_std_2_5', 'indext_s', 'indfall_s', 'indrel_1', 'indrel_1mes', 'indrel_99', 'indresi_n', 'int_date', 'ncodpers', 'pais_residencia', 'renta', 'renta_top', 'segmento_particulares', 'segmento_top', 'segmento_universitario', 'sexo_h', 'sexo_v', 'tipodom', 'tiprel_1mes_a', 'tiprel_1mes_i', 'tiprel_1mes_p', 'tiprel_1mes_r']
+278 278
+251 251
+ind_ahor_fin_ult1 (2, 278)
+ind_aval_fin_ult1 (4, 278)
+ind_cco_fin_ult1 (69103, 278)
+ind_cder_fin_ult1 (136, 278)
+ind_cno_fin_ult1 (37098, 278)
+ind_ctju_fin_ult1 (482, 278)
+ind_ctma_fin_ult1 (6856, 278)
+ind_ctop_fin_ult1 (3869, 278)
+ind_ctpp_fin_ult1 (2418, 278)
+ind_deco_fin_ult1 (3061, 278)
+ind_deme_fin_ult1 (250, 278)
+ind_dela_fin_ult1 (12659, 278)
+ind_ecue_fin_ult1 (26361, 278)
+ind_fond_fin_ult1 (3693, 278)
+ind_hip_fin_ult1 (75, 278)
+ind_plan_fin_ult1 (618, 278)
+ind_pres_fin_ult1 (147, 278)
+ind_reca_fin_ult1 (9234, 278)
+ind_tjcr_fin_ult1 (69118, 278)
+ind_valo_fin_ult1 (4848, 278)
+ind_viv_fin_ult1 (70, 278)
+ind_nomina_ult1 (73753, 278)
+ind_nom_pens_ult1 (84709, 278)
+ind_recibo_ult1 (153146, 278)
+(array([1, 2, 3, 4, 5, 6, 7]), array([355683,  68936,  19561,   2191,    133,      6,      1]))
+(array([ 0.42437285,  0.43459821,  0.44932896,  0.47236655,  0.51341712,
+        0.60653066,  1.        ]), array([     1,      6,    133,   2191,  19561,  68936, 355683]))
+before merge 561710
+after merge 561710
+(561710, 283)
+prepare test data...
+prepare test data: cpu 81.32, time 81.40
+
+XGBoost...
+restore model...
+restore model: cpu 0.02, time 0.02
+
+[0]	all_data-mlogloss:2.56897
+[1]	all_data-mlogloss:2.30148
+[2]	all_data-mlogloss:2.11027
+[3]	all_data-mlogloss:1.96531
+[4]	all_data-mlogloss:1.8473
+[5]	all_data-mlogloss:1.74837
+[6]	all_data-mlogloss:1.66322
+[7]	all_data-mlogloss:1.5892
+[8]	all_data-mlogloss:1.52471
+[9]	all_data-mlogloss:1.4682
+[10]	all_data-mlogloss:1.41717
+[11]	all_data-mlogloss:1.37212
+[12]	all_data-mlogloss:1.332
+[13]	all_data-mlogloss:1.29579
+[14]	all_data-mlogloss:1.26262
+[15]	all_data-mlogloss:1.23296
+[16]	all_data-mlogloss:1.2059
+[17]	all_data-mlogloss:1.18108
+[18]	all_data-mlogloss:1.1587
+[19]	all_data-mlogloss:1.13811
+[20]	all_data-mlogloss:1.11896
+[21]	all_data-mlogloss:1.10156
+[22]	all_data-mlogloss:1.0856
+[23]	all_data-mlogloss:1.07065
+[24]	all_data-mlogloss:1.05687
+[25]	all_data-mlogloss:1.04442
+[26]	all_data-mlogloss:1.03246
+[27]	all_data-mlogloss:1.02154
+[28]	all_data-mlogloss:1.01138
+[29]	all_data-mlogloss:1.00204
+[30]	all_data-mlogloss:0.993332
+[31]	all_data-mlogloss:0.985252
+[32]	all_data-mlogloss:0.977551
+[33]	all_data-mlogloss:0.970377
+[34]	all_data-mlogloss:0.963533
+[35]	all_data-mlogloss:0.957305
+[36]	all_data-mlogloss:0.951377
+[37]	all_data-mlogloss:0.945857
+[38]	all_data-mlogloss:0.94077
+[39]	all_data-mlogloss:0.935944
+[40]	all_data-mlogloss:0.931203
+[41]	all_data-mlogloss:0.926942
+[42]	all_data-mlogloss:0.922684
+[43]	all_data-mlogloss:0.918775
+[44]	all_data-mlogloss:0.914993
+[45]	all_data-mlogloss:0.911489
+[46]	all_data-mlogloss:0.908189
+[47]	all_data-mlogloss:0.90509
+[48]	all_data-mlogloss:0.90207
+[49]	all_data-mlogloss:0.89924
+[50]	all_data-mlogloss:0.896622
+[51]	all_data-mlogloss:0.894032
+[52]	all_data-mlogloss:0.891566
+[53]	all_data-mlogloss:0.889245
+[54]	all_data-mlogloss:0.886978
+[55]	all_data-mlogloss:0.884842
+[56]	all_data-mlogloss:0.882849
+[57]	all_data-mlogloss:0.880975
+[58]	all_data-mlogloss:0.879128
+[59]	all_data-mlogloss:0.877355
+[60]	all_data-mlogloss:0.875627
+[61]	all_data-mlogloss:0.873985
+[62]	all_data-mlogloss:0.872409
+[63]	all_data-mlogloss:0.870899
+[64]	all_data-mlogloss:0.869459
+[65]	all_data-mlogloss:0.868091
+[66]	all_data-mlogloss:0.866759
+[67]	all_data-mlogloss:0.865574
+[68]	all_data-mlogloss:0.864352
+[69]	all_data-mlogloss:0.863059
+[70]	all_data-mlogloss:0.861856
+[71]	all_data-mlogloss:0.860732
+[72]	all_data-mlogloss:0.859638
+[73]	all_data-mlogloss:0.858589
+[74]	all_data-mlogloss:0.857582
+[75]	all_data-mlogloss:0.856636
+[76]	all_data-mlogloss:0.855686
+[77]	all_data-mlogloss:0.854796
+[78]	all_data-mlogloss:0.853912
+[79]	all_data-mlogloss:0.85308
+[80]	all_data-mlogloss:0.852237
+[81]	all_data-mlogloss:0.851366
+[82]	all_data-mlogloss:0.850602
+[83]	all_data-mlogloss:0.849899
+[84]	all_data-mlogloss:0.849175
+[85]	all_data-mlogloss:0.848432
+[86]	all_data-mlogloss:0.84768
+[87]	all_data-mlogloss:0.846958
+[88]	all_data-mlogloss:0.846281
+[89]	all_data-mlogloss:0.84562
+[90]	all_data-mlogloss:0.844972
+[91]	all_data-mlogloss:0.844365
+[92]	all_data-mlogloss:0.843768
+[93]	all_data-mlogloss:0.84311
+[94]	all_data-mlogloss:0.842573
+[95]	all_data-mlogloss:0.842023
+[96]	all_data-mlogloss:0.84149
+[97]	all_data-mlogloss:0.840919
+[98]	all_data-mlogloss:0.84043
+[99]	all_data-mlogloss:0.839868
+[100]	all_data-mlogloss:0.839325
+[101]	all_data-mlogloss:0.838808
+[102]	all_data-mlogloss:0.83827
+[103]	all_data-mlogloss:0.837799
+[104]	all_data-mlogloss:0.837303
+[105]	all_data-mlogloss:0.836888
+[106]	all_data-mlogloss:0.836318
+[107]	all_data-mlogloss:0.835831
+[108]	all_data-mlogloss:0.835353
+[109]	all_data-mlogloss:0.835006
+[110]	all_data-mlogloss:0.834555
+[111]	all_data-mlogloss:0.834169
+[112]	all_data-mlogloss:0.833791
+[113]	all_data-mlogloss:0.833391
+[114]	all_data-mlogloss:0.832955
+[115]	all_data-mlogloss:0.832586
+[116]	all_data-mlogloss:0.832169
+[117]	all_data-mlogloss:0.83171
+[118]	all_data-mlogloss:0.831363
+[119]	all_data-mlogloss:0.831005
+[120]	all_data-mlogloss:0.830647
+[121]	all_data-mlogloss:0.830309
+[122]	all_data-mlogloss:0.829842
+[123]	all_data-mlogloss:0.829481
+[124]	all_data-mlogloss:0.829079
+[125]	all_data-mlogloss:0.828739
+[126]	all_data-mlogloss:0.82837
+[127]	all_data-mlogloss:0.827979
+[128]	all_data-mlogloss:0.827565
+[129]	all_data-mlogloss:0.827182
+[130]	all_data-mlogloss:0.826812
+[131]	all_data-mlogloss:0.826416
+[132]	all_data-mlogloss:0.826034
+[133]	all_data-mlogloss:0.825726
+[134]	all_data-mlogloss:0.825325
+[135]	all_data-mlogloss:0.824956
+[136]	all_data-mlogloss:0.824586
+[137]	all_data-mlogloss:0.824171
+[138]	all_data-mlogloss:0.823867
+[139]	all_data-mlogloss:0.823451
+[140]	all_data-mlogloss:0.823079
+[141]	all_data-mlogloss:0.822785
+[142]	all_data-mlogloss:0.822372
+[143]	all_data-mlogloss:0.822078
+[144]	all_data-mlogloss:0.821766
+[145]	all_data-mlogloss:0.821395
+[146]	all_data-mlogloss:0.821053
+[147]	all_data-mlogloss:0.820725
+[148]	all_data-mlogloss:0.820376
+[149]	all_data-mlogloss:0.819952
+[150]	all_data-mlogloss:0.819627
+[151]	all_data-mlogloss:0.819312
+[152]	all_data-mlogloss:0.819031
+[153]	all_data-mlogloss:0.818681
+[154]	all_data-mlogloss:0.818375
+[155]	all_data-mlogloss:0.817975
+[156]	all_data-mlogloss:0.817653
+[157]	all_data-mlogloss:0.817352
+[158]	all_data-mlogloss:0.816993
+[159]	all_data-mlogloss:0.816676
+[160]	all_data-mlogloss:0.816364
+[161]	all_data-mlogloss:0.816076
+[162]	all_data-mlogloss:0.815716
+[163]	all_data-mlogloss:0.815395
+[164]	all_data-mlogloss:0.815058
+[165]	all_data-mlogloss:0.814786
+[166]	all_data-mlogloss:0.814509
+[167]	all_data-mlogloss:0.814187
+[168]	all_data-mlogloss:0.813866
+[169]	all_data-mlogloss:0.8136
+[170]	all_data-mlogloss:0.813252
+[171]	all_data-mlogloss:0.812955
+[172]	all_data-mlogloss:0.812621
+[173]	all_data-mlogloss:0.812337
+[174]	all_data-mlogloss:0.812059
+[175]	all_data-mlogloss:0.811693
+[176]	all_data-mlogloss:0.811382
+[177]	all_data-mlogloss:0.811002
+[178]	all_data-mlogloss:0.810659
+[179]	all_data-mlogloss:0.810371
+[180]	all_data-mlogloss:0.810035
+[181]	all_data-mlogloss:0.8097
+[182]	all_data-mlogloss:0.809368
+[183]	all_data-mlogloss:0.809039
+[184]	all_data-mlogloss:0.808752
+[185]	all_data-mlogloss:0.808472
+[186]	all_data-mlogloss:0.808216
+[187]	all_data-mlogloss:0.807894
+[188]	all_data-mlogloss:0.807623
+[189]	all_data-mlogloss:0.807248
+[190]	all_data-mlogloss:0.806987
+[191]	all_data-mlogloss:0.806638
+[192]	all_data-mlogloss:0.806399
+[193]	all_data-mlogloss:0.806133
+[194]	all_data-mlogloss:0.805792
+[195]	all_data-mlogloss:0.805521
+[196]	all_data-mlogloss:0.805248
+[197]	all_data-mlogloss:0.804917
+[198]	all_data-mlogloss:0.804549
+[199]	all_data-mlogloss:0.804265
+[200]	all_data-mlogloss:0.803937
+[201]	all_data-mlogloss:0.803635
+[202]	all_data-mlogloss:0.803316
+[203]	all_data-mlogloss:0.803
+[204]	all_data-mlogloss:0.802772
+[205]	all_data-mlogloss:0.802558
+[206]	all_data-mlogloss:0.802223
+[207]	all_data-mlogloss:0.801918
+[208]	all_data-mlogloss:0.801622
+[209]	all_data-mlogloss:0.801298
+[210]	all_data-mlogloss:0.801063
+[211]	all_data-mlogloss:0.800844
+[212]	all_data-mlogloss:0.800604
+[213]	all_data-mlogloss:0.800335
+[214]	all_data-mlogloss:0.800006
+[215]	all_data-mlogloss:0.79975
+[216]	all_data-mlogloss:0.799421
+[217]	all_data-mlogloss:0.799182
+[218]	all_data-mlogloss:0.798935
+[219]	all_data-mlogloss:0.798686
+[220]	all_data-mlogloss:0.798358
+[221]	all_data-mlogloss:0.798139
+[222]	all_data-mlogloss:0.797923
+[223]	all_data-mlogloss:0.797666
+[224]	all_data-mlogloss:0.797345
+[225]	all_data-mlogloss:0.797107
+[226]	all_data-mlogloss:0.79691
+[227]	all_data-mlogloss:0.796648
+[228]	all_data-mlogloss:0.796398
+[229]	all_data-mlogloss:0.796136
+[230]	all_data-mlogloss:0.795921
+[231]	all_data-mlogloss:0.795648
+[232]	all_data-mlogloss:0.795421
+/usr/local/lib/python3.4/dist-packages/sklearn/cross_validation.py:44: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
+  "This module will be removed in 0.20.", DeprecationWarning)
+Feature importance:
+('renta', 25237)
+('age', 23852)
+('antiguedad', 19857)
+('dato_minus_alta', 18631)
+('fecha_dato_month', 16681)
+('cod_prov', 12042)
+('fecha_alta_month', 11397)
+('canal_entrada', 10011)
+('fecha_alta_year', 4694)
+('ind_cco_fin_ult1_prev1', 3804)
+('ind_recibo_ult1_prev1', 3549)
+('sexo_v', 2778)
+('fecha_dato_year', 2649)
+('ind_cno_fin_ult1_prev1', 2410)
+('ind_nom_pens_ult1_prev1', 2361)
+('ind_recibo_ult1_std_1_5', 2317)
+('ind_tjcr_fin_ult1_prev1', 2288)
+('ind_ecue_fin_ult1_prev1', 2151)
+('ind_tjcr_fin_ult1_std_1_5', 2103)
+('segmento_top', 1976)
+('ind_nom_pens_ult1_std_1_5', 1903)
+('ind_actividad_cliente', 1880)
+('ind_nomina_ult1_prev1', 1867)
+('ind_cco_fin_ult1_std_1_5', 1858)
+('segmento_particulares', 1833)
+('ind_recibo_ult1_std_2_5', 1551)
+('ind_cno_fin_ult1_std_1_5', 1436)
+('ind_recibo_ult1_max_2_5', 1405)
+('ind_cco_fin_ult1_std_2_5', 1372)
+('ind_recibo_ult1_prev2', 1369)
+('ind_nomina_ult1_std_1_5', 1363)
+('ind_cco_fin_ult1_prev2', 1325)
+('ind_nom_pens_ult1_prev2', 1316)
+('ind_dela_fin_ult1_prev1', 1281)
+('ind_recibo_ult1_std_1_3', 1254)
+('ind_ecue_fin_ult1_prev2', 1206)
+('sexo_h', 1205)
+('ind_nom_pens_ult1_std_1_3', 1201)
+('tiprel_1mes_i', 1147)
+('ind_cco_fin_ult1_std_1_3', 1111)
+('ind_reca_fin_ult1_prev1', 1078)
+('ind_tjcr_fin_ult1_std_2_5', 1037)
+('ind_cco_fin_ult1_max_2_5', 1024)
+('renta_top', 989)
+('ind_ecue_fin_ult1_std_1_5', 980)
+('ind_dela_fin_ult1_std_1_5', 968)
+('indext_s', 949)
+('ind_cno_fin_ult1_prev2', 946)
+('ind_valo_fin_ult1_prev1', 942)
+('ind_cco_fin_ult1_min_2_5', 929)
+('ind_recibo_ult1_min_2_5', 923)
+('ind_nomina_ult1_prev2', 880)
+('segmento_universitario', 876)
+('ind_tjcr_fin_ult1_std_1_3', 874)
+('ind_nom_pens_ult1_std_2_5', 855)
+('ind_recibo_ult1_max_2_3', 855)
+('ind_recibo_ult1_min_2_3', 849)
+('ind_dela_fin_ult1_max_2_5', 846)
+('ind_cno_fin_ult1_max_2_5', 842)
+('ind_nomina_ult1_std_2_5', 842)
+('tiprel_1mes_a', 841)
+('ind_cco_fin_ult1_min_2_3', 831)
+('ind_ctop_fin_ult1_prev1', 820)
+('ind_tjcr_fin_ult1_prev2', 800)
+('ind_ctma_fin_ult1_prev1', 785)
+('ind_tjcr_fin_ult1_max_2_5', 772)
+('ind_nomina_ult1_std_1_3', 755)
+('ind_ctpp_fin_ult1_prev1', 749)
+('ind_fond_fin_ult1_prev1', 747)
+('ind_cno_fin_ult1_std_1_3', 735)
+('ind_cno_fin_ult1_std_2_5', 723)
+('ind_cco_fin_ult1_max_2_3', 723)
+('ind_ecue_fin_ult1_min_2_3', 713)
+('ind_ecue_fin_ult1_max_2_5', 697)
+('ind_ecue_fin_ult1_min_2_5', 685)
+('ind_reca_fin_ult1_prev2', 675)
+('ind_dela_fin_ult1_prev2', 655)
+('ind_ctop_fin_ult1_prev2', 603)
+('ind_cno_fin_ult1_min_2_5', 579)
+('ind_tjcr_fin_ult1_min_2_3', 570)
+('ind_tjcr_fin_ult1_min_2_5', 560)
+('ind_nom_pens_ult1_min_2_3', 548)
+('ind_deco_fin_ult1_prev1', 539)
+('ind_ctma_fin_ult1_std_1_5', 528)
+('ind_nom_pens_ult1_max_2_5', 527)
+('ind_ecue_fin_ult1_std_1_3', 522)
+('ind_valo_fin_ult1_std_1_5', 509)
+('ind_nomina_ult1_min_2_3', 501)
+('ind_cno_fin_ult1_max_2_3', 489)
+('ind_tjcr_fin_ult1_max_2_3', 489)
+('ind_cno_fin_ult1_min_2_3', 489)
+('ind_reca_fin_ult1_min_2_5', 489)
+('ind_dela_fin_ult1_min_2_5', 479)
+('ind_dela_fin_ult1_std_1_3', 474)
+('ind_deco_fin_ult1_std_1_5', 473)
+('ind_ecue_fin_ult1_max_2_3', 467)
+('ind_ctop_fin_ult1_std_1_5', 450)
+('ind_valo_fin_ult1_prev2', 449)
+('ind_ecue_fin_ult1_std_2_5', 430)
+('ind_ctpp_fin_ult1_prev2', 424)
+('ind_ctma_fin_ult1_prev2', 422)
+('ind_nomina_ult1_max_2_5', 413)
+('ind_nom_pens_ult1_max_2_3', 406)
+('ind_plan_fin_ult1_prev1', 405)
+('ind_ctpp_fin_ult1_std_1_5', 404)
+('ind_ctma_fin_ult1_min_2_3', 395)
+('ind_ctop_fin_ult1_min_2_5', 377)
+('ind_nuevo_new', 367)
+('ind_ctma_fin_ult1_max_2_5', 363)
+('ind_dela_fin_ult1_std_2_5', 359)
+('ind_ctma_fin_ult1_std_2_5', 352)
+('ind_ctop_fin_ult1_max_2_5', 351)
+('ind_deco_fin_ult1_min_2_3', 338)
+('ind_fond_fin_ult1_std_1_5', 333)
+('ind_ctma_fin_ult1_std_1_3', 323)
+('ind_dela_fin_ult1_max_2_3', 321)
+('ind_fond_fin_ult1_prev2', 313)
+('ind_deco_fin_ult1_max_2_5', 312)
+('ind_valo_fin_ult1_max_2_5', 309)
+('ind_reca_fin_ult1_min_2_3', 301)
+('ind_nom_pens_ult1_min_2_5', 301)
+('ind_ctpp_fin_ult1_max_2_5', 300)
+('ind_deco_fin_ult1_prev2', 299)
+('ind_nomina_ult1_max_2_3', 296)
+('ind_ctop_fin_ult1_std_2_5', 295)
+('ind_nomina_ult1_min_2_5', 291)
+('ind_deco_fin_ult1_std_2_5', 280)
+('ind_deco_fin_ult1_std_1_3', 277)
+('ind_valo_fin_ult1_std_1_3', 267)
+('ind_dela_fin_ult1_min_2_3', 266)
+('ind_fond_fin_ult1_min_2_5', 250)
+('ind_valo_fin_ult1_std_2_5', 245)
+('ind_fond_fin_ult1_max_2_5', 242)
+('ind_ctpp_fin_ult1_min_2_5', 241)
+('ind_ctop_fin_ult1_std_1_3', 234)
+('ind_valo_fin_ult1_min_2_5', 230)
+('ind_ctop_fin_ult1_max_2_3', 222)
+('ind_plan_fin_ult1_prev2', 215)
+('pais_residencia', 213)
+('ind_ctma_fin_ult1_max_2_3', 213)
+('ind_ctop_fin_ult1_min_2_3', 213)
+('ind_ctpp_fin_ult1_std_1_3', 201)
+('ind_valo_fin_ult1_max_2_3', 198)
+('ind_reca_fin_ult1_std_1_5', 192)
+('ind_valo_fin_ult1_min_2_3', 183)
+('ind_ctpp_fin_ult1_min_2_3', 177)
+('ind_ctpp_fin_ult1_max_2_3', 173)
+('ind_hip_fin_ult1_prev1', 173)
+('ind_fond_fin_ult1_min_2_3', 169)
+('ind_reca_fin_ult1_std_2_5', 154)
+('ind_fond_fin_ult1_std_2_5', 151)
+('ind_ctpp_fin_ult1_std_2_5', 149)
+('indrel_99', 147)
+('ind_empleado_a', 142)
+('ind_plan_fin_ult1_min_2_5', 135)
+('ind_deme_fin_ult1_std_1_5', 135)
+('ind_fond_fin_ult1_max_2_3', 133)
+('ind_hip_fin_ult1_prev2', 117)
+('ind_ctma_fin_ult1_min_2_5', 108)
+('ind_ctju_fin_ult1_prev1', 107)
+('ind_plan_fin_ult1_max_2_5', 106)
+('ind_deme_fin_ult1_prev1', 104)
+('ind_pres_fin_ult1_std_1_5', 103)
+('ind_ctju_fin_ult1_std_1_5', 103)
+('ind_ctju_fin_ult1_max_2_5', 103)
+('ind_fond_fin_ult1_std_1_3', 102)
+('ind_deco_fin_ult1_max_2_3', 100)
+('indfall_s', 100)
+('ind_viv_fin_ult1_std_1_5', 97)
+('ind_ctju_fin_ult1_prev2', 92)
+('ind_deco_fin_ult1_min_2_5', 92)
+('ind_plan_fin_ult1_std_2_5', 91)
+('ind_viv_fin_ult1_max_2_5', 91)
+('ind_reca_fin_ult1_std_1_3', 86)
+('ind_reca_fin_ult1_max_2_3', 85)
+('ind_deme_fin_ult1_prev2', 83)
+('ind_plan_fin_ult1_min_2_3', 81)
+('ind_ctju_fin_ult1_std_1_3', 79)
+('ind_plan_fin_ult1_std_1_5', 76)
+('ind_empleado_n', 75)
+('ind_cder_fin_ult1_std_1_5', 72)
+('ind_viv_fin_ult1_prev2', 71)
+('ind_ahor_fin_ult1_std_2_5', 67)
+('ind_deme_fin_ult1_max_2_5', 66)
+('ind_viv_fin_ult1_prev1', 65)
+('ind_ctju_fin_ult1_max_2_3', 65)
+('ind_ahor_fin_ult1_prev2', 63)
+('ind_plan_fin_ult1_std_1_3', 62)
+('ind_deme_fin_ult1_min_2_5', 62)
+('ind_cder_fin_ult1_max_2_5', 56)
+('ind_hip_fin_ult1_max_2_5', 56)
+('ind_pres_fin_ult1_max_2_5', 54)
+('ind_reca_fin_ult1_max_2_5', 53)
+('ind_pres_fin_ult1_prev1', 52)
+('ind_hip_fin_ult1_min_2_5', 52)
+('indresi_n', 51)
+('ind_deme_fin_ult1_std_2_5', 49)
+('ind_plan_fin_ult1_max_2_3', 48)
+('ind_pres_fin_ult1_prev2', 46)
+('ind_cder_fin_ult1_prev1', 45)
+('ind_pres_fin_ult1_min_2_5', 44)
+('ind_deme_fin_ult1_min_2_3', 44)
+('ind_cder_fin_ult1_prev2', 37)
+('ind_viv_fin_ult1_std_1_3', 36)
+('ind_viv_fin_ult1_min_2_3', 35)
+('ind_ctju_fin_ult1_min_2_3', 33)
+('ind_pres_fin_ult1_max_2_3', 30)
+('ind_ctju_fin_ult1_std_2_5', 26)
+('ind_ctju_fin_ult1_min_2_5', 25)
+('ind_aval_fin_ult1_prev2', 24)
+('ind_pres_fin_ult1_std_2_5', 23)
+('ind_hip_fin_ult1_max_2_3', 23)
+('indrel_1', 22)
+('conyuemp_n', 19)
+('ind_pres_fin_ult1_min_2_3', 19)
+('ind_viv_fin_ult1_max_2_3', 18)
+('ind_deme_fin_ult1_max_2_3', 17)
+('ind_aval_fin_ult1_std_2_5', 16)
+('ind_hip_fin_ult1_std_2_5', 16)
+('ind_viv_fin_ult1_min_2_5', 16)
+('ind_cder_fin_ult1_std_1_3', 16)
+('ind_hip_fin_ult1_std_1_5', 15)
+('indrel_1mes', 13)
+('ind_deme_fin_ult1_std_1_3', 11)
+('ind_pres_fin_ult1_std_1_3', 10)
+('ind_cder_fin_ult1_std_2_5', 9)
+('ind_hip_fin_ult1_min_2_3', 7)
+('ind_cder_fin_ult1_max_2_3', 6)
+('tiprel_1mes_p', 4)
+('ind_hip_fin_ult1_std_1_3', 3)
+('ind_empleado_f', 3)
+('ind_empleado_b', 3)
+('ind_cder_fin_ult1_min_2_3', 2)
+('tipodom', 2)
+('ind_viv_fin_ult1_std_2_5', 2)
+make submission...
+make submission: cpu 39.54, time 39.58
+
+XGBoost: cpu 68549.41, time 5887.66
+
