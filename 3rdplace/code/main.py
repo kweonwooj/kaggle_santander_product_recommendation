@@ -6,7 +6,7 @@
 
 from utils.log_utils import get_logger
 from make_data_v3 import make_data
-#from train
+from train_predict import train_predict
 
 
 LOG = get_logger('3rd_place_solution.log')
@@ -17,7 +17,7 @@ if __name__ == "__main__":
     make_data()
 
     LOG.info('=' * 50)
-    #xgboost()
+    train_predict()
 
     LOG.info('=' * 50)
     #make_submission()
