@@ -79,7 +79,7 @@ def make_data(LOG):
                     "segmento"]
             cols_to_remove = ['fecha_alta', 'ult_fec_cli_1t', 'tipodom', 'cod_prov']
             cols_to_use = [col for col in cols if col not in cols_to_remove]
-            out = pd.read_csv('./root_input/test_ver2.csv', usecols=cols_to_use,
+            out = pd.read_csv('../root_input/test_ver2.csv', usecols=cols_to_use,
                               dtype={'indrel_1mes': str, 'conyuemp': str}).reset_index(drop=True)
 
             # select last month (2016-05)
