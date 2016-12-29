@@ -14,10 +14,10 @@ LOG = get_logger('3rd_place_solution.log')
 
 if __name__ == "__main__":
     LOG.info('=' * 50)
-    make_data()
+    make_data(LOG)
 
     LOG.info('=' * 50)
-    train_predict()
+    train_predict(LOG)
 
     LOG.info('=' * 50)
     #make_submission()
