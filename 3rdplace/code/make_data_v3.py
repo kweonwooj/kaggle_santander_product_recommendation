@@ -31,17 +31,17 @@ import os
 
 def make_data(LOG):
 
-    LOG.info('# Creating ../input directory')
+    LOG.info('# Creating ./input directory')
     # create input directory
-    if not os.path.exists('../input'):
-        os.mkdir('../input')
+    if not os.path.exists('./input'):
+        os.mkdir('./input')
 
     LOG.info('# Loading train data')
     # drop fecha_alta, ult_fec_cli_1t, tipodom, cod_prov, ind_ahor_fin_ult1, ind_aval_fin_ult1, ind_deco_fin_ult1 and ind_deme_fin_ult1
     cols = ["fecha_dato","ncodpers","ind_empleado","pais_residencia","sexo","age","fecha_alta","ind_nuevo","antiguedad","indrel","ult_fec_cli_1t","indrel_1mes","tiprel_1mes","indresi","indext","conyuemp","canal_entrada","indfall","tipodom","cod_prov","nomprov","ind_actividad_cliente","renta","segmento","ind_ahor_fin_ult1","ind_aval_fin_ult1","ind_cco_fin_ult1","ind_cder_fin_ult1","ind_cno_fin_ult1","ind_ctju_fin_ult1","ind_ctma_fin_ult1","ind_ctop_fin_ult1","ind_ctpp_fin_ult1","ind_deco_fin_ult1","ind_deme_fin_ult1","ind_dela_fin_ult1","ind_ecue_fin_ult1","ind_fond_fin_ult1","ind_hip_fin_ult1","ind_plan_fin_ult1","ind_pres_fin_ult1","ind_reca_fin_ult1","ind_tjcr_fin_ult1","ind_valo_fin_ult1","ind_viv_fin_ult1","ind_nomina_ult1","ind_nom_pens_ult1","ind_recibo_ult1"]
     cols_to_remove = ['fecha_alta','ult_fec_cli_1t','tipodom','cod_prov','ind_ahor_fin_ult1','ind_aval_fin_ult1','ind_deco_fin_ult1','ind_deme_fin_ult1']
     cols_to_use = [col for col in cols if col not in cols_to_remove]
-    data = pd.read_csv('../../root_input/train_ver2.csv',usecols=cols_to_use, dtype={'indrel_1mes':str, 'conyuemp':str})
+    data = pd.read_csv('../root_input/train_ver2.csv',usecols=cols_to_use, dtype={'indrel_1mes':str, 'conyuemp':str})
 
     LOG.info('# Fetching date_list, product_list[20]')
     # save all date_list, product_list
@@ -70,7 +70,7 @@ def make_data(LOG):
             out = out.merge(temp, on='ncodpers', suffixes=('', '_last'))
 
             # save
-            out.to_csv('../input/train_{}.csv'.format(date_list[i]), index=False)
+            out.to_csv('./input/train_{}.csv'.format(date_list[i]), index=False)
         else:
             # import test (2016-06)
             cols = ["fecha_dato", "ncodpers", "ind_empleado", "pais_residencia", "sexo", "age", "fecha_alta", "ind_nuevo",
@@ -79,7 +79,7 @@ def make_data(LOG):
                     "segmento"]
             cols_to_remove = ['fecha_alta', 'ult_fec_cli_1t', 'tipodom', 'cod_prov']
             cols_to_use = [col for col in cols if col not in cols_to_remove]
-            out = pd.read_csv('../root_input/test_ver2.csv', usecols=cols_to_use,
+            out = pd.read_csv('./root_input/test_ver2.csv', usecols=cols_to_use,
                               dtype={'indrel_1mes': str, 'conyuemp': str}).reset_index(drop=True)
 
             # select last month (2016-05)
@@ -90,7 +90,7 @@ def make_data(LOG):
             out = out.merge(temp, on='ncodpers', suffixes=('', '_last'))
 
             # save
-            out.to_csv('../input/test_{}.csv'.format(date_list[i]), index=False)
+            out.to_csv('./input/test_{}.csv'.format(date_list[i]), index=False)
 
 
     LOG.info('# Count the change of index for all past')
@@ -110,7 +110,7 @@ def make_data(LOG):
             out = out.merge(temp, on='ncodpers')[['ncodpers']]
         else:
             # get test data
-            out = pd.read_csv('../../root_input/test_ver2.csv', usecols=['ncodpers'])
+            out = pd.read_csv('../root_input/test_ver2.csv', usecols=['ncodpers'])
 
         for j, product in enumerate(product_list):
             LOG.info('# Product # {} : {}'.format(j, product))
@@ -143,4 +143,4 @@ def make_data(LOG):
                 count[product + '_0len'] = (count[product + '_0len'] + 1) * flag
             out = out.set_index('ncodpers').join(count.set_index('ncodpers')).reset_index()
         out.drop(['ncodpers'], axis=1, inplace=True)
-        out.to_csv('../input/count_{}.csv'.format(date_list[i]), index=False)
+        out.to_csv('./input/count_{}.csv'.format(date_list[i]), index=False)
