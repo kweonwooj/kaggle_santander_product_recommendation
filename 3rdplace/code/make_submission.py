@@ -4,7 +4,7 @@
 
 import numpy as np
 import pandas as pd
-
+import math
 
 def make_submission(LOG):
     mode = 'submission'
@@ -28,6 +28,8 @@ def make_submission(LOG):
         result_temp = pd.DataFrame()
 
         for j in range(len(product_list)):
+            product = product_list[j]
+
             if j in [0, 1, 9, 10]:
                 temp = submission
                 temp['pr'] = 1e-10

@@ -68,12 +68,12 @@ def train_predict(LOG):
 
         LOG.info('# Add ind_actividad_cliente_from_to')
         # add ind_actividad_cliente_from_to, simple string concat
-        data_train['ind_actividad_cliente_from_to'] = data_train['ind_actividad_cliente_last'].astype(str).str.cat(
-            data_train['ind_actividad_cliente'].astype(str), sep=' ')
-        data_valid['ind_actividad_cliente_from_to'] = data_valid['ind_actividad_cliente_last'].astype(str).str.cat(
-            data_valid['ind_actividad_cliente'].astype(str), sep=' ')
-        data_test['ind_actividad_cliente_from_to'] = data_test['ind_actividad_cliente_last'].astype(str).str.cat(
-            data_test['ind_actividad_cliente'].astype(str), sep=' ')
+        data_train['ind_actividad_cliente_from_to'] = data_train['ind_actividad_cliente_last'].astype(int).astype(str).str.cat(
+            data_train['ind_actividad_cliente'].astype(int).astype(str), sep=' ')
+        data_valid['ind_actividad_cliente_from_to'] = data_valid['ind_actividad_cliente_last'].astype(int).astype(str).str.cat(
+            data_valid['ind_actividad_cliente'].astype(int).astype(str), sep=' ')
+        data_test['ind_actividad_cliente_from_to'] = data_test['ind_actividad_cliente_last'].astype(int).astype(str).str.cat(
+            data_test['ind_actividad_cliente'].astype(int).astype(str), sep=' ')
 
         LOG.info('# Add tiprel_1mes_from_to')
         # add tiprel_1mes_from_to, simple string concat
