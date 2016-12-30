@@ -157,6 +157,11 @@ def train_predict(LOG):
                             add = pd.DataFrame({var: item, 'target': 0},
                                                index=[len(target_mean[var].unique().tolist())])
                             target_mean = target_mean.append(add)
+                    for item in data_test[var].unique().tolist():
+                        if item not in target_mean[var].tolist():
+                            add = pd.DataFrame({var: item, 'target': 0},
+                                               index=[len(target_mean[var].unique().tolist())])
+                            target_mean = target_mean.append(add)
 
                     # map the average to valid and test
                     data_valid[var] = data_valid[var].map(
