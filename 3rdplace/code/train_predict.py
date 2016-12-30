@@ -118,6 +118,7 @@ def train_predict(LOG):
 
         LOG.info('# Iterate over columns, convert categoricals')
         exp_var = data_test.columns[2:].tolist()
+        exp_var.remove('conyuemp')
         for var in exp_var:
             LOG.info('# var {}'.format(var))
             if data_train[var].iloc[0].__class__ == str:
