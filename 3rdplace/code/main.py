@@ -7,6 +7,7 @@
 from utils.log_utils import get_logger
 from make_data_v3 import make_data
 from train_predict import train_predict
+from make_submission import make_submission
 
 
 LOG = get_logger('3rd_place_solution.log')
@@ -20,4 +21,4 @@ if __name__ == "__main__":
     train_predict(LOG)
 
     LOG.info('=' * 50)
-    #make_submission()
+    #make_submission(LOG)

@@ -88,6 +88,7 @@ def make_data(LOG):
 
             # join
             out = out.merge(temp, on='ncodpers', suffixes=('', '_last'))
+            out.columns = [col + '_last' if col in cols[24:] else col for col in out.columns]
 
             # save
             out.to_csv('./input/test_{}.csv'.format(date_list[i]), index=False)
