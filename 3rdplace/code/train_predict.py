@@ -45,7 +45,7 @@ def train_predict(LOG):
         # load validation data
         if train_date == '2016-05-28':
             data_1 = pd.read_csv('./input/train_2016-04-28.csv', dtype={'indrel_1mes': str, 'conyuemp': str})
-            dat1_2 = pd.read_csv('./input/count_2016-04-28.csv')
+            data_2 = pd.read_csv('./input/count_2016-04-28.csv')
         else:
             data_1 = pd.read_csv('./input/train_2016-05-28.csv', dtype={'indrel_1mes': str, 'conyuemp': str})
             data_2 = pd.read_csv('./input/count_2016-05-28.csv')
@@ -59,6 +59,19 @@ def train_predict(LOG):
 
         # memory efficiency
         del data_1, data_2
+
+        LOG.info('# Simple preprocessing')
+        data_train['age'].replace(' NA', np.nan, inplace=True)
+        data_valid['age'].replace(' NA', np.nan, inplace=True)
+        data_test['age'].replace(' NA', np.nan, inplace=True)
+
+        data_train['antiguedad'].replace('     NA', np.nan, inplace=True)
+        data_valid['antiguedad'].replace('     NA', np.nan, inplace=True)
+        data_test['antiguedad'].replace('     NA', np.nan, inplace=True)
+
+        data_train['renta'].replace('         NA', np.nan, inplace=True)
+        data_valid['renta'].replace('         NA', np.nan, inplace=True)
+        data_test['renta'].replace('         NA', np.nan, inplace=True)
 
         LOG.info('# Select rows with {}_last == 0'.format(product))
         # select rows with [product]_last == 0
