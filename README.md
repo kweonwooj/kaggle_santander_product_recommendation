@@ -74,7 +74,7 @@ for reproduced version of 8th place
 
 ## Winnig Solutions
 - 1st place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26835/1-solution) by idle_speculation
-- 2nd place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26824/2nd-place-solution), [GitHub](https://github.com/ttvand/Santander-Product-Recommendation) by Tom Van de Wiele
+- 2nd place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26824/2nd-place-solution), [GitHub](https://github.com/ttvand/Santander-Product-Recommendation), [Kaggle Blog](http://blog.kaggle.com/2017/01/12/santander-product-recommendation-competition-2nd-place-winners-solution-write-up-tom-van-de-wiele/) by Tom Van de Wiele
 - 3rd place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26899/3rd-place-solution-with-code) by Jack (Japan)
 - 4th place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26845/4th-place-solution) by yoniko
 - 5th place solution on [Forum](https://www.kaggle.com/c/santander-product-recommendation/forums/t/26786/solution-sharing) by BreakfastPirate, on [Forum](https://www.kaggle.com/forums/f/1789/santander-product-recommendation/t/26841/5-solution), [GitHub](https://github.com/jturkewitz/SideProjects/tree/master/Kaggle/Santander_Prod) by Jared Turkewitz
